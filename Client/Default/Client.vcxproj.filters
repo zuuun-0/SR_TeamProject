@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="98. Defaults">
+      <UniqueIdentifier>{13d964f6-bd65-4310-a985-e950dcc6ac6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00. MainApp">
+      <UniqueIdentifier>{a5a65650-0889-4334-9a7f-2a78bc61c375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels">
+      <UniqueIdentifier>{7b04439f-6850-4a43-9e48-1e412d322ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject">
+      <UniqueIdentifier>{b58fc743-bb58-403f-bc15-7ad616fc4bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99. Defines">
+      <UniqueIdentifier>{5f121d02-13ce-42fc-b517-67da63437253}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\BackGround">
+      <UniqueIdentifier>{e05e771f-b795-42d0-a8a6-3773a9f57db1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\00. Loading">
+      <UniqueIdentifier>{ef7e9c85-0bfd-43ae-86b3-e8dfebdf2895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\01. Logo">
+      <UniqueIdentifier>{4daa5347-2175-4204-a723-8a12d6a2155d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\02. GamePlay">
+      <UniqueIdentifier>{19bdaed7-1d8c-4e81-9a68-52c2881f242d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\00. Loading\Loader">
+      <UniqueIdentifier>{50a64a49-dec4-4186-a110-f05841dacdd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Player">
+      <UniqueIdentifier>{314d0872-ab20-4a59-a657-0e0957cdd2ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Camera">
+      <UniqueIdentifier>{9160a68f-35f3-41fb-9ff0-472ada934720}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Terrain">
+      <UniqueIdentifier>{1392a4ca-b6b0-4989-ad65-23f546191b44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\ChessBoard">
+      <UniqueIdentifier>{7598a2fb-7eb3-4bd9-99ab-f3c1a645ea8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\02. GamePlay\00. Match">
+      <UniqueIdentifier>{976c7cd2-e05b-41f5-b4e6-fb1c4f054ecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\02. GamePlay\01. PlayChess">
+      <UniqueIdentifier>{f00e6d5f-9d53-49d2-8cb7-41c7ccc9c715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\02. GamePlay\02. PlayFPS">
+      <UniqueIdentifier>{abcf2042-9562-4e55-bb7e-aba2d105bd26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Camera\TargetCamera">
+      <UniqueIdentifier>{aec133ce-f0ea-423b-b088-4ad95390bc7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Queen">
+      <UniqueIdentifier>{38836156-70d3-4982-9856-f3f87f825928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Bullet">
+      <UniqueIdentifier>{29717f38-8f20-47a1-b387-5763a8cc4618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Pawn">
+      <UniqueIdentifier>{04c1fddb-2cf3-40ff-bddf-73d1be35f546}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Client.h">
+      <Filter>98. Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>98. Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>98. Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>98. Defaults</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Client_Defines.h">
+      <Filter>99. Defines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\MainApp.h">
+      <Filter>00. MainApp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Loader.h">
+      <Filter>01. Levels\00. Loading\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_GamePlay.h">
+      <Filter>01. Levels\02. GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_Loading.h">
+      <Filter>01. Levels\00. Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_Logo.h">
+      <Filter>01. Levels\01. Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\BackGround.h">
+      <Filter>02. GameObject\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Player.h">
+      <Filter>02. GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Camera.h">
+      <Filter>02. GameObject\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Terrain.h">
+      <Filter>02. GameObject\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\ChessBoard.h">
+      <Filter>02. GameObject\ChessBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Client_PCH.h">
+      <Filter>99. Defines</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\TargetCamera.h">
+      <Filter>02. GameObject\Camera\TargetCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\CQueen.h">
+      <Filter>02. GameObject\Queen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\CBullet.h">
+      <Filter>02. GameObject\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Pawn.h">
+      <Filter>02. GameObject\Pawn</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Client.ico">
+      <Filter>98. Defaults</Filter>
+    </Image>
+    <Image Include="small.ico">
+      <Filter>98. Defaults</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Client.rc">
+      <Filter>98. Defaults</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Client.cpp">
+      <Filter>98. Defaults</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\MainApp.cpp">
+      <Filter>00. MainApp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Loader.cpp">
+      <Filter>01. Levels\00. Loading\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_GamePlay.cpp">
+      <Filter>01. Levels\02. GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Loading.cpp">
+      <Filter>01. Levels\00. Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Logo.cpp">
+      <Filter>01. Levels\01. Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\BackGround.cpp">
+      <Filter>02. GameObject\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Player.cpp">
+      <Filter>02. GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Camera.cpp">
+      <Filter>02. GameObject\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Terrain.cpp">
+      <Filter>02. GameObject\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\ChessBoard.cpp">
+      <Filter>02. GameObject\ChessBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Client_PCH.cpp">
+      <Filter>99. Defines</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\TargetCamera.cpp">
+      <Filter>02. GameObject\Camera\TargetCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\CQueen.cpp">
+      <Filter>02. GameObject\Queen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\CBullet.cpp">
+      <Filter>02. GameObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Pawn.cpp">
+      <Filter>02. GameObject\Pawn</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
