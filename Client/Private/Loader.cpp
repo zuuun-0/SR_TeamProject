@@ -145,6 +145,9 @@ HRESULT CLoader::Loading_For_GamePlay_Level()
 	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Pawn"),
 											  CPawn::Create(m_pGraphic_Device))))
 		return E_FAIL;
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Rook"),
+											  CRook::Create(m_pGraphic_Device))))
+		return E_FAIL;
 	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Queen"),
 											 CQueen::Create(m_pGraphic_Device))))
 		return E_FAIL;

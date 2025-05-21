@@ -160,6 +160,7 @@
     <ClInclude Include="..\Public\Base.h" />
     <ClInclude Include="..\Public\Component.h" />
     <ClInclude Include="..\Public\Input_Manager.h" />
+    <ClInclude Include="..\Public\VIBuffer_Rook.h" />
     <ClInclude Include="..\Public\VI_Buffer_Queen.h" />
     <ClInclude Include="..\Public\Engine_Defines.h" />
     <ClInclude Include="..\Public\Engine_Enum.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="..\Private\Base.cpp" />
     <ClCompile Include="..\Private\Component.cpp" />
     <ClCompile Include="..\Private\Input_Manager.cpp" />
+    <ClCompile Include="..\Private\VIBuffer_Rook.cpp" />
     <ClCompile Include="..\Private\VI_Buffer_Queen.cpp" />
     <ClCompile Include="..\Private\Engine_Defines.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

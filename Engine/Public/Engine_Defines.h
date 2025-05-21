@@ -42,6 +42,7 @@ using namespace std;
 #include "VIBuffer_Board.h"
 #include "VIBuffer_Cube.h"
 #include "VIBuffer_Pawn.h"
+#include "VIBuffer_Rook.h"
 #include "VIBuffer_Rect.h"
 #include "VIBuffer_Terrain.h"
 #include "VI_Buffer_Oblong.h"

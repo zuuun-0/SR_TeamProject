@@ -19,6 +19,7 @@
 #include "MainApp.h"
 #include "Player.h"
 #include "Pawn.h"
+#include "Rook.h"
 #include "TargetCamera.h"
 #include "Terrain.h"
 

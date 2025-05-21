@@ -97,6 +97,9 @@
     <Filter Include="01. Utility\05. Component\VIBuffer\Queen">
       <UniqueIdentifier>{c86a7b0f-8eb0-4d1f-96a1-2e3c1402717d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces\Rook">
+      <UniqueIdentifier>{6a9373b9-1ae2-496c-87c7-9d154bff365c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\Graphic_Device.h">
@@ -192,6 +195,9 @@
     <ClInclude Include="..\Public\Input_Manager.h">
       <Filter>00. System\00. Device\Input</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_Rook.h">
+      <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Rook</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Graphic_Device.cpp">
@@ -271,6 +277,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Input_Manager.cpp">
       <Filter>00. System\00. Device\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_Rook.cpp">
+      <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Rook</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

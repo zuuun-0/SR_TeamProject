@@ -11,6 +11,8 @@ HRESULT CLevel_GamePlay::Initialize()
 	//	return E_FAIL;
 	// if (FAILED(Ready_Layer_Pawn(TEXT("Layer_Pawn"))))
 	// 	return E_FAIL;
+	if (FAILED(Ready_Layer_Rook(TEXT("Layer_Rook"))))
+		return E_FAIL;
 	if(FAILED(Ready_Layer_Queen(TEXT("Layer_Queen"))))
 		return E_FAIL;
 	g_pClientPlayer = static_cast<CQueen*>(m_pGameInstance->Get_Object(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Queen")));
@@ -58,6 +60,15 @@ HRESULT CLevel_GamePlay::Ready_Layer_Pawn(const _wstring& strLayerTag)
 {
 	if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), strLayerTag,
 		ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Pawn"))))
+		return E_FAIL;
+
+	return S_OK;
+}
+
+HRESULT CLevel_GamePlay::Ready_Layer_Rook(const _wstring& strLayerTag)
+{
+	if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), strLayerTag,
+		ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Rook"))))
 		return E_FAIL;
 
 	return S_OK;

@@ -64,6 +64,9 @@
     <Filter Include="02. GameObject\Pawn">
       <UniqueIdentifier>{04c1fddb-2cf3-40ff-bddf-73d1be35f546}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. GameObject\Rook">
+      <UniqueIdentifier>{add04288-d99e-4923-abe9-dbde3637b010}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -125,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="..\Public\Pawn.h">
       <Filter>02. GameObject\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Rook.h">
+      <Filter>02. GameObject\Rook</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +194,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Pawn.cpp">
       <Filter>02. GameObject\Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Rook.cpp">
+      <Filter>02. GameObject\Rook</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
