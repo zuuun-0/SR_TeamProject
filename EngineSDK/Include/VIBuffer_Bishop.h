@@ -21,4 +21,5 @@ private:
 	_uint m_iRow = 0;
 	_uint m_iCol = 0;
 };
+
 END
