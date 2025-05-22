@@ -1,10 +1,25 @@
 #include "Layer.h"
 
 #include "GameObject.h"
+#include "Component.h"
 
 CLayer::CLayer()
 {
 
+}
+
+CComponent* CLayer::Get_Component(const _wstring& strComponentTag, _uint iIndex)
+{
+	auto iter = m_GameObjects.begin();
+
+	for (_uint i = 0; i < iIndex; i++)
+	{
+		++iter;
+		if (iter == m_GameObjects.end())
+			return nullptr;
+	}
+
+	return (*iter)->Get_Component(strComponentTag);
 }
 
 void CLayer::Priority_Update(_float fTimeDelta)

@@ -198,6 +198,17 @@ HRESULT CVIBuffer_Terrain::Initialize(void* pArg)
 	return S_OK;
 }
 
+_float CVIBuffer_Terrain::Compute_Height(const _float3& vLocalPos)
+{
+	/*D3DXPLANE		Plane{};
+
+	D3DXPlaneFromPoints(&Plane, );
+
+	Plane*/
+
+	return _float();
+}
+
 CVIBuffer_Terrain* CVIBuffer_Terrain::Create(LPDIRECT3DDEVICE9 pGraphic_Device, _uint iNumVerticesX, _uint iNumVerticesZ)
 {
 	CVIBuffer_Terrain* pInstance = new CVIBuffer_Terrain(pGraphic_Device);

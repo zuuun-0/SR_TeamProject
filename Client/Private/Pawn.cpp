@@ -3,12 +3,12 @@
 #include "GameInstance.h"
 
 CPawn::CPawn(LPDIRECT3DDEVICE9 pGraphic_Device)
-	: CGameObject{ pGraphic_Device }
+	: CLandObject { pGraphic_Device }
 {
 }
 
 CPawn::CPawn(const CPawn& Prototype)
-	: CGameObject{ Prototype }
+	: CLandObject { Prototype }
 {
 }
 

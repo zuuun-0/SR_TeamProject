@@ -18,6 +18,7 @@ CVIBuffer::CVIBuffer(const CVIBuffer& Prototype)
 	, m_iIndexStride { Prototype.m_iIndexStride }
 	, m_iNumIndices { Prototype.m_iNumIndices }
 	, m_eIndexFormat { Prototype.m_eIndexFormat }
+	, m_pVertexPositions{ Prototype.m_pVertexPositions }
 {
 	Safe_AddRef(m_pIB);
 	Safe_AddRef(m_pVB);
@@ -48,8 +49,6 @@ HRESULT CVIBuffer::Bind_Buffers()
 
 HRESULT CVIBuffer::Render()
 {	
-	// m_pGraphic_Device->DrawPrimitive(m_ePrimitiveType, 0, m_iNumPrimitive);
-
 	m_pGraphic_Device->DrawIndexedPrimitive(m_ePrimitiveType, 0, 0, m_iNumVertices, 0, m_iNumPrimitive);
 
 	return S_OK;
@@ -58,6 +57,9 @@ HRESULT CVIBuffer::Render()
 void CVIBuffer::Free()
 {
 	__super::Free();
+
+	if (false == m_isCloned)
+		Safe_Delete_Array(m_pVertexPositions);
 
 	Safe_Release(m_pIB);
 	Safe_Release(m_pVB);

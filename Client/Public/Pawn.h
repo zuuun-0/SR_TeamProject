@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Client_Defines.h"
-#include "GameObject.h"
+#include "LandObject.h"
 
 BEGIN(Engine)
 class CTexture;
@@ -11,7 +11,7 @@ END
 
 BEGIN(Client)
 
-class CPawn final : public CGameObject
+class CPawn final : public CLandObject
 {
 public:
 	CPawn(LPDIRECT3DDEVICE9 pGraphic_Device);

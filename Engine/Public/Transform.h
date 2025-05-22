@@ -36,6 +36,10 @@ public:
 		);
 	}
 
+	const _float4x4* Get_WorldMatrix() const {
+		return &m_WorldMatrix;
+	}
+
 	const _float4x4* Get_WorldMatrix_Inverse() {
 		return D3DXMatrixInverse(&m_WorldMatrixInverse, nullptr, &m_WorldMatrix);
 	}
