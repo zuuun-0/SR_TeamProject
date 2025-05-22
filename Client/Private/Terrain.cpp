@@ -19,7 +19,7 @@ HRESULT CTerrain::Initialize_Prototype()
 
 HRESULT CTerrain::Initialize(void* pArg)
 {
-	if (FAILED(Ready_Components()))
+	if (FAILED(Ready_Components(pArg)))
 		return E_FAIL;
 
 	return S_OK;
@@ -43,7 +43,7 @@ void CTerrain::Late_Update(_float fTimeDelta)
 
 HRESULT CTerrain::Render()
 {
-	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
+	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	m_pTransformCom->Bind_Matrix();
 
@@ -57,7 +57,7 @@ HRESULT CTerrain::Render()
 	return S_OK;
 }
 
-HRESULT CTerrain::Ready_Components()
+HRESULT CTerrain::Ready_Components(void* pArg)
 {
 	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_VIBuffer_Terrain"),
 		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))

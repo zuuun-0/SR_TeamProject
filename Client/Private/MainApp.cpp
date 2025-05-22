@@ -92,9 +92,9 @@ HRESULT CMainApp::Ready_Prototype_ForStatic()
 		CVIBuffer_Rect::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
-	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Terrain"),
-		CVIBuffer_Terrain::Create(m_pGraphic_Device, 200, 200))))
-		return E_FAIL;
+	// if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Terrain"),
+	// 	CVIBuffer_Terrain::Create(m_pGraphic_Device, 200, 200))))
+	// 	return E_FAIL;
 
 	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Board"),
 		CVIBuffer_Board::Create(m_pGraphic_Device, 8, 8))))

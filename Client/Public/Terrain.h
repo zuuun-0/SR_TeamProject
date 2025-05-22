@@ -36,7 +36,7 @@ private:
 	_bool	isMoved = { false };
 
 private: /* 이 객체에게 필요한 컴포넌트들을 복제하여 추가해주는 기능. */
-	HRESULT Ready_Components();
+	HRESULT Ready_Components(void* pArg);
 
 	void SetUp_RenderState();
 	void Reset_RenderState();
