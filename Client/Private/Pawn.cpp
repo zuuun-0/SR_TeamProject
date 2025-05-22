@@ -3,12 +3,12 @@
 #include "GameInstance.h"
 
 CPawn::CPawn(LPDIRECT3DDEVICE9 pGraphic_Device)
-	: CGameObject{ pGraphic_Device }
+	: CLandObject { pGraphic_Device }
 {
 }
 
 CPawn::CPawn(const CPawn& Prototype)
-	: CGameObject{ Prototype }
+	: CLandObject { Prototype }
 {
 }
 
@@ -19,6 +19,9 @@ HRESULT CPawn::Initialize_Prototype()
 
 HRESULT CPawn::Initialize(void* pArg)
 {
+	if (FAILED(__super::Initialize(pArg)))
+		return E_FAIL;
+
 	if (FAILED(Ready_Components()))
 		return E_FAIL;
 
@@ -31,13 +34,18 @@ void CPawn::Priority_Update(_float fTimeDelta)
 
 void CPawn::Update(_float fTimeDelta)
 {
-	if (m_pInput_Manager->Key_Pressing('W'))
+	SetUp_OnTerrain(m_pTransformCom);
+
+	if (m_pInput_Manager->Key_Pressing(VK_UP))
 		m_pTransformCom->Go_Straight(fTimeDelta);
 
-	if (m_pInput_Manager->Key_Pressing('A'))
+	if (m_pInput_Manager->Key_Pressing(VK_LEFT))
 		m_pTransformCom->Turn(m_pTransformCom->Get_State(STATE::UP), fTimeDelta * -1.f);
 
-	if (m_pInput_Manager->Key_Pressing('D'))
+	if (m_pInput_Manager->Key_Pressing(VK_DOWN))
+		m_pTransformCom->Go_Backward(fTimeDelta);
+
+	if (m_pInput_Manager->Key_Pressing(VK_RIGHT))
 		m_pTransformCom->Turn(m_pTransformCom->Get_State(STATE::UP), fTimeDelta);
 }
 
@@ -89,7 +97,7 @@ HRESULT CPawn::Ready_Components()
 
 void CPawn::SetUp_RenderState()
 {
-	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 

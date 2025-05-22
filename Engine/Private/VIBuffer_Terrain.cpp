@@ -7,6 +7,8 @@ CVIBuffer_Terrain::CVIBuffer_Terrain(LPDIRECT3DDEVICE9 pGraphic_Device)
 
 CVIBuffer_Terrain::CVIBuffer_Terrain(const CVIBuffer_Terrain& Prototype)
 	: CVIBuffer { Prototype }
+	, m_iNumVerticesX { Prototype.m_iNumVerticesX }
+	, m_iNumVerticesZ { Prototype.m_iNumVerticesZ }
 {
 }
 
@@ -130,6 +132,9 @@ HRESULT CVIBuffer_Terrain::Initialize_Prototype(const _tchar* pHeightMapFilePath
 
 	VTXPOSTEX* pVertices = { nullptr };
 
+	m_pVertexPositions = new _float3[m_iNumVertices];
+	ZeroMemory(m_pVertexPositions, sizeof(_float3) * m_iNumVertices);
+
 	m_pVB->Lock(0, 0, reinterpret_cast<void**>(&pVertices), 0);
 
 	for (_uint i = 0; i < m_iNumVerticesZ; i++)
@@ -138,7 +143,7 @@ HRESULT CVIBuffer_Terrain::Initialize_Prototype(const _tchar* pHeightMapFilePath
 		{
 			_uint iIndex = i * m_iNumVerticesX + j;
 
-			pVertices[iIndex].vPosition = _float3(_float(j), (pPixels[iIndex] & 0x000000ff) / 15.f, _float(i));
+			pVertices[iIndex].vPosition = m_pVertexPositions[iIndex] = _float3(_float(j), (pPixels[iIndex] & 0x000000ff) / 15.f, _float(i));
 
 			_float pDest = pVertices[iIndex].vPosition.y;
 			pVertices[iIndex].vTexcoord = _float2(_float(j) / (m_iNumVerticesX - 1.f) * 10.f, _float(i) / (m_iNumVerticesZ - 1) * 10.f);
@@ -196,6 +201,41 @@ HRESULT CVIBuffer_Terrain::Initialize_Prototype(const _tchar* pHeightMapFilePath
 HRESULT CVIBuffer_Terrain::Initialize(void* pArg)
 {
 	return S_OK;
+}
+
+_float CVIBuffer_Terrain::Compute_Height(const _float3& vLocalPos)
+{
+	D3DXPLANE Plane = {};
+	ZeroMemory(&Plane, sizeof(D3DXPLANE));
+
+	_int iRow = (_int)vLocalPos.x;
+	_int iCol = (_int)vLocalPos.z;
+
+	_float dx = vLocalPos.x - iRow;
+	_float dz = vLocalPos.z - iCol;
+
+	_uint iOriIndex = iRow * m_iNumVerticesX + iCol;
+
+	if (dz > 1.f - dx)		// À§ÂÊ »ï°¢Çü
+	{
+		D3DXPlaneFromPoints(&Plane,
+			&m_pVertexPositions[iOriIndex + m_iNumVerticesX],
+			&m_pVertexPositions[iOriIndex + m_iNumVerticesX + 1],
+			&m_pVertexPositions[iOriIndex + 1]
+		);
+	}
+	else
+	{
+		D3DXPlaneFromPoints(&Plane,
+			&m_pVertexPositions[iOriIndex + m_iNumVerticesX],
+			&m_pVertexPositions[iOriIndex + 1],
+			&m_pVertexPositions[iOriIndex]
+		);
+	}
+
+	Plane;
+
+	return -(Plane.a * vLocalPos.x + Plane.c * vLocalPos.z + Plane.d) / Plane.b;
 }
 
 CVIBuffer_Terrain* CVIBuffer_Terrain::Create(LPDIRECT3DDEVICE9 pGraphic_Device, _uint iNumVerticesX, _uint iNumVerticesZ)

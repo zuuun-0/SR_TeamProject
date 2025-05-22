@@ -22,7 +22,7 @@ HRESULT CVIBuffer_Pawn::Initialize_Prototype()
 	m_iVertexStride = sizeof(VTXPOSPAWN);
 	m_iFVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 	m_ePrimitiveType = D3DPT_TRIANGLELIST;
-	m_iNumPrimitive = m_iRow * 4 + m_iCol * 12;
+	m_iNumPrimitive = 4 * 2 + m_iCol * 12;
 
 	m_iIndexStride = 2;
 	m_iNumIndices = m_iNumPrimitive * 3;
@@ -105,7 +105,7 @@ HRESULT CVIBuffer_Pawn::Initialize_Prototype()
 			fDiameter = arWidth[i] * fWidthRatio;
 			fHeight += arHeight[i] * fHeightRatio;
 			break; // 
-		case 9:
+		case 9:				// 여기부터 헤드 - 비율 수정
 			fWidthRatio *= 0.8f;
 			fHeightRatio *= 0.8f;
 			fDiameter = arWidth[i] * fWidthRatio;
@@ -201,19 +201,32 @@ HRESULT CVIBuffer_Pawn::Initialize_Prototype()
 	_uint iCnt = { 0 };
 	iIndex = 0;
 
-	for (_uint i = 0; i < m_iNumVertices; i++)
+	for (_uint i = 0; i <= m_iNumVertices; i += m_iNumVertices)
 	{
-		if (i != 0)
-			iCnt += 6;
+		if (0 == i)
+		{
+			for (_uint j = 0; j < 4; j++)
+			{
+				pIndices[iIndex++] = iCnt;
+				pIndices[iIndex++] = 1 + iCnt + j;
+				pIndices[iIndex++] = 2 + iCnt + j;
+			}
+		}
+		else if (0 != i)
+		{
+			iCnt += m_iNumVertices - 6;
+
+			for (_uint j = 0; j < 4; j++)
+			{
+				pIndices[iIndex++] = iCnt;
+				pIndices[iIndex++] = 2 + iCnt + j;
+				pIndices[iIndex++] = 1 + iCnt + j;
+			}
+		}
 
 		// 가로 면
-		for (_uint j = 0; j < 4; j++)
-		{
-			pIndices[iIndex++] = iCnt;
-			pIndices[iIndex++] = 2 + iCnt + j;
-			pIndices[iIndex++] = 1 + iCnt + j;
-		}
-		if (iIndex == (m_iRow * 4) * 3)
+
+		if (iIndex == (2 * 4) * 3)
 			break;
 	}
 

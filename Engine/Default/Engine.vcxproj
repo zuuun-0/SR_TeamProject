@@ -160,7 +160,7 @@
     <ClInclude Include="..\Public\Base.h" />
     <ClInclude Include="..\Public\Component.h" />
     <ClInclude Include="..\Public\Input_Manager.h" />
-    <ClInclude Include="..\Public\VIBuffer_Bishop.h" />
+    <ClInclude Include="..\Public\LandObject.h" />
     <ClInclude Include="..\Public\VIBuffer_Rook.h" />
     <ClInclude Include="..\Public\VI_Buffer_Queen.h" />
     <ClInclude Include="..\Public\Engine_Defines.h" />
@@ -198,7 +198,7 @@
     <ClCompile Include="..\Private\Base.cpp" />
     <ClCompile Include="..\Private\Component.cpp" />
     <ClCompile Include="..\Private\Input_Manager.cpp" />
-    <ClCompile Include="..\Private\VIBuffer_Bishop.cpp" />
+    <ClCompile Include="..\Private\LandObject.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Rook.cpp" />
     <ClCompile Include="..\Private\VI_Buffer_Queen.cpp" />
     <ClCompile Include="..\Private\Engine_Defines.cpp">

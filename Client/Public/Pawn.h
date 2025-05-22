@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Client_Defines.h"
-#include "GameObject.h"
+#include "LandObject.h"
 
 BEGIN(Engine)
 class CTexture;
@@ -11,9 +11,16 @@ END
 
 BEGIN(Client)
 
-class CPawn final : public CGameObject
+class CPawn final : public CLandObject
 {
 public:
+	typedef struct tagPawnDesc : public CLandObject::LANDOBJ_DESC
+	{
+		int iTemp = {};
+
+	}PAWN_DESC;
+
+private:
 	CPawn(LPDIRECT3DDEVICE9 pGraphic_Device);
 	CPawn(const CPawn& Prototype);
 	virtual ~CPawn() = default;
@@ -37,7 +44,6 @@ private: /* 이 객체에게 필요한 컴포넌트들을 복제하여 추가해주는 기능. */
 
 	void SetUp_RenderState();
 	void Reset_RenderState();
-
 
 public:
 	static CPawn* Create(LPDIRECT3DDEVICE9 pGraphic_Device);

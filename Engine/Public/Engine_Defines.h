@@ -32,6 +32,7 @@ using namespace std;
 #include "Level.h"
 #include "Level_Manager.h"
 #include "Object_Manager.h"
+#include "LandObject.h"
 #include "Prototype_Manager.h"
 #include "Renderer.h"
 #include "Timer.h"

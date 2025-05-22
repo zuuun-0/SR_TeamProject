@@ -100,8 +100,8 @@
     <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces\Rook">
       <UniqueIdentifier>{6a9373b9-1ae2-496c-87c7-9d154bff365c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Utility\05. Component\VIBuffer\Bishop">
-      <UniqueIdentifier>{66fd78ed-584e-4191-9afe-51049b84165a}</UniqueIdentifier>
+    <Filter Include="01. Utility\03. GameObject\LandObject">
+      <UniqueIdentifier>{4fb29002-7d6f-4eaa-9666-3dd4f9378992}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -201,8 +201,8 @@
     <ClInclude Include="..\Public\VIBuffer_Rook.h">
       <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Rook</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\VIBuffer_Bishop.h">
-      <Filter>01. Utility\05. Component\VIBuffer\Bishop</Filter>
+    <ClInclude Include="..\Public\LandObject.h">
+      <Filter>01. Utility\03. GameObject\LandObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -287,8 +287,8 @@
     <ClCompile Include="..\Private\VIBuffer_Rook.cpp">
       <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Rook</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\VIBuffer_Bishop.cpp">
-      <Filter>01. Utility\05. Component\VIBuffer\Bishop</Filter>
+    <ClCompile Include="..\Private\LandObject.cpp">
+      <Filter>01. Utility\03. GameObject\LandObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
