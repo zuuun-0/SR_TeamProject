@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\BackGround.h" />
+    <ClInclude Include="..\Public\Bishop.h" />
     <ClInclude Include="..\Public\Camera.h" />
     <ClInclude Include="..\Public\CBullet.h" />
     <ClInclude Include="..\Public\ChessBoard.h" />
@@ -173,6 +174,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\BackGround.cpp" />
+    <ClCompile Include="..\Private\Bishop.cpp" />
     <ClCompile Include="..\Private\Camera.cpp" />
     <ClCompile Include="..\Private\CBullet.cpp" />
     <ClCompile Include="..\Private\ChessBoard.cpp" />

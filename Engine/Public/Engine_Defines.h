@@ -26,8 +26,8 @@ using namespace std;
 #include "Base.h"
 #include "Component.h"
 #include "GameInstance.h"
-#include "Input_Manager.h"
 #include "Graphic_Device.h"
+#include "Input_Manager.h"
 #include "Layer.h"
 #include "Level.h"
 #include "Level_Manager.h"
@@ -40,15 +40,15 @@ using namespace std;
 #include "Transform.h"
 #include "UIObject.h"
 #include "VIBuffer.h"
+#include "VIBuffer_Bishop.h"
 #include "VIBuffer_Board.h"
 #include "VIBuffer_Cube.h"
 #include "VIBuffer_Pawn.h"
-#include "VIBuffer_Rook.h"
 #include "VIBuffer_Rect.h"
+#include "VIBuffer_Rook.h"
 #include "VIBuffer_Terrain.h"
 #include "VI_Buffer_Oblong.h"
 #include "VI_Buffer_Queen.h"
-
 
 #ifdef _DEBUG
 

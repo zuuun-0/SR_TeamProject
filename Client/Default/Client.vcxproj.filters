@@ -67,6 +67,9 @@
     <Filter Include="02. GameObject\Rook">
       <UniqueIdentifier>{add04288-d99e-4923-abe9-dbde3637b010}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. GameObject\Bishop">
+      <UniqueIdentifier>{2d25e15b-bea4-4d19-8e57-56f91b8d7439}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -131,6 +134,9 @@
     </ClInclude>
     <ClInclude Include="..\Public\Rook.h">
       <Filter>02. GameObject\Rook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Bishop.h">
+      <Filter>02. GameObject\Bishop</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +203,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\Rook.cpp">
       <Filter>02. GameObject\Rook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Bishop.cpp">
+      <Filter>02. GameObject\Bishop</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
