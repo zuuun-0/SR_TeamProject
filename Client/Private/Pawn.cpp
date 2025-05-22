@@ -19,6 +19,9 @@ HRESULT CPawn::Initialize_Prototype()
 
 HRESULT CPawn::Initialize(void* pArg)
 {
+	if (FAILED(__super::Initialize(pArg)))
+		return E_FAIL;
+
 	if (FAILED(Ready_Components()))
 		return E_FAIL;
 
@@ -31,6 +34,8 @@ void CPawn::Priority_Update(_float fTimeDelta)
 
 void CPawn::Update(_float fTimeDelta)
 {
+	SetUp_OnTerrain(m_pTransformCom);
+
 	if (m_pInput_Manager->Key_Pressing(VK_UP))
 		m_pTransformCom->Go_Straight(fTimeDelta);
 
