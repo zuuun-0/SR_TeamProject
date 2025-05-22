@@ -92,30 +92,39 @@ void CQueen::Late_Update(_float fTimeDelta)
 
 HRESULT CQueen::Render()
 {
-	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+	//m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
-	/* 알파 테스트를 수행한다. */
-	/* 현재 픽셀을 그릴때 픽셀에 알파값을 비교한다. 통과한 픽셀만 그린다. */
-	//m_pGraphic_Device->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+	///* 알파 테스트를 수행한다. */
+	///* 현재 픽셀을 그릴때 픽셀에 알파값을 비교한다. 통과한 픽셀만 그린다. */
+	////m_pGraphic_Device->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
 
-	/* 현재 그리려고하는 픽셀과 0의 값을 비교한다,ㅡ /.*/
-	//m_pGraphic_Device->SetRenderState(D3DRS_ALPHAREF, 250);
+	///* 현재 그리려고하는 픽셀과 0의 값을 비교한다,ㅡ /.*/
+	////m_pGraphic_Device->SetRenderState(D3DRS_ALPHAREF, 250);
 
-	/* 위에서 비교한 결과, 내가 그릴려고하는 픽셀의 알파가 0보다 크면 통과. */
-	//m_pGraphic_Device->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
+	///* 위에서 비교한 결과, 내가 그릴려고하는 픽셀의 알파가 0보다 크면 통과. */
+	////m_pGraphic_Device->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
 
-	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	//m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	//m_pTransformCom->Bind_Matrix();
+
+	//if(FAILED(m_pTextureCom->Bind_Texture()))
+	//	return E_FAIL;
+
+	///* 그리기위해 이용할 자원과 설정들을 장치에 바인딩한다. */
+	//m_pVIBufferCom->Bind_Buffers();
+
+	//m_pVIBufferCom->Render();
+	//m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
+	//m_pGraphic_Device->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
 	m_pTransformCom->Bind_Matrix();
 
-	if(FAILED(m_pTextureCom->Bind_Texture()))
-		return E_FAIL;
+	//if(FAILED(m_pTextureCom->Bind_Texture()))
+	//	return E_FAIL;
 
 	/* 그리기위해 이용할 자원과 설정들을 장치에 바인딩한다. */
 	m_pVIBufferCom->Bind_Buffers();
 
 	m_pVIBufferCom->Render();
-	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
-	m_pGraphic_Device->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
 	return S_OK;
 }
 void CQueen::SetClinetPlayer()
@@ -130,9 +139,9 @@ HRESULT CQueen::Ready_Components()
 									 TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
-	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Queen"),
-									 TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom))))
-		return E_FAIL;
+	//if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Queen"),
+	//								 TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom))))
+	//	return E_FAIL;
 
 	CTransform::TRANSFORM_DESC TransformDesc{};
 

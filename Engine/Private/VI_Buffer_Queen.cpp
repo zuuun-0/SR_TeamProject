@@ -8,62 +8,147 @@ CVIBuffer_Queen::CVIBuffer_Queen(const CVIBuffer_Queen& OTHDER)
 	: CVIBuffer(OTHDER)
 {}
 
+
 HRESULT CVIBuffer_Queen::Initialize_Prototype()
 {
-	VTXPOSTEX vertices[] = {
-		// y = 0 ~ 10, 가로 30
-		{ D3DXVECTOR3(-15, 0, 0), D3DXVECTOR2(0, 0) },  // 0
-		{ D3DXVECTOR3(15, 0, 0), D3DXVECTOR2(1, 0) },  // 1
-		{ D3DXVECTOR3(-15,10, 0), D3DXVECTOR2(0, 1) },  // 2
-		{ D3DXVECTOR3(15,10, 0), D3DXVECTOR2(1, 1) },  // 3
+	const _uint iRow = 30;
+	const _uint iCol = iRow - 1;
 
-		// y = 10 ~ 20, 가로 20
-		{ D3DXVECTOR3(-10,10, 0), D3DXVECTOR2(0, 0) },  // 4
-		{ D3DXVECTOR3(10,10, 0), D3DXVECTOR2(1, 0) },  // 5
-		{ D3DXVECTOR3(-10,20, 0), D3DXVECTOR2(0, 1) },  // 6
-		{ D3DXVECTOR3(10,20, 0), D3DXVECTOR2(1, 1) },  // 7
+	m_iRow = iRow;
+	m_iCol = iCol;
 
-		// y = 20 ~ 30, 가로 10
-		{ D3DXVECTOR3(-5,20, 0), D3DXVECTOR2(0, 0) },   // 8
-		{ D3DXVECTOR3(5,20, 0), D3DXVECTOR2(1, 0) },   // 9
-		{ D3DXVECTOR3(-5,30, 0), D3DXVECTOR2(0, 1) },   // 10
-		{ D3DXVECTOR3(5,30, 0), D3DXVECTOR2(1, 1) },   // 11
+	m_iNumVertices = (iRow + 1) * 6 + 1;
+	m_iVertexStride = sizeof(VTXPOSPAWN);
+	m_iFVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
+	m_ePrimitiveType = D3DPT_TRIANGLELIST;
+	m_iNumPrimitive = m_iRow * 4 + m_iCol * 12 + 6;
+	m_iIndexStride = 2;
+	m_iNumIndices = m_iNumPrimitive * 3;
+	m_eIndexFormat = D3DFMT_INDEX16;
+
+	if(FAILED(m_pGraphic_Device->CreateVertexBuffer(m_iVertexStride * m_iNumVertices, 0, m_iFVF, D3DPOOL_MANAGED, &m_pVB, nullptr)))
+		return E_FAIL;
+
+	VTXPOSPAWN* pVertices = nullptr;
+	m_pVB->Lock(0, 0, reinterpret_cast<void**>(&pVertices), 0);
+
+	// arWidth 수정
+	_float arWidth[iRow + 1] = {
+		0.1f, 0.1f, 0.1f,                      // 머리 상단 구간
+		0.4f, 0.4f, 0.4f,                    // 목 구간
+		0.3f, 0.3f,                          // 어깨 상단 구간
+		0.7f, 0.2f, 0.3f, 0.3f,              // 어깨 하단 ~ 몸통 상단
+		0.35f, 0.35f, 0.35f,                    // 허리 들어가는 부분 (허리 시작)
+		0.4f, 0.4f, 0.4f, 0.4f,              // 허리에서 다시 벌어지는 부분 (몸통 하단)
+		0.45f, 0.45f, 0.45f,                    // 베이스 상단
+		0.5f, 0.5f, 0.5f,                   // 베이스 중간
+		1.0f, 0.95f, 0.9f,                    // 베이스 하단
+		0.4f                                  // 받침대
 	};
-	WORD indices[] = {
-		// 첫 사각형 (0,1,2,3)
-		0, 1, 2,
-		2, 1, 3,
 
-		// 둘째 사각형 (4,5,6,7)
-		4, 5, 6,
-		6, 5, 7,
-
-		// 셋째 사각형 (8,9,10,11)
-		8, 9,10,
-		10, 9,11,
+	_float arHeight[iRow + 1] = {
+			0.01f, 0.03f, 0.01f,                  // 머리 상단
+			0.05f, 0.1f, 0.05f,                 // 목 구간
+			0.05f, 0.05f,                        // 어깨 상단
+			0.05f, 0.05f, 0.05f, 0.05f,          // 몸통 상단
+			0.05f, 0.05f, 0.05f,                 // 허리 시작
+			0.07f, 0.07f, 0.07f, 0.07f,          // 허리에서 벌어짐 ~ 몸통 하단
+			0.05f, 0.05f, 0.05f,                 // 베이스 상단
+			0.05f, 0.05f, 0.05f,                 // 베이스 중간
+			0.05f, 0.05f, 0.05f,                 // 베이스 하단
+			0.01f                                 // 받침대
 	};
+
+	const _float fWidthRatio = 2.0f;
+	const _float fHeightRatio = 5.0f;
+
+	_float fDiameter = 0.f;
+	_float fHeight = 0.f;
+	_float fLength = 0.f;
+	_uint iIndex = 0;
+
+	_float y = 0.f;
+	for(_int i = iRow; i >= 0; --i)
+	{
+		fDiameter = arWidth[i] * fWidthRatio;
+		fLength = fDiameter * sinf(D3DXToRadian(60.f));
+
+		pVertices[iIndex++].vPosition = _float3(-fDiameter, y, 0.f);
+		pVertices[iIndex++].vPosition = _float3(-fDiameter / 2, y, -fLength);
+		pVertices[iIndex++].vPosition = _float3(fDiameter / 2, y, -fLength);
+		pVertices[iIndex++].vPosition = _float3(fDiameter, y, 0.f);
+		pVertices[iIndex++].vPosition = _float3(fDiameter / 2, y, fLength);
+		pVertices[iIndex++].vPosition = _float3(-fDiameter / 2, y, fLength);
+
+		y += arHeight[i] * fHeightRatio;
+	}
+
+	pVertices[iIndex++].vPosition = _float3(0.f, y, 0.f);
+	m_pVB->Unlock();
+
+	if(FAILED(m_pGraphic_Device->CreateIndexBuffer(m_iIndexStride * m_iNumIndices, 0, m_eIndexFormat, D3DPOOL_MANAGED, &m_pIB, nullptr)))
+		return E_FAIL;
+
+	_ushort* pIndices = nullptr;
+	m_pIB->Lock(0, 0, reinterpret_cast<void**>(&pIndices), 0);
+
+	_uint iCnt = 0;
+	iIndex = 0;
+
+	for(_uint i = 0; i < m_iNumVertices - 7; i += 6)
+	{
+		for(_uint j = 0; j < 4; ++j)
+		{
+			pIndices[iIndex++] = i;
+			pIndices[iIndex++] = 2 + i + j;
+			pIndices[iIndex++] = 1 + i + j;
+		}
+	}
+
+	iCnt = 6;
+	for(_uint i = 0; i < iCol + 1; ++i)
+	{
+		for(_uint j = 0; j < 6; ++j)
+		{
+			if(j != 5)
+			{
+				pIndices[iIndex++] = iCnt;
+				pIndices[iIndex++] = iCnt + 1;
+				pIndices[iIndex++] = iCnt - 5;
+
+				pIndices[iIndex++] = iCnt;
+				pIndices[iIndex++] = iCnt - 5;
+				pIndices[iIndex++] = iCnt - 6;
+			}
+			else
+			{
+				pIndices[iIndex++] = iCnt;
+				pIndices[iIndex++] = iCnt - 5;
+				pIndices[iIndex++] = iCnt - 11;
+
+				pIndices[iIndex++] = iCnt;
+				pIndices[iIndex++] = iCnt - 11;
+				pIndices[iIndex++] = iCnt - 6;
+			}
+			++iCnt;
+		}
+	}
+
+	_ushort topIndex = (_ushort)(m_iNumVertices - 1);
+	_ushort ringStart = (_ushort)(m_iNumVertices - 7);
+	for(_uint i = 0; i < 6; ++i)
+	{
+		pIndices[iIndex++] = ringStart + i;
+		pIndices[iIndex++] = ringStart + ((i + 1) % 6);
+		pIndices[iIndex++] = topIndex;
+	}
+
+	m_pIB->Unlock();
 
 	return S_OK;
 }
-HRESULT CVIBuffer_Queen::Render()
-{
-	m_pGraphic_Device->SetFVF(VTXPOSTEX::FVF);
 
-	// 정점 버퍼와 인덱스 버퍼 설정 (예시: 정적 할당 전제)
-	m_pGraphic_Device->SetStreamSource(0, m_pVB, 0, sizeof(VTXPOSTEX));
-	m_pGraphic_Device->SetIndices(m_pIB);
 
-	// 삼각형 6개 -> 2개씩 * 3줄
-	m_pGraphic_Device->DrawIndexedPrimitive(
-		D3DPT_TRIANGLELIST,
-		0,        // BaseVertexIndex
-		0,        // MinVertexIndex
-		12,       // NumVertices
-		0,        // StartIndex
-		6         // PrimitiveCount (삼각형 6개)
-	);
-	return S_OK;
-}
 
 HRESULT CVIBuffer_Queen::Initialize(void* pArg)
 {
@@ -94,9 +179,8 @@ CComponent* CVIBuffer_Queen::Clone(void* pArg)
 
 	return pInstance;
 }
-
 void CVIBuffer_Queen::Free()
 {
 	Safe_Release(m_pVB);
-	Safe_Release(m_pIB);
+	//Safe_Release(m_pIB);
 }
