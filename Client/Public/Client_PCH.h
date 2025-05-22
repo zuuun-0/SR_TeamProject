@@ -8,6 +8,7 @@
 #include "Client_Defines.h"
 
 #include "BackGround.h"
+#include "Bishop.h"
 #include "CBullet.h"
 #include "CQueen.h"
 #include "Camera.h"
@@ -17,8 +18,8 @@
 #include "Level_Logo.h"
 #include "Loader.h"
 #include "MainApp.h"
-#include "Player.h"
 #include "Pawn.h"
+#include "Player.h"
 #include "Rook.h"
 #include "TargetCamera.h"
 #include "Terrain.h"
