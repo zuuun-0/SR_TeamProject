@@ -9,27 +9,27 @@ HRESULT CLevel_GamePlay::Initialize()
 {
 	// if(FAILED(Ready_Layer_Player(TEXT("Layer_Player"))))
 	//	return E_FAIL;
-	// if (FAILED(Ready_Layer_Pawn(TEXT("Layer_Pawn"))))
+	if (FAILED(Ready_Layer_Pawn(TEXT("Layer_Pawn"))))
+		return E_FAIL;
+	// if (FAILED(Ready_Layer_Rook(TEXT("Layer_Rook"))))
 	// 	return E_FAIL;
-	if (FAILED(Ready_Layer_Rook(TEXT("Layer_Rook"))))
-		return E_FAIL;
-	if(FAILED(Ready_Layer_Queen(TEXT("Layer_Queen"))))
-		return E_FAIL;
-	g_pClientPlayer = static_cast<CQueen*>(m_pGameInstance->Get_Object(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Queen")));
-	g_pClientPlayer->SetClinetPlayer();
-	if(FAILED(Ready_Layer_Queen(TEXT("Layer_QueenS"))))
-		return E_FAIL;
-	g_pServerPlayer = static_cast<CQueen*>(m_pGameInstance->Get_Object(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_QueenS")));
-	static_cast<CTransform*>(g_pServerPlayer->Get_Component(TEXT("Com_Transform")))->Set_State(STATE::POSITION, _float3(1.f, 0.f, 0.f));
+	// if(FAILED(Ready_Layer_Queen(TEXT("Layer_Queen"))))
+	// 	return E_FAIL;
+	// g_pClientPlayer = static_cast<CQueen*>(m_pGameInstance->Get_Object(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Queen")));
+	// g_pClientPlayer->SetClinetPlayer();
+	// if(FAILED(Ready_Layer_Queen(TEXT("Layer_QueenS"))))
+	// 	return E_FAIL;
+	// g_pServerPlayer = static_cast<CQueen*>(m_pGameInstance->Get_Object(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_QueenS")));
+	// static_cast<CTransform*>(g_pServerPlayer->Get_Component(TEXT("Com_Transform")))->Set_State(STATE::POSITION, _float3(1.f, 0.f, 0.f));
 
-	// if(FAILED(Ready_Layer_Camera(TEXT("Layer_Camera"))))
-	//	return E_FAIL;
+	if(FAILED(Ready_Layer_Camera(TEXT("Layer_Camera"))))
+		return E_FAIL;
 	if(FAILED(Ready_Layer_Terrain(TEXT("Layer_Terrain"))))
 		return E_FAIL;
 	// if(FAILED(Ready_Layer_ChessBoard(TEXT("Layer_ChessBoard"))))
 	// 	return E_FAIL;
-	if(FAILED(Ready_Layer_TargetCamera(TEXT("Layer_TargetCamera"), static_cast<CTransform*>(m_pGameInstance->Get_Object(static_cast<_uint>((LEVEL::LEVEL_GAMEPLAY)), TEXT("Layer_Queen"))->Get_Component(TEXT("Com_Transform"))))))
-		return E_FAIL;
+	// if(FAILED(Ready_Layer_TargetCamera(TEXT("Layer_TargetCamera"), static_cast<CTransform*>(m_pGameInstance->Get_Object(static_cast<_uint>((LEVEL::LEVEL_GAMEPLAY)), TEXT("Layer_Queen"))->Get_Component(TEXT("Com_Transform"))))))
+	// 	return E_FAIL;
 
 	return S_OK;
 }
