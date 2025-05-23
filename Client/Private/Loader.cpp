@@ -128,6 +128,11 @@ HRESULT CLoader::Loading_For_GamePlay_Level()
 		CTexture::Create(m_pGraphic_Device, TEXTURE::RECT, TEXT("../Bin/Resources/Textures/Terrain/ChessBoard.jpg"), 1))))
 		return E_FAIL;
 
+	/* Prototype_Component_Texture_Sky */
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Sky"),
+		CTexture::Create(m_pGraphic_Device, TEXTURE::CUBE, TEXT("../Bin/Resources/Textures/SkyBox/Sky_%d.dds"), 4))))
+		return E_FAIL;
+
 	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중입니다."));
 
 	/* Prototype_Component_VIBuffer_Terrain */
@@ -169,7 +174,9 @@ HRESULT CLoader::Loading_For_GamePlay_Level()
 
 #pragma endregion
 
-
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Sky"),
+		CSky::Create(m_pGraphic_Device))))
+		return E_FAIL;
 
 	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Bullet"),
 		CBullet::Create(m_pGraphic_Device))))

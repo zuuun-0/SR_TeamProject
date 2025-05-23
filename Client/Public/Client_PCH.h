@@ -20,6 +20,7 @@
 #include "Level_Logo.h"
 #include "Loader.h"
 #include "MainApp.h"
+#include "Sky.h"
 #include "Pawn.h"
 #include "Player.h"
 #include "Rook.h"

@@ -21,8 +21,6 @@ HRESULT CPawn::Initialize(void* pArg)
 {
 	PIECE_DESC* pDesc = static_cast<PIECE_DESC*>(pArg);
 
-	// m_iData = pDesc->iData;
-
 	if (FAILED(__super::Initialize(pArg)))
 		return E_FAIL;
 
@@ -59,26 +57,8 @@ void CPawn::Late_Update(_float fTimeDelta)
 	
 	if (m_pInput_Manager->Key_Pressing(VK_LBUTTON))
 	{
-		POINT ptMouse;
-		GetCursorPos(&ptMouse);
-		ScreenToClient(g_hWnd, &ptMouse); // g_hWnd: 전역 윈도우 핸들
-
-		D3DXVECTOR3 vRayOrigin, vRayDir;
-
-		// 2. Ray 생성 (CRayPicking 사용)
-		m_pCollider->ScreenPosToRay(ptMouse.x, ptMouse.y, vRayOrigin, vRayDir);
-
-		// 3. Pawn의 AABB 가져오기
-		BOUNDINGBOX tAABB = m_pVIBufferCom->Get_AABB();
-
-		// 4. 충돌 검사
-		_float fDist = 0.f;
-		if (m_pCollider->RayIntersectsAABB(vRayOrigin, vRayDir, tAABB, &fDist))
-		{
-			MSG_BOX(TEXT("PICKING!!!"));
-		}
+		// m_pCollider->Ray()
 	}
-	
 }
 
 HRESULT CPawn::Render()

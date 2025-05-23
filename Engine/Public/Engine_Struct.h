@@ -21,6 +21,13 @@ namespace Engine
 
 	}VTXPOSTEX;
 
+	typedef struct tagVertexCubeTex
+	{
+		D3DXVECTOR3		vPosition;
+		D3DXVECTOR3		vTexcoord;
+
+	}VTXCUBETEX;
+
 	typedef struct tagVertexPosPawn
 	{
 		D3DXVECTOR3		vPosition;
