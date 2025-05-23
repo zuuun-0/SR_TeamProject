@@ -15,9 +15,17 @@ public:
 	HRESULT Initialize_Prototype() override;
 	HRESULT Initialize(void* pArg) override;
 
+public:
+	BOUNDINGBOX Get_AABB() { return m_tAABB; }
+
 private:
+	BOUNDINGBOX m_tAABB = {};
+
 	_uint m_iRow = {};
 	_uint m_iCol = {};
+
+private:
+	void ComputeAABB();
 
 public:
 	static CVIBuffer_Pawn* Create(LPDIRECT3DDEVICE9 pGraphic_Device);

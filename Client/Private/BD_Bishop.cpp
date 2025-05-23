@@ -1,20 +1,20 @@
-#include "Bishop.h"
+#include "BD_Bishop.h"
 
 
-CBishop::CBishop(LPDIRECT3DDEVICE9 DEVICE)
-	: CPieces_FPS(DEVICE)
+CBD_Bishop::CBD_Bishop(LPDIRECT3DDEVICE9 DEVICE)
+	: CPieces_Chess(DEVICE)
 {}
 
-CBishop::CBishop(const CBishop& OTHDER)
-	: CPieces_FPS(OTHDER)
+CBD_Bishop::CBD_Bishop(const CBD_Bishop& OTHDER)
+	: CPieces_Chess(OTHDER)
 {}
 
-HRESULT CBishop::Initialize_Prototype()
+HRESULT CBD_Bishop::Initialize_Prototype()
 {
 	return S_OK;
 }
 
-HRESULT CBishop::Initialize(void* pArg)
+HRESULT CBD_Bishop::Initialize(void* pArg)
 {
 	if(FAILED(Ready_Components()))
 		return E_FAIL;
@@ -25,20 +25,20 @@ HRESULT CBishop::Initialize(void* pArg)
 
 	return S_OK;
 }
-void CBishop::Priority_Update(_float fTimeDelta)
+void CBD_Bishop::Priority_Update(_float fTimeDelta)
 {}
 
 
-void CBishop::Update(_float fTimeDelta)
+void CBD_Bishop::Update(_float fTimeDelta)
 {}
 
 
-void CBishop::Late_Update(_float fTimeDelta)
+void CBD_Bishop::Late_Update(_float fTimeDelta)
 {
 	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
 }
 
-HRESULT CBishop::Render()
+HRESULT CBD_Bishop::Render()
 {
 	m_pTransformCom->Bind_Matrix();
 
@@ -53,7 +53,7 @@ HRESULT CBishop::Render()
 	return S_OK;
 }
 
-HRESULT CBishop::Ready_Components()
+HRESULT CBD_Bishop::Ready_Components()
 {
 	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Bishop"),
 									 TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
@@ -75,21 +75,21 @@ HRESULT CBishop::Ready_Components()
 	return S_OK;
 }
 
-void CBishop::SetUp_RenderState()
+void CBD_Bishop::SetUp_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
-void CBishop::Reset_RenderState()
+void CBD_Bishop::Reset_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
-CBishop* CBishop::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
+CBD_Bishop* CBD_Bishop::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 {
-	CBishop* pInstance = new CBishop(pGraphic_Device);
+	CBD_Bishop* pInstance = new CBD_Bishop(pGraphic_Device);
 
 	if(FAILED(pInstance->Initialize_Prototype()))
 	{
@@ -100,9 +100,9 @@ CBishop* CBishop::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 	return pInstance;
 }
 
-CGameObject* CBishop::Clone(void* pArg)
+CGameObject* CBD_Bishop::Clone(void* pArg)
 {
-	auto* newObj = new CBishop(*this);
+	auto* newObj = new CBD_Bishop(*this);
 	if(FAILED(newObj->Initialize(pArg)))
 	{
 		assert(false);
@@ -111,7 +111,7 @@ CGameObject* CBishop::Clone(void* pArg)
 	return newObj;
 }
 
-void CBishop::Free()
+void CBD_Bishop::Free()
 {
 	__super::Free();
 

@@ -67,6 +67,7 @@ private:
 	class CRenderer* m_pRenderer = { nullptr };
 	class CTimer_Manager* m_pTimer_Manager = { nullptr };
 	class CInput_Manager* m_pInput_Manager = { nullptr };
+	class CCollision_Manager* m_pCollision_Manager = { nullptr };
 
 public:
 	void Release_Engine();

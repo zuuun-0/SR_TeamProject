@@ -61,26 +61,47 @@
     <Filter Include="02. GameObject\Chess\ChessBoard">
       <UniqueIdentifier>{7598a2fb-7eb3-4bd9-99ab-f3c1a645ea8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Chess\Pieces">
-      <UniqueIdentifier>{17943e82-7a82-49d1-947a-c3d683dcda9f}</UniqueIdentifier>
+    <Filter Include="02. GameObject\Chess\For_FPS">
+      <UniqueIdentifier>{484d0041-39df-4829-8482-621494c0f498}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Chess\Pieces\Bishop">
+    <Filter Include="02. GameObject\Chess\For_Chess">
+      <UniqueIdentifier>{c1418188-1046-46c3-ab54-a66f08db0318}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\For_FPS\Bishop">
       <UniqueIdentifier>{f6ae41ff-6eec-4502-b10e-7652d9cd033a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Chess\Pieces\King">
+    <Filter Include="02. GameObject\Chess\For_FPS\King">
       <UniqueIdentifier>{40bf573f-bc12-4bde-920a-82d117b2583c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Chess\Pieces\Knight">
+    <Filter Include="02. GameObject\Chess\For_FPS\Knight">
       <UniqueIdentifier>{5a39256b-1217-41eb-8acc-a422d0d3b744}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Chess\Pieces\Pawn">
+    <Filter Include="02. GameObject\Chess\For_FPS\Pawn">
       <UniqueIdentifier>{04c1fddb-2cf3-40ff-bddf-73d1be35f546}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Chess\Pieces\Queen">
+    <Filter Include="02. GameObject\Chess\For_FPS\Queen">
       <UniqueIdentifier>{38836156-70d3-4982-9856-f3f87f825928}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Chess\Pieces\Rook">
+    <Filter Include="02. GameObject\Chess\For_FPS\Rook">
       <UniqueIdentifier>{add04288-d99e-4923-abe9-dbde3637b010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\For_Chess\BD_Bishop">
+      <UniqueIdentifier>{b77bc26b-777b-4a62-a5c1-7754a8df39bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\For_Chess\BD_King">
+      <UniqueIdentifier>{014cefea-ea07-444f-962c-4188d9973d6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\For_Chess\BD_Knight">
+      <UniqueIdentifier>{9610ed9d-e58b-4159-ab8a-0866cb2741e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\For_Chess\BD_Pawn">
+      <UniqueIdentifier>{8b98a3a6-1aed-4bc4-bf94-c13c45741503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\For_Chess\BD_Queen">
+      <UniqueIdentifier>{257ad18e-2ea1-413f-9df6-918ed57d7409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\For_Chess\BD_Rook">
+      <UniqueIdentifier>{ef2ea600-8ff4-4635-aa23-db4daae70e04}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -136,25 +157,49 @@
       <Filter>02. GameObject\Camera\TargetCamera</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Queen.h">
-      <Filter>02. GameObject\Chess\Pieces\Queen</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\Queen</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\CBullet.h">
+    <ClInclude Include="..\Public\Bullet.h">
       <Filter>02. GameObject\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Pawn.h">
-      <Filter>02. GameObject\Chess\Pieces\Pawn</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\Pawn</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Rook.h">
-      <Filter>02. GameObject\Chess\Pieces\Rook</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\Rook</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Knight.h">
-      <Filter>02. GameObject\Chess\Pieces\Knight</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\Knight</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\King.h">
-      <Filter>02. GameObject\Chess\Pieces\King</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\King</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Bishop.h">
-      <Filter>02. GameObject\Chess\Pieces\Bishop</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\Bishop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Pieces_Chess.h">
+      <Filter>02. GameObject\Chess\For_Chess</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Pieces_FPS.h">
+      <Filter>02. GameObject\Chess\For_FPS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\BD_King.h">
+      <Filter>02. GameObject\Chess\For_Chess\BD_King</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\BD_Bishop.h">
+      <Filter>02. GameObject\Chess\For_Chess\BD_Bishop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\BD_Knight.h">
+      <Filter>02. GameObject\Chess\For_Chess\BD_Knight</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\BD_Pawn.h">
+      <Filter>02. GameObject\Chess\For_Chess\BD_Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\BD_Queen.h">
+      <Filter>02. GameObject\Chess\For_Chess\BD_Queen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\BD_Rook.h">
+      <Filter>02. GameObject\Chess\For_Chess\BD_Rook</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -211,25 +256,49 @@
       <Filter>02. GameObject\Camera\TargetCamera</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Queen.cpp">
-      <Filter>02. GameObject\Chess\Pieces\Queen</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\Queen</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\CBullet.cpp">
+    <ClCompile Include="..\Private\Bullet.cpp">
       <Filter>02. GameObject\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Pawn.cpp">
-      <Filter>02. GameObject\Chess\Pieces\Pawn</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Rook.cpp">
-      <Filter>02. GameObject\Chess\Pieces\Rook</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\Rook</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Knight.cpp">
-      <Filter>02. GameObject\Chess\Pieces\Knight</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\Knight</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\King.cpp">
-      <Filter>02. GameObject\Chess\Pieces\King</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\King</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Bishop.cpp">
-      <Filter>02. GameObject\Chess\Pieces\Bishop</Filter>
+      <Filter>02. GameObject\Chess\For_FPS\Bishop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Pieces_Chess.cpp">
+      <Filter>02. GameObject\Chess\For_Chess</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Pieces_FPS.cpp">
+      <Filter>02. GameObject\Chess\For_FPS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\BD_Bishop.cpp">
+      <Filter>02. GameObject\Chess\For_Chess\BD_Bishop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\BD_King.cpp">
+      <Filter>02. GameObject\Chess\For_Chess\BD_King</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\BD_Knight.cpp">
+      <Filter>02. GameObject\Chess\For_Chess\BD_Knight</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\BD_Pawn.cpp">
+      <Filter>02. GameObject\Chess\For_Chess\BD_Pawn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\BD_Queen.cpp">
+      <Filter>02. GameObject\Chess\For_Chess\BD_Queen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\BD_Rook.cpp">
+      <Filter>02. GameObject\Chess\For_Chess\BD_Rook</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

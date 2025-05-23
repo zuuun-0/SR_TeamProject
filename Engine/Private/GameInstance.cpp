@@ -11,7 +11,9 @@ IMPLEMENT_SINGLETON(CGameInstance)
 
 CGameInstance::CGameInstance()
 	: m_pInput_Manager { CInput_Manager::GetInstance() }
+	, m_pCollision_Manager { CCollision_Manager::GetInstance() }
 {
+	Safe_AddRef(m_pCollision_Manager);
 	Safe_AddRef(m_pInput_Manager);
 }
 
@@ -42,6 +44,10 @@ HRESULT CGameInstance::Initialize_Engine(const ENGINE_DESC& EngineDesc, LPDIRECT
 	m_pTimer_Manager = CTimer_Manager::Create();
 	if(nullptr == m_pTimer_Manager)
 		return E_FAIL;
+
+	if (FAILED(m_pCollision_Manager->Initialize(m_pGraphic_Device->GetDevice())))
+		return E_FAIL;
+
 
 	return S_OK;
 }
@@ -138,9 +144,6 @@ HRESULT CGameInstance::Add_Prototype(_uint iPrototypeLevelIndex, const _wstring&
 
 CBase* CGameInstance::Clone_Prototype(PROTOTYPE ePrototype, _uint iPrototypeLevelIndex, const _wstring& strPrototypeTag, void* pArg)
 {
-	if(nullptr == m_pPrototype_Manager)
-		return nullptr;
-
 	return m_pPrototype_Manager->Clone_Prototype(ePrototype, iPrototypeLevelIndex, strPrototypeTag, pArg);
 }
 
@@ -222,6 +225,10 @@ void CGameInstance::Compute_TimeDelta(const _wstring& strTimerTag)
 void CGameInstance::Release_Engine()
 {
 	Release();
+
+	Safe_Release(m_pCollision_Manager);
+
+	m_pCollision_Manager->Release_Collision();
 
 	Safe_Release(m_pInput_Manager);
 

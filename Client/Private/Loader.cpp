@@ -155,9 +155,9 @@ HRESULT CLoader::Loading_For_GamePlay_Level()
 		CKnight::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
-	//if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Queen"),
-	//										 CQueen::Create(m_pGraphic_Device))))
-	//	return E_FAIL;
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Queen"),
+		CQueen::Create(m_pGraphic_Device))))
+		return E_FAIL;
 
 	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Bishop"),
 		CBishop::Create(m_pGraphic_Device))))

@@ -11,14 +11,14 @@ END
 
 BEGIN(Client)
 
-class CPawn final : public CLandObject
+class CPawn final : public CPieces_FPS
 {
 public:
-	typedef struct tagPawnDesc : public CLandObject::LANDOBJ_DESC
+	typedef struct tagPieceDesc : public CLandObject::LANDOBJ_DESC
 	{
 		int iTemp = {};
 
-	}PAWN_DESC;
+	}PIECE_DESC;
 
 private:
 	CPawn(LPDIRECT3DDEVICE9 pGraphic_Device);

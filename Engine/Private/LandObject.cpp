@@ -5,12 +5,12 @@
 #include "VIBuffer_Terrain.h"
 
 CLandObject::CLandObject(LPDIRECT3DDEVICE9 pGraphic_Device)
-    : CGameObject{ pGraphic_Device }
+    : CGameObject { pGraphic_Device }
 {
 }
 
 CLandObject::CLandObject(const CLandObject& Prototype)
-    : CGameObject{ Prototype }
+    : CGameObject { Prototype }
 {
 }
 

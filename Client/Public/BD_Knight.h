@@ -1,22 +1,22 @@
 #pragma once
 
+#include "Client_Defines.h"
 #include "GameObject.h"
-#include "Pieces_Chess.h"
 
 BEGIN(Engine)
 class CTexture;
 class CTransform;
-class CVIBuffer_Rook;
+class CVIBuffer_Knight;
 END
 
 BEGIN(Client)
 
-class CRook final : public CPieces_FPS
+class CBD_Knight final : public CPieces_Chess
 {
 private:
-	CRook(LPDIRECT3DDEVICE9 pGraphic_Device);
-	CRook(const CRook& Prototype);
-	virtual ~CRook() = default;
+	CBD_Knight(LPDIRECT3DDEVICE9 pGraphic_Device);
+	CBD_Knight(const CBD_Knight& Prototype);
+	virtual ~CBD_Knight() = default;
 public:
 	virtual HRESULT Initialize_Prototype() override;
 	virtual HRESULT Initialize(void* pArg) override;
@@ -29,8 +29,10 @@ private:
 
 	/* 멤버변수를 직접들고 있을때? */
 	CTexture* m_pTextureCom = { nullptr };
-	CVIBuffer_Rook* m_pVIBufferCom = { nullptr };
+	CVIBuffer_Knight* m_pVIBufferCom = { nullptr };
 	CTransform* m_pTransformCom = { nullptr };
+
+	bool		m_bWire;
 
 private: /* 이 객체에게 필요한 컴포넌트들을 복제하여 추가해주는 기능. */
 	HRESULT Ready_Components();
@@ -40,7 +42,7 @@ private: /* 이 객체에게 필요한 컴포넌트들을 복제하여 추가해주는 기능. */
 
 
 public:
-	static CRook* Create(LPDIRECT3DDEVICE9 pGraphic_Device);
+	static CBD_Knight* Create(LPDIRECT3DDEVICE9 pGraphic_Device);
 	virtual CGameObject* Clone(void* pArg) override;
 	virtual void Free() override;
 

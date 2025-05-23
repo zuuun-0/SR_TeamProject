@@ -1,7 +1,6 @@
 #pragma once
 
 #include "GameObject.h"
-#include "Pieces_Chess.h"
 
 BEGIN(Engine)
 class CTexture;
@@ -11,12 +10,12 @@ END
 
 BEGIN(Client)
 
-class CRook final : public CPieces_FPS
+class CBD_Rook final : public CPieces_Chess
 {
 private:
-	CRook(LPDIRECT3DDEVICE9 pGraphic_Device);
-	CRook(const CRook& Prototype);
-	virtual ~CRook() = default;
+	CBD_Rook(LPDIRECT3DDEVICE9 pGraphic_Device);
+	CBD_Rook(const CBD_Rook& Prototype);
+	virtual ~CBD_Rook() = default;
 public:
 	virtual HRESULT Initialize_Prototype() override;
 	virtual HRESULT Initialize(void* pArg) override;
@@ -40,7 +39,7 @@ private: /* 이 객체에게 필요한 컴포넌트들을 복제하여 추가해주는 기능. */
 
 
 public:
-	static CRook* Create(LPDIRECT3DDEVICE9 pGraphic_Device);
+	static CBD_Rook* Create(LPDIRECT3DDEVICE9 pGraphic_Device);
 	virtual CGameObject* Clone(void* pArg) override;
 	virtual void Free() override;
 

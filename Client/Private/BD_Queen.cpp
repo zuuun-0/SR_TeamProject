@@ -1,30 +1,30 @@
-#include "Queen.h"
+#include "BD_Queen.h"
 
-CQueen::CQueen(LPDIRECT3DDEVICE9 DEVICE)
-	: CPieces_FPS(DEVICE)
+CBD_Queen::CBD_Queen(LPDIRECT3DDEVICE9 DEVICE)
+	: CPieces_Chess(DEVICE)
 {}
 
-CQueen::CQueen(const CQueen& OTHDER)
-	: CPieces_FPS(OTHDER)
+CBD_Queen::CBD_Queen(const CBD_Queen& OTHDER)
+	: CPieces_Chess(OTHDER)
 {}
 
-HRESULT CQueen::Initialize_Prototype()
+HRESULT CBD_Queen::Initialize_Prototype()
 {
 	return S_OK;
 }
 
-HRESULT CQueen::Initialize(void* pArg)
+HRESULT CBD_Queen::Initialize(void* pArg)
 {
 	if(FAILED(Ready_Components()))
 		return E_FAIL;
 
 	return S_OK;
 }
-void CQueen::Priority_Update(_float fTimeDelta)
+void CBD_Queen::Priority_Update(_float fTimeDelta)
 {}
 
 
-void CQueen::Update(_float fTimeDelta)
+void CBD_Queen::Update(_float fTimeDelta)
 {
 	if(!m_bClientPlayer) return;
 
@@ -85,12 +85,12 @@ void CQueen::Update(_float fTimeDelta)
 }
 
 
-void CQueen::Late_Update(_float fTimeDelta)
+void CBD_Queen::Late_Update(_float fTimeDelta)
 {
 	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
 }
 
-HRESULT CQueen::Render()
+HRESULT CBD_Queen::Render()
 {
 	//m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
@@ -132,13 +132,13 @@ HRESULT CQueen::Render()
 
 	return S_OK;
 }
-void CQueen::SetClinetPlayer()
+void CBD_Queen::SetClinetPlayer()
 {
 	m_bClientPlayer = true;
 }
 
 
-HRESULT CQueen::Ready_Components()
+HRESULT CBD_Queen::Ready_Components()
 {
 	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Queen"),
 									 TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
@@ -160,34 +160,34 @@ HRESULT CQueen::Ready_Components()
 	return S_OK;
 }
 
-void CQueen::SetUp_RenderState()
+void CBD_Queen::SetUp_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
-void CQueen::Reset_RenderState()
+void CBD_Queen::Reset_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
-CQueen* CQueen::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
+CBD_Queen* CBD_Queen::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 {
-	CQueen* pInstance = new CQueen(pGraphic_Device);
+	CBD_Queen* pInstance = new CBD_Queen(pGraphic_Device);
 
 	if(FAILED(pInstance->Initialize_Prototype()))
 	{
-		MSG_BOX(TEXT("Failed to Created : CQueen"));
+		MSG_BOX(TEXT("Failed to Created : CBD_Queen"));
 		Safe_Release(pInstance);
 	}
 
 	return pInstance;
 }
 
-CGameObject* CQueen::Clone(void* pArg)
+CGameObject* CBD_Queen::Clone(void* pArg)
 {
-	auto* newObj = new CQueen(*this);
+	auto* newObj = new CBD_Queen(*this);
 	if(FAILED(newObj->Initialize(pArg)))
 	{
 		assert(false);
@@ -196,7 +196,7 @@ CGameObject* CQueen::Clone(void* pArg)
 	return newObj;
 }
 
-void CQueen::Free()
+void CBD_Queen::Free()
 {
 	__super::Free();
 

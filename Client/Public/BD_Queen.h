@@ -2,12 +2,12 @@
 #include "Client_Defines.h"
 
 BEGIN(Client)
-class CQueen : public CPieces_FPS
+class CBD_Queen : public CPieces_Chess
 {
 private:
-	CQueen(LPDIRECT3DDEVICE9 DEVICE);
-	CQueen(const CQueen& OTHDER);
-	virtual ~CQueen() = default;
+	CBD_Queen(LPDIRECT3DDEVICE9 DEVICE);
+	CBD_Queen(const CBD_Queen& OTHDER);
+	virtual ~CBD_Queen() = default;
 
 public:
 	virtual HRESULT Initialize_Prototype() override;
@@ -22,7 +22,7 @@ public:
 
 
 public:
-	static CQueen* Create(LPDIRECT3DDEVICE9 DEVICE);
+	static CBD_Queen* Create(LPDIRECT3DDEVICE9 DEVICE);
 	CGameObject* Clone(void* pArg) override;
 	void Free() override;
 

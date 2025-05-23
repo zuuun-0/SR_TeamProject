@@ -7,9 +7,11 @@
 
 #include "Client_Defines.h"
 
+#include "Pieces_Chess.h"
+#include "Pieces_FPS.h"
 #include "BackGround.h"
 #include "Bishop.h"
-#include "CBullet.h"
+#include "Bullet.h"
 #include "Queen.h"
 #include "Camera.h"
 #include "ChessBoard.h"

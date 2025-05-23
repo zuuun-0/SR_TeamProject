@@ -11,9 +11,9 @@ END
 
 BEGIN(Client)
 
-class CKnight final : public CGameObject
+class CKnight final : public CPieces_FPS
 {
-public:
+private:
 	CKnight(LPDIRECT3DDEVICE9 pGraphic_Device);
 	CKnight(const CKnight& Prototype);
 	virtual ~CKnight() = default;

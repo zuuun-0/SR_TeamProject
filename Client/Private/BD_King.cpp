@@ -1,23 +1,23 @@
-#include "Rook.h"
+#include "BD_King.h"
 
 #include "GameInstance.h"
 
-CRook::CRook(LPDIRECT3DDEVICE9 pGraphic_Device)
-	: CPieces_FPS { pGraphic_Device }
+CBD_King::CBD_King(LPDIRECT3DDEVICE9 pGraphic_Device)
+	: CPieces_Chess{ pGraphic_Device }
 {
 }
 
-CRook::CRook(const CRook& Prototype)
-	: CPieces_FPS { Prototype }
+CBD_King::CBD_King(const CBD_King& Prototype)
+	: CPieces_Chess{ Prototype }
 {
 }
 
-HRESULT CRook::Initialize_Prototype()
+HRESULT CBD_King::Initialize_Prototype()
 {
 	return S_OK;
 }
 
-HRESULT CRook::Initialize(void* pArg)
+HRESULT CBD_King::Initialize(void* pArg)
 {
 	if (FAILED(Ready_Components()))
 		return E_FAIL;
@@ -25,21 +25,21 @@ HRESULT CRook::Initialize(void* pArg)
 	return S_OK;
 }
 
-void CRook::Priority_Update(_float fTimeDelta)
+void CBD_King::Priority_Update(_float fTimeDelta)
 {
 }
 
-void CRook::Update(_float fTimeDelta)
+void CBD_King::Update(_float fTimeDelta)
 {
 	//m_pTransformCom->Go_Straight(fTimeDelta);
 }
 
-void CRook::Late_Update(_float fTimeDelta)
+void CBD_King::Late_Update(_float fTimeDelta)
 {
 	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
 }
 
-HRESULT CRook::Render()
+HRESULT CBD_King::Render()
 {
 	m_pTransformCom->Bind_Matrix();
 
@@ -58,9 +58,9 @@ HRESULT CRook::Render()
 	return S_OK;
 }
 
-HRESULT CRook::Ready_Components()
+HRESULT CBD_King::Ready_Components()
 {
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Rook"),
+	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_King"),
 		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
@@ -80,43 +80,45 @@ HRESULT CRook::Ready_Components()
 	return S_OK;
 }
 
-void CRook::SetUp_RenderState()
-{
-}
-
-void CRook::Reset_RenderState()
+void CBD_King::SetUp_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
-CRook* CRook::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
+void CBD_King::Reset_RenderState()
 {
-	CRook* pInstance = new CRook(pGraphic_Device);
+	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
+}
+
+CBD_King* CBD_King::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
+{
+	CBD_King* pInstance = new CBD_King(pGraphic_Device);
 
 	if (FAILED(pInstance->Initialize_Prototype()))
 	{
-		MSG_BOX(TEXT("Failed to Created : CRook"));
+		MSG_BOX(TEXT("Failed to Created : CBD_King"));
 		Safe_Release(pInstance);
 	}
 
 	return pInstance;
 }
 
-CGameObject* CRook::Clone(void* pArg)
+CGameObject* CBD_King::Clone(void* pArg)
 {
-	CRook* pInstance = new CRook(*this);
+	CBD_King* pInstance = new CBD_King(*this);
 
 	if (FAILED(pInstance->Initialize(pArg)))
 	{
-		MSG_BOX(TEXT("Failed to Cloned : CRook"));
+		MSG_BOX(TEXT("Failed to Cloned : CBD_King"));
 		Safe_Release(pInstance);
 	}
 
 	return pInstance;
 }
 
-void CRook::Free()
+void CBD_King::Free()
 {
 	__super::Free();
 

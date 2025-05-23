@@ -11,12 +11,13 @@ END
 
 BEGIN(Client)
 
-class CKing final : public CGameObject
+class CKing final : public CPieces_FPS
 {
-public:
+private:
 	CKing(LPDIRECT3DDEVICE9 pGraphic_Device);
 	CKing(const CKing& Prototype);
 	virtual ~CKing() = default;
+
 public:
 	virtual HRESULT Initialize_Prototype() override;
 	virtual HRESULT Initialize(void* pArg) override;

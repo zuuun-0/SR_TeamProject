@@ -1,23 +1,23 @@
-#include "Knight.h"
+#include "BD_Knight.h"
 
 #include "GameInstance.h"
 
-CKnight::CKnight(LPDIRECT3DDEVICE9 pGraphic_Device)
-	: CPieces_FPS{ pGraphic_Device }
+CBD_Knight::CBD_Knight(LPDIRECT3DDEVICE9 pGraphic_Device)
+	: CPieces_Chess{ pGraphic_Device }
 {
 }
 
-CKnight::CKnight(const CKnight& Prototype)
-	: CPieces_FPS{ Prototype }
+CBD_Knight::CBD_Knight(const CBD_Knight& Prototype)
+	: CPieces_Chess{ Prototype }
 {
 }
 
-HRESULT CKnight::Initialize_Prototype()
+HRESULT CBD_Knight::Initialize_Prototype()
 {
 	return S_OK;
 }
 
-HRESULT CKnight::Initialize(void* pArg)
+HRESULT CBD_Knight::Initialize(void* pArg)
 {
 	m_bWire = false;
 
@@ -27,11 +27,11 @@ HRESULT CKnight::Initialize(void* pArg)
 	return S_OK;
 }
 
-void CKnight::Priority_Update(_float fTimeDelta)
+void CBD_Knight::Priority_Update(_float fTimeDelta)
 {
 }
 
-void CKnight::Update(_float fTimeDelta)
+void CBD_Knight::Update(_float fTimeDelta)
 {
 	//m_pTransformCom->Go_Straight(fTimeDelta);
 	if (GetKeyState(VK_SPACE) & 0x8000)
@@ -67,12 +67,12 @@ void CKnight::Update(_float fTimeDelta)
 
 }
 
-void CKnight::Late_Update(_float fTimeDelta)
+void CBD_Knight::Late_Update(_float fTimeDelta)
 {
 	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
 }
 
-HRESULT CKnight::Render()
+HRESULT CBD_Knight::Render()
 {
 	if (m_bWire)
 	{
@@ -101,7 +101,7 @@ HRESULT CKnight::Render()
 	return S_OK;
 }
 
-HRESULT CKnight::Ready_Components()
+HRESULT CBD_Knight::Ready_Components()
 {
 	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Knight"),
 		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
@@ -123,45 +123,45 @@ HRESULT CKnight::Ready_Components()
 	return S_OK;
 }
 
-void CKnight::SetUp_RenderState()
+void CBD_Knight::SetUp_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
-void CKnight::Reset_RenderState()
+void CBD_Knight::Reset_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
-CKnight* CKnight::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
+CBD_Knight* CBD_Knight::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 {
-	CKnight* pInstance = new CKnight(pGraphic_Device);
+	CBD_Knight* pInstance = new CBD_Knight(pGraphic_Device);
 
 	if (FAILED(pInstance->Initialize_Prototype()))
 	{
-		MSG_BOX(TEXT("Failed to Created : CKnight"));
+		MSG_BOX(TEXT("Failed to Created : CBD_Knight"));
 		Safe_Release(pInstance);
 	}
 
 	return pInstance;
 }
 
-CGameObject* CKnight::Clone(void* pArg)
+CGameObject* CBD_Knight::Clone(void* pArg)
 {
-	CKnight* pInstance = new CKnight(*this);
+	CBD_Knight* pInstance = new CBD_Knight(*this);
 
 	if (FAILED(pInstance->Initialize(pArg)))
 	{
-		MSG_BOX(TEXT("Failed to Cloned : CKnight"));
+		MSG_BOX(TEXT("Failed to Cloned : CBD_Knight"));
 		Safe_Release(pInstance);
 	}
 
 	return pInstance;
 }
 
-void CKnight::Free()
+void CBD_Knight::Free()
 {
 	__super::Free();
 

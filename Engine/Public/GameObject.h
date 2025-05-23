@@ -28,6 +28,7 @@ protected:
 	LPDIRECT3DDEVICE9			m_pGraphic_Device = { nullptr };
 	class CGameInstance*		m_pGameInstance = { nullptr };
 	class CInput_Manager*		m_pInput_Manager = { nullptr };
+	class CCollision_Manager*	m_pCollider = { nullptr };
 
 	map<const _wstring, class CComponent*>		m_Components;
 

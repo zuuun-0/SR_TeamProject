@@ -3,12 +3,12 @@
 #include "GameInstance.h"
 
 CKing::CKing(LPDIRECT3DDEVICE9 pGraphic_Device)
-	: CGameObject{ pGraphic_Device }
+	: CPieces_FPS{ pGraphic_Device }
 {
 }
 
 CKing::CKing(const CKing& Prototype)
-	: CGameObject{ Prototype }
+	: CPieces_FPS{ Prototype }
 {
 }
 

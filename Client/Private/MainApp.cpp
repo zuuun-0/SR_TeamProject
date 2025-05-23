@@ -5,7 +5,7 @@
 #include "Level_Loading.h"
 
 CMainApp::CMainApp()
-	: m_pGameInstance{ CGameInstance::GetInstance() }
+	: m_pGameInstance { CGameInstance::GetInstance() }
 {
 	Safe_AddRef(m_pGameInstance);
 }
@@ -20,16 +20,16 @@ HRESULT CMainApp::Initialize()
 	EngineDesc.iWinSizeY = g_iWinSizeY;
 	EngineDesc.iNumLevels = ENUM_CLASS(LEVEL::LEVEL_END);
 
-	if(FAILED(m_pGameInstance->Initialize_Engine(EngineDesc, &m_pGraphic_Device)))
+	if (FAILED(m_pGameInstance->Initialize_Engine(EngineDesc, &m_pGraphic_Device)))
 		return E_FAIL;
 
-	if(FAILED(Ready_Default_Setting()))
+	if (FAILED(Ready_Default_Setting()))
 		return E_FAIL;
 
-	if(FAILED(Ready_Prototype_ForStatic()))
+	if (FAILED(Ready_Prototype_ForStatic()))
 		return E_FAIL;
 
-	if(FAILED(Start_Level(LEVEL::LEVEL_LOGO)))
+	if (FAILED(Start_Level(LEVEL::LEVEL_LOGO)))
 		return E_FAIL;
 
 	return S_OK;
@@ -69,43 +69,52 @@ HRESULT CMainApp::Ready_Default_Setting()
 
 HRESULT CMainApp::Ready_Prototype_ForStatic()
 {
-	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Pawn"),
-											 CVIBuffer_Pawn::Create(m_pGraphic_Device))))
+#pragma region Ã¼½º ±â¹°
+
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Pawn"),
+		CVIBuffer_Pawn::Create(m_pGraphic_Device))))
+		return E_FAIL;
+	/*
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Bishop"),
+		CVIBuffer_Bishop::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
-	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Rook"),
-											 CVIBuffer_Rook::Create(m_pGraphic_Device))))
-		return E_FAIL;
-
-	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_King"),
-		CVIBuffer_King::Create(m_pGraphic_Device))))
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Rook"),
+		CVIBuffer_Rook::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
 	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Knight"),
 		CVIBuffer_Knight::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
-	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Cube"),
-											 CVIBuffer_Cube::Create(m_pGraphic_Device))))
-		return E_FAIL;
-	// if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Queen"),			// ÀÏ´Ü Åµ
-	// 										 CVIBuffer_Queen::Create(m_pGraphic_Device))))
-	// 	return E_FAIL;
-
-	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Rect"),
-											 CVIBuffer_Rect::Create(m_pGraphic_Device))))
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Queen"),			// ÀÏ´Ü Åµ
+		CVIBuffer_Queen::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
-	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Terrain"),
-											 CVIBuffer_Terrain::Create(m_pGraphic_Device, 200, 200))))
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_King"),
+		CVIBuffer_King::Create(m_pGraphic_Device))))
+		return E_FAIL;
+		*/
+#pragma endregion
+
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Rect"),
+		CVIBuffer_Rect::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
-	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Board"),
-											 CVIBuffer_Board::Create(m_pGraphic_Device, 8, 8))))
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Cube"),
+		CVIBuffer_Cube::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
-	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_Transform"),
-											 CTransform::Create(m_pGraphic_Device))))
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Terrain"),
+		CVIBuffer_Terrain::Create(m_pGraphic_Device, 200, 200))))
+		return E_FAIL;
+
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Board"),
+		CVIBuffer_Board::Create(m_pGraphic_Device, 8, 8))))
+		return E_FAIL;
+
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_Transform"),
+		CTransform::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
 	return S_OK;
@@ -113,7 +122,7 @@ HRESULT CMainApp::Ready_Prototype_ForStatic()
 
 HRESULT CMainApp::Start_Level(LEVEL eStartLevelID)
 {
-	if(FAILED(m_pGameInstance->Open_Level(static_cast<_uint>(LEVEL::LEVEL_LOADING), CLevel_Loading::Create(m_pGraphic_Device, eStartLevelID))))
+	if (FAILED(m_pGameInstance->Open_Level(static_cast<_uint>(LEVEL::LEVEL_LOADING), CLevel_Loading::Create(m_pGraphic_Device, eStartLevelID))))
 		return E_FAIL;
 
 	return S_OK;
@@ -123,7 +132,7 @@ CMainApp* CMainApp::Create()
 {
 	CMainApp* pInstance = new CMainApp();
 
-	if(FAILED(pInstance->Initialize()))
+	if (FAILED(pInstance->Initialize()))
 	{
 		MSG_BOX(TEXT("Failed to Created : CMainApp"));
 		Safe_Release(pInstance);
@@ -139,7 +148,6 @@ void CMainApp::Free()
 	Safe_Release(m_pGraphic_Device);
 
 	m_pGameInstance->Release_Engine();
-
 
 	Safe_Release(m_pGameInstance);
 }

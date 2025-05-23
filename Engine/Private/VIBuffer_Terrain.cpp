@@ -205,37 +205,41 @@ HRESULT CVIBuffer_Terrain::Initialize(void* pArg)
 
 _float CVIBuffer_Terrain::Compute_Height(const _float3& vLocalPos)
 {
-	D3DXPLANE Plane = {};
-	ZeroMemory(&Plane, sizeof(D3DXPLANE));
+	_uint			iIndex = static_cast<_uint>(vLocalPos.z) * m_iNumVerticesX + static_cast<_uint>(vLocalPos.x);
 
-	_int iRow = (_int)vLocalPos.x;
-	_int iCol = (_int)vLocalPos.z;
+	_uint			iIndices[4] = {
+		iIndex + m_iNumVerticesX,
+		iIndex + m_iNumVerticesX + 1,
+		iIndex + 1,
+		iIndex
+	};
 
-	_float dx = vLocalPos.x - iRow;
-	_float dz = vLocalPos.z - iCol;
+	_float		fWidth = vLocalPos.x - m_pVertexPositions[iIndices[0]].x;
+	_float		fDepth = m_pVertexPositions[iIndices[0]].z - vLocalPos.z;
 
-	_uint iOriIndex = iRow * m_iNumVerticesX + iCol;
+	D3DXPLANE		Plane{};
 
-	if (dz > 1.f - dx)		// 위쪽 삼각형
+	/* 우측 위 삼각형 안에 있다. */
+	if (fWidth >= fDepth)
 	{
-		D3DXPlaneFromPoints(&Plane,
-			&m_pVertexPositions[iOriIndex + m_iNumVerticesX],
-			&m_pVertexPositions[iOriIndex + m_iNumVerticesX + 1],
-			&m_pVertexPositions[iOriIndex + 1]
-		);
+		D3DXPlaneFromPoints(&Plane, &m_pVertexPositions[iIndices[0]], &m_pVertexPositions[iIndices[1]], &m_pVertexPositions[iIndices[2]]);
 	}
+	/* 왼쪽 하단 삼각형 안에 있다. */
 	else
 	{
-		D3DXPlaneFromPoints(&Plane,
-			&m_pVertexPositions[iOriIndex + m_iNumVerticesX],
-			&m_pVertexPositions[iOriIndex + 1],
-			&m_pVertexPositions[iOriIndex]
-		);
+		D3DXPlaneFromPoints(&Plane, &m_pVertexPositions[iIndices[0]], &m_pVertexPositions[iIndices[2]], &m_pVertexPositions[iIndices[3]]);
 	}
 
-	Plane;
+	/*
+	a b c d
+	x ? z
 
-	return -(Plane.a * vLocalPos.x + Plane.c * vLocalPos.z + Plane.d) / Plane.b;
+
+	ax + by + cz + d = 0
+	y = (-ax - cz - d) / b
+	*/
+
+	return (-Plane.a * vLocalPos.x - Plane.c * vLocalPos.z - Plane.d) / Plane.b;
 }
 
 CVIBuffer_Terrain* CVIBuffer_Terrain::Create(LPDIRECT3DDEVICE9 pGraphic_Device, _uint iNumVerticesX, _uint iNumVerticesZ)

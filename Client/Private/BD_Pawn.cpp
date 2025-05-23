@@ -1,23 +1,23 @@
-#include "Pawn.h"
+#include "BD_Pawn.h"
 
 #include "GameInstance.h"
 
-CPawn::CPawn(LPDIRECT3DDEVICE9 pGraphic_Device)
-	: CPieces_FPS{ pGraphic_Device }
+CBD_Pawn::CBD_Pawn(LPDIRECT3DDEVICE9 pGraphic_Device)
+	: CPieces_Chess{ pGraphic_Device }
 {
 }
 
-CPawn::CPawn(const CPawn& Prototype)
-	: CPieces_FPS{ Prototype }
+CBD_Pawn::CBD_Pawn(const CBD_Pawn& Prototype)
+	: CPieces_Chess{ Prototype }
 {
 }
 
-HRESULT CPawn::Initialize_Prototype()
+HRESULT CBD_Pawn::Initialize_Prototype()
 {
 	return S_OK;
 }
 
-HRESULT CPawn::Initialize(void* pArg)
+HRESULT CBD_Pawn::Initialize(void* pArg)
 {
 	PIECE_DESC* pDesc = static_cast<PIECE_DESC*>(pArg);
 
@@ -32,53 +32,20 @@ HRESULT CPawn::Initialize(void* pArg)
 	return S_OK;
 }
 
-void CPawn::Priority_Update(_float fTimeDelta)
+void CBD_Pawn::Priority_Update(_float fTimeDelta)
 {
 }
 
-void CPawn::Update(_float fTimeDelta)
+void CBD_Pawn::Update(_float fTimeDelta)
 {
-	SetUp_OnTerrain(m_pTransformCom);
-
-	if (m_pInput_Manager->Key_Pressing(VK_UP))
-		m_pTransformCom->Go_Straight(fTimeDelta);
-
-	if (m_pInput_Manager->Key_Pressing(VK_LEFT))
-		m_pTransformCom->Turn(m_pTransformCom->Get_State(STATE::UP), fTimeDelta * -1.f);
-
-	if (m_pInput_Manager->Key_Pressing(VK_DOWN))
-		m_pTransformCom->Go_Backward(fTimeDelta);
-
-	if (m_pInput_Manager->Key_Pressing(VK_RIGHT))
-		m_pTransformCom->Turn(m_pTransformCom->Get_State(STATE::UP), fTimeDelta);
 }
 
-void CPawn::Late_Update(_float fTimeDelta)
+void CBD_Pawn::Late_Update(_float fTimeDelta)
 {
 	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
-	/*
-	POINT ptMouse;
-	GetCursorPos(&ptMouse);
-	ScreenToClient(g_hWnd, &ptMouse); // g_hWnd: 전역 윈도우 핸들
-
-	D3DXVECTOR3 vRayOrigin, vRayDir;
-
-	// 2. Ray 생성 (CRayPicking 사용)
-	m_pCollider->ScreenPosToRay(ptMouse.x, ptMouse.y, vRayOrigin, vRayDir);
-
-	// 3. Pawn의 AABB 가져오기
-	BOUNDINGBOX tAABB = m_pVIBufferCom->Get_AABB();
-
-	// 4. 충돌 검사
-	_float fDist = 0.f;
-	if (m_pCollider->RayIntersectsAABB(vRayOrigin, vRayDir, tAABB, &fDist))
-	{
-		MSG_BOX(TEXT("PICKING!!!"));
-	}
-	*/
 }
 
-HRESULT CPawn::Render()
+HRESULT CBD_Pawn::Render()
 {
 	m_pTransformCom->Bind_Matrix();
 
@@ -97,7 +64,7 @@ HRESULT CPawn::Render()
 	return S_OK;
 }
 
-HRESULT CPawn::Ready_Components()
+HRESULT CBD_Pawn::Ready_Components()
 {
 	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Pawn"),
 		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
@@ -119,45 +86,45 @@ HRESULT CPawn::Ready_Components()
 	return S_OK;
 }
 
-void CPawn::SetUp_RenderState()
+void CBD_Pawn::SetUp_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
-void CPawn::Reset_RenderState()
+void CBD_Pawn::Reset_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
-CPawn* CPawn::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
+CBD_Pawn* CBD_Pawn::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 {
-	CPawn* pInstance = new CPawn(pGraphic_Device);
+	CBD_Pawn* pInstance = new CBD_Pawn(pGraphic_Device);
 
 	if (FAILED(pInstance->Initialize_Prototype()))
 	{
-		MSG_BOX(TEXT("Failed to Created : CPawn"));
+		MSG_BOX(TEXT("Failed to Created : CBD_Pawn"));
 		Safe_Release(pInstance);
 	}
 
 	return pInstance;
 }
 
-CGameObject* CPawn::Clone(void* pArg)
+CGameObject* CBD_Pawn::Clone(void* pArg)
 {
-	CPawn* pInstance = new CPawn(*this);
+	CBD_Pawn* pInstance = new CBD_Pawn(*this);
 
 	if (FAILED(pInstance->Initialize(pArg)))
 	{
-		MSG_BOX(TEXT("Failed to Cloned : CPawn"));
+		MSG_BOX(TEXT("Failed to Cloned : CBD_Pawn"));
 		Safe_Release(pInstance);
 	}
 
 	return pInstance;
 }
 
-void CPawn::Free()
+void CBD_Pawn::Free()
 {
 	__super::Free();
 

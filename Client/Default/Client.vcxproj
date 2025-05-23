@@ -158,12 +158,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\BackGround.h" />
+    <ClInclude Include="..\Public\BD_Bishop.h" />
+    <ClInclude Include="..\Public\BD_King.h" />
+    <ClInclude Include="..\Public\BD_Knight.h" />
+    <ClInclude Include="..\Public\BD_Pawn.h" />
+    <ClInclude Include="..\Public\BD_Queen.h" />
+    <ClInclude Include="..\Public\BD_Rook.h" />
     <ClInclude Include="..\Public\Bishop.h" />
     <ClInclude Include="..\Public\Camera.h" />
-    <ClInclude Include="..\Public\CBullet.h" />
+    <ClInclude Include="..\Public\Bullet.h" />
     <ClInclude Include="..\Public\ChessBoard.h" />
     <ClInclude Include="..\Public\Client_Defines.h" />
     <ClInclude Include="..\Public\Client_PCH.h" />
+    <ClInclude Include="..\Public\Pieces_Chess.h" />
+    <ClInclude Include="..\Public\Pieces_FPS.h" />
     <ClInclude Include="..\Public\Queen.h" />
     <ClInclude Include="..\Public\King.h" />
     <ClInclude Include="..\Public\Knight.h" />
@@ -184,14 +192,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\BackGround.cpp" />
+    <ClCompile Include="..\Private\BD_Bishop.cpp" />
+    <ClCompile Include="..\Private\BD_King.cpp" />
+    <ClCompile Include="..\Private\BD_Knight.cpp" />
+    <ClCompile Include="..\Private\BD_Pawn.cpp" />
+    <ClCompile Include="..\Private\BD_Queen.cpp" />
+    <ClCompile Include="..\Private\BD_Rook.cpp" />
     <ClCompile Include="..\Private\Bishop.cpp" />
     <ClCompile Include="..\Private\Camera.cpp" />
-    <ClCompile Include="..\Private\CBullet.cpp" />
+    <ClCompile Include="..\Private\Bullet.cpp" />
     <ClCompile Include="..\Private\ChessBoard.cpp" />
     <ClCompile Include="..\Private\Client_PCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Private\Pieces_Chess.cpp" />
+    <ClCompile Include="..\Private\Pieces_FPS.cpp" />
     <ClCompile Include="..\Private\Queen.cpp" />
     <ClCompile Include="..\Private\King.cpp" />
     <ClCompile Include="..\Private\Knight.cpp" />

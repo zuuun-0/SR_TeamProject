@@ -266,12 +266,42 @@ HRESULT CVIBuffer_Pawn::Initialize_Prototype()
 	m_pIB->Unlock();
 #pragma endregion
 
+	ComputeAABB();
+
 	return S_OK;
 }
 
 HRESULT CVIBuffer_Pawn::Initialize(void* pArg)
 {
 	return S_OK;
+}
+
+void CVIBuffer_Pawn::ComputeAABB()
+{
+	VTXPOSPAWN* pVertices = nullptr;
+
+	if (FAILED(m_pVB->Lock(0, 0, reinterpret_cast<void**>(&pVertices), 0)))
+		return;
+
+	D3DXVECTOR3 vMin = pVertices[0].vPosition;
+	D3DXVECTOR3 vMax = pVertices[0].vPosition;
+
+	for (_uint i = 1; i < m_iNumVertices; ++i)
+	{
+		vMin.x = min(vMin.x, pVertices[i].vPosition.x);
+		vMin.y = min(vMin.y, pVertices[i].vPosition.y);
+		vMin.z = min(vMin.z, pVertices[i].vPosition.z);
+
+		vMax.x = max(vMax.x, pVertices[i].vPosition.x);
+		vMax.y = max(vMax.y, pVertices[i].vPosition.y);
+		vMax.z = max(vMax.z, pVertices[i].vPosition.z);
+	}
+
+	m_pVB->Unlock();
+
+	m_tAABB.vMin = vMin;
+ 
+	m_tAABB.vMax = vMax;
 }
 
 CVIBuffer_Pawn* CVIBuffer_Pawn::Create(LPDIRECT3DDEVICE9 pGraphic_Device)

@@ -2,11 +2,12 @@
 #include "Client_Defines.h"
 
 BEGIN(Client)
-class CBishop : public CGameObject
+class CBishop : public CPieces_FPS
 {
-public:
+private:
 	CBishop(LPDIRECT3DDEVICE9 DEVICE);
 	CBishop(const CBishop& OTHDER);
+	virtual ~CBishop() = default;
 
 public:
 	virtual HRESULT Initialize_Prototype() override;
