@@ -160,10 +160,12 @@
     <ClInclude Include="..\Public\Base.h" />
     <ClInclude Include="..\Public\Component.h" />
     <ClInclude Include="..\Public\Input_Manager.h" />
+    <ClInclude Include="..\Public\LandObject.h" />
+    <ClInclude Include="..\Public\VIBuffer_Bishop.h" />
     <ClInclude Include="..\Public\VIBuffer_King.h" />
     <ClInclude Include="..\Public\VIBuffer_Knight.h" />
     <ClInclude Include="..\Public\VIBuffer_Rook.h" />
-    <ClInclude Include="..\Public\VI_Buffer_Queen.h" />
+    <ClInclude Include="..\Public\VIBuffer_Queen.h" />
     <ClInclude Include="..\Public\Engine_Defines.h" />
     <ClInclude Include="..\Public\Engine_Enum.h" />
     <ClInclude Include="..\Public\Engine_Function.h" />
@@ -178,7 +180,6 @@
     <ClInclude Include="..\Public\Level_Manager.h" />
     <ClInclude Include="..\Public\Object_Manager.h" />
     <ClInclude Include="..\Public\VIBuffer_Pawn.h" />
-    <ClInclude Include="..\Public\VI_Buffer_Oblong.h" />
     <ClInclude Include="..\Public\Prototype_Manager.h" />
     <ClInclude Include="..\Public\Renderer.h" />
     <ClInclude Include="..\Public\Texture.h" />
@@ -199,10 +200,12 @@
     <ClCompile Include="..\Private\Base.cpp" />
     <ClCompile Include="..\Private\Component.cpp" />
     <ClCompile Include="..\Private\Input_Manager.cpp" />
+    <ClCompile Include="..\Private\LandObject.cpp" />
+    <ClCompile Include="..\Private\VIBuffer_Bishop.cpp" />
     <ClCompile Include="..\Private\VIBuffer_King.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Knight.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Rook.cpp" />
-    <ClCompile Include="..\Private\VI_Buffer_Queen.cpp" />
+    <ClCompile Include="..\Private\VIBuffer_Queen.cpp" />
     <ClCompile Include="..\Private\Engine_Defines.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -215,7 +218,6 @@
     <ClCompile Include="..\Private\Level_Manager.cpp" />
     <ClCompile Include="..\Private\Object_Manager.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Pawn.cpp" />
-    <ClCompile Include="..\Private\VI_Buffer_Oblong.cpp" />
     <ClCompile Include="..\Private\Prototype_Manager.cpp" />
     <ClCompile Include="..\Private\Renderer.cpp" />
     <ClCompile Include="..\Private\Texture.cpp" />

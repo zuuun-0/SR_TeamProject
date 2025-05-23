@@ -39,16 +39,21 @@ using namespace std;
 #include "Transform.h"
 #include "UIObject.h"
 #include "VIBuffer.h"
-#include "VIBuffer_Board.h"
+#include "VIBuffer_Rect.h"
 #include "VIBuffer_Cube.h"
+#include "VIBuffer_Terrain.h"
+#include "VIBuffer_Board.h"
+
+#pragma region CHESS_PIECES
+
 #include "VIBuffer_Pawn.h"
 #include "VIBuffer_Rook.h"
-#include "VIBuffer_King.h"
+#include "VIBuffer_Bishop.h"
 #include "VIBuffer_Knight.h"
-#include "VIBuffer_Rect.h"
-#include "VIBuffer_Terrain.h"
-#include "VI_Buffer_Oblong.h"
-#include "VI_Buffer_Queen.h"
+#include "VIBuffer_Queen.h"
+#include "VIBuffer_King.h"
+
+#pragma endregion
 
 
 #ifdef _DEBUG

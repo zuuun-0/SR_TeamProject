@@ -1,4 +1,4 @@
-#include "VI_Buffer_Queen.h"
+#include "VIBuffer_Queen.h"
 
 CVIBuffer_Queen::CVIBuffer_Queen(LPDIRECT3DDEVICE9 DEVICE)
 	: CVIBuffer(DEVICE)

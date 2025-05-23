@@ -85,17 +85,11 @@
     <Filter Include="01. Utility\03. GameObject\UIObject">
       <UniqueIdentifier>{8bec9b97-1601-4235-9f04-c79970bd6130}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Utility\05. Component\VIBuffer\Oblong">
-      <UniqueIdentifier>{d87701c6-8d28-49ab-b6e8-4ba086de4a50}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces">
       <UniqueIdentifier>{d4b01b93-8546-4eab-b432-0731436ece87}</UniqueIdentifier>
     </Filter>
     <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces\Pawn">
       <UniqueIdentifier>{d5f63b8b-bfbc-444a-b98e-9f3221289d92}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Utility\05. Component\VIBuffer\Queen">
-      <UniqueIdentifier>{c86a7b0f-8eb0-4d1f-96a1-2e3c1402717d}</UniqueIdentifier>
     </Filter>
     <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces\Rook">
       <UniqueIdentifier>{6a9373b9-1ae2-496c-87c7-9d154bff365c}</UniqueIdentifier>
@@ -105,6 +99,15 @@
     </Filter>
     <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces\Knight">
       <UniqueIdentifier>{86e6952a-7f56-48b7-a821-54533fdba45d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces\Bishop">
+      <UniqueIdentifier>{5b1e6fdf-cc7d-4719-a8fe-450ffdb34091}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces\Queen">
+      <UniqueIdentifier>{c86a7b0f-8eb0-4d1f-96a1-2e3c1402717d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\03. GameObject\LandObject">
+      <UniqueIdentifier>{b1888ece-ece2-47fb-8a81-48a6d03570a7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -189,14 +192,11 @@
     <ClInclude Include="..\Public\UIObject.h">
       <Filter>01. Utility\03. GameObject\UIObject</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\VI_Buffer_Oblong.h">
-      <Filter>01. Utility\05. Component\VIBuffer\Oblong</Filter>
-    </ClInclude>
     <ClInclude Include="..\Public\VIBuffer_Pawn.h">
       <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Pawn</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\VI_Buffer_Queen.h">
-      <Filter>01. Utility\05. Component\VIBuffer\Queen</Filter>
+    <ClInclude Include="..\Public\VIBuffer_Queen.h">
+      <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Queen</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Input_Manager.h">
       <Filter>00. System\00. Device\Input</Filter>
@@ -209,6 +209,12 @@
     </ClInclude>
     <ClInclude Include="..\Public\VIBuffer_Knight.h">
       <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Knight</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_Bishop.h">
+      <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Bishop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\LandObject.h">
+      <Filter>01. Utility\03. GameObject\LandObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -278,14 +284,11 @@
     <ClCompile Include="..\Private\Engine_Defines.cpp">
       <Filter>99. Defines</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\VI_Buffer_Oblong.cpp">
-      <Filter>01. Utility\05. Component\VIBuffer\Oblong</Filter>
-    </ClCompile>
     <ClCompile Include="..\Private\VIBuffer_Pawn.cpp">
       <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Pawn</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\VI_Buffer_Queen.cpp">
-      <Filter>01. Utility\05. Component\VIBuffer\Queen</Filter>
+    <ClCompile Include="..\Private\VIBuffer_Queen.cpp">
+      <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Queen</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Input_Manager.cpp">
       <Filter>00. System\00. Device\Input</Filter>
@@ -298,6 +301,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\VIBuffer_Knight.cpp">
       <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Knight</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_Bishop.cpp">
+      <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Bishop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\LandObject.cpp">
+      <Filter>01. Utility\03. GameObject\LandObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
