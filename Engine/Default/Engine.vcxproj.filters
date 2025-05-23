@@ -109,6 +109,15 @@
     <Filter Include="01. Utility\03. GameObject\LandObject">
       <UniqueIdentifier>{b1888ece-ece2-47fb-8a81-48a6d03570a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Utility\99. Collision">
+      <UniqueIdentifier>{da5068c4-3699-4ddb-aa9d-0229a5934f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\99. Collision\Manager">
+      <UniqueIdentifier>{95f4baa4-e3d1-4369-ac3e-4917a7577b55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\99. Collision\RayCast">
+      <UniqueIdentifier>{bde4e1fc-7c4d-4773-a2a0-f0a6ec4c57c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\Graphic_Device.h">
@@ -216,6 +225,12 @@
     <ClInclude Include="..\Public\LandObject.h">
       <Filter>01. Utility\03. GameObject\LandObject</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\RayCast.h">
+      <Filter>01. Utility\99. Collision\RayCast</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Collision_Manager.h">
+      <Filter>01. Utility\99. Collision\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Graphic_Device.cpp">
@@ -307,6 +322,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\LandObject.cpp">
       <Filter>01. Utility\03. GameObject\LandObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Collision_Manager.cpp">
+      <Filter>01. Utility\99. Collision\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\RayCast.cpp">
+      <Filter>01. Utility\99. Collision\RayCast</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

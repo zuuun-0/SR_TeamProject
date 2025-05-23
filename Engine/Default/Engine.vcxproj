@@ -160,9 +160,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\Base.h" />
+    <ClInclude Include="..\Public\Collision_Manager.h" />
     <ClInclude Include="..\Public\Component.h" />
     <ClInclude Include="..\Public\Input_Manager.h" />
     <ClInclude Include="..\Public\LandObject.h" />
+    <ClInclude Include="..\Public\RayCast.h" />
     <ClInclude Include="..\Public\VIBuffer_Bishop.h" />
     <ClInclude Include="..\Public\VIBuffer_King.h" />
     <ClInclude Include="..\Public\VIBuffer_Knight.h" />
@@ -200,9 +202,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Base.cpp" />
+    <ClCompile Include="..\Private\Collision_Manager.cpp" />
     <ClCompile Include="..\Private\Component.cpp" />
     <ClCompile Include="..\Private\Input_Manager.cpp" />
     <ClCompile Include="..\Private\LandObject.cpp" />
+    <ClCompile Include="..\Private\RayCast.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Bishop.cpp" />
     <ClCompile Include="..\Private\VIBuffer_King.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Knight.cpp" />
