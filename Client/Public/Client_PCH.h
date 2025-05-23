@@ -20,6 +20,8 @@
 #include "Player.h"
 #include "Pawn.h"
 #include "Rook.h"
+#include "Knight.h"
+#include "King.h"
 #include "TargetCamera.h"
 #include "Terrain.h"
 

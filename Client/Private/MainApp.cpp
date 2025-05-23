@@ -77,12 +77,20 @@ HRESULT CMainApp::Ready_Prototype_ForStatic()
 											 CVIBuffer_Rook::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_King"),
+		CVIBuffer_King::Create(m_pGraphic_Device))))
+		return E_FAIL;
+
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Knight"),
+		CVIBuffer_Knight::Create(m_pGraphic_Device))))
+		return E_FAIL;
+
 	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Cube"),
 											 CVIBuffer_Cube::Create(m_pGraphic_Device))))
 		return E_FAIL;
-	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Queen"),
-											 CVIBuffer_Queen::Create(m_pGraphic_Device))))
-		return E_FAIL;
+	// if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Queen"),			// ÀÏ´Ü Åµ
+	// 										 CVIBuffer_Queen::Create(m_pGraphic_Device))))
+	// 	return E_FAIL;
 
 	if(FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Oblong"),
 											 CVIBuffer_Oblong::Create(m_pGraphic_Device))))

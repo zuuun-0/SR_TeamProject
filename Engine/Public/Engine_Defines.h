@@ -43,6 +43,8 @@ using namespace std;
 #include "VIBuffer_Cube.h"
 #include "VIBuffer_Pawn.h"
 #include "VIBuffer_Rook.h"
+#include "VIBuffer_King.h"
+#include "VIBuffer_Knight.h"
 #include "VIBuffer_Rect.h"
 #include "VIBuffer_Terrain.h"
 #include "VI_Buffer_Oblong.h"

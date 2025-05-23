@@ -67,6 +67,12 @@
     <Filter Include="02. GameObject\Rook">
       <UniqueIdentifier>{add04288-d99e-4923-abe9-dbde3637b010}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. GameObject\Knight">
+      <UniqueIdentifier>{5a39256b-1217-41eb-8acc-a422d0d3b744}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\King">
+      <UniqueIdentifier>{40bf573f-bc12-4bde-920a-82d117b2583c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -131,6 +137,12 @@
     </ClInclude>
     <ClInclude Include="..\Public\Rook.h">
       <Filter>02. GameObject\Rook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Knight.h">
+      <Filter>02. GameObject\Knight</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\King.h">
+      <Filter>02. GameObject\King</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +209,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Rook.cpp">
       <Filter>02. GameObject\Rook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Knight.cpp">
+      <Filter>02. GameObject\Knight</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\King.cpp">
+      <Filter>02. GameObject\King</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

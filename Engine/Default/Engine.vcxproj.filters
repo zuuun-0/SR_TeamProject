@@ -100,6 +100,12 @@
     <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces\Rook">
       <UniqueIdentifier>{6a9373b9-1ae2-496c-87c7-9d154bff365c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces\King">
+      <UniqueIdentifier>{3dc99114-1150-40cc-8eac-099ee11204f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Utility\05. Component\VIBuffer\ChessPieces\Knight">
+      <UniqueIdentifier>{86e6952a-7f56-48b7-a821-54533fdba45d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\Graphic_Device.h">
@@ -198,6 +204,12 @@
     <ClInclude Include="..\Public\VIBuffer_Rook.h">
       <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Rook</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_King.h">
+      <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\King</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_Knight.h">
+      <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Knight</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Graphic_Device.cpp">
@@ -280,6 +292,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\VIBuffer_Rook.cpp">
       <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Rook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_King.cpp">
+      <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\King</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_Knight.cpp">
+      <Filter>01. Utility\05. Component\VIBuffer\ChessPieces\Knight</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
