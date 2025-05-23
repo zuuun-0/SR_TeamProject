@@ -40,9 +40,6 @@
     <Filter Include="02. GameObject\Terrain">
       <UniqueIdentifier>{1392a4ca-b6b0-4989-ad65-23f546191b44}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\ChessBoard">
-      <UniqueIdentifier>{7598a2fb-7eb3-4bd9-99ab-f3c1a645ea8c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Levels\02. GamePlay\00. Match">
       <UniqueIdentifier>{976c7cd2-e05b-41f5-b4e6-fb1c4f054ecd}</UniqueIdentifier>
     </Filter>
@@ -55,23 +52,35 @@
     <Filter Include="02. GameObject\Camera\TargetCamera">
       <UniqueIdentifier>{aec133ce-f0ea-423b-b088-4ad95390bc7f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Queen">
-      <UniqueIdentifier>{38836156-70d3-4982-9856-f3f87f825928}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. GameObject\Bullet">
       <UniqueIdentifier>{29717f38-8f20-47a1-b387-5763a8cc4618}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Pawn">
-      <UniqueIdentifier>{04c1fddb-2cf3-40ff-bddf-73d1be35f546}</UniqueIdentifier>
+    <Filter Include="02. GameObject\Chess">
+      <UniqueIdentifier>{4737876e-58e3-4e9f-8961-398299889775}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Rook">
-      <UniqueIdentifier>{add04288-d99e-4923-abe9-dbde3637b010}</UniqueIdentifier>
+    <Filter Include="02. GameObject\Chess\ChessBoard">
+      <UniqueIdentifier>{7598a2fb-7eb3-4bd9-99ab-f3c1a645ea8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Knight">
+    <Filter Include="02. GameObject\Chess\Pieces">
+      <UniqueIdentifier>{17943e82-7a82-49d1-947a-c3d683dcda9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\Pieces\Bishop">
+      <UniqueIdentifier>{f6ae41ff-6eec-4502-b10e-7652d9cd033a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\Pieces\King">
+      <UniqueIdentifier>{40bf573f-bc12-4bde-920a-82d117b2583c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\Pieces\Knight">
       <UniqueIdentifier>{5a39256b-1217-41eb-8acc-a422d0d3b744}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\King">
-      <UniqueIdentifier>{40bf573f-bc12-4bde-920a-82d117b2583c}</UniqueIdentifier>
+    <Filter Include="02. GameObject\Chess\Pieces\Pawn">
+      <UniqueIdentifier>{04c1fddb-2cf3-40ff-bddf-73d1be35f546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\Pieces\Queen">
+      <UniqueIdentifier>{38836156-70d3-4982-9856-f3f87f825928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Chess\Pieces\Rook">
+      <UniqueIdentifier>{add04288-d99e-4923-abe9-dbde3637b010}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -118,7 +127,7 @@
       <Filter>02. GameObject\Terrain</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\ChessBoard.h">
-      <Filter>02. GameObject\ChessBoard</Filter>
+      <Filter>02. GameObject\Chess\ChessBoard</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Client_PCH.h">
       <Filter>99. Defines</Filter>
@@ -126,23 +135,26 @@
     <ClInclude Include="..\Public\TargetCamera.h">
       <Filter>02. GameObject\Camera\TargetCamera</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\CQueen.h">
-      <Filter>02. GameObject\Queen</Filter>
+    <ClInclude Include="..\Public\Queen.h">
+      <Filter>02. GameObject\Chess\Pieces\Queen</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\CBullet.h">
       <Filter>02. GameObject\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Pawn.h">
-      <Filter>02. GameObject\Pawn</Filter>
+      <Filter>02. GameObject\Chess\Pieces\Pawn</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Rook.h">
-      <Filter>02. GameObject\Rook</Filter>
+      <Filter>02. GameObject\Chess\Pieces\Rook</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Knight.h">
-      <Filter>02. GameObject\Knight</Filter>
+      <Filter>02. GameObject\Chess\Pieces\Knight</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\King.h">
-      <Filter>02. GameObject\King</Filter>
+      <Filter>02. GameObject\Chess\Pieces\King</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Bishop.h">
+      <Filter>02. GameObject\Chess\Pieces\Bishop</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -190,7 +202,7 @@
       <Filter>02. GameObject\Terrain</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\ChessBoard.cpp">
-      <Filter>02. GameObject\ChessBoard</Filter>
+      <Filter>02. GameObject\Chess\ChessBoard</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Client_PCH.cpp">
       <Filter>99. Defines</Filter>
@@ -198,23 +210,26 @@
     <ClCompile Include="..\Private\TargetCamera.cpp">
       <Filter>02. GameObject\Camera\TargetCamera</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\CQueen.cpp">
-      <Filter>02. GameObject\Queen</Filter>
+    <ClCompile Include="..\Private\Queen.cpp">
+      <Filter>02. GameObject\Chess\Pieces\Queen</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\CBullet.cpp">
       <Filter>02. GameObject\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Pawn.cpp">
-      <Filter>02. GameObject\Pawn</Filter>
+      <Filter>02. GameObject\Chess\Pieces\Pawn</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Rook.cpp">
-      <Filter>02. GameObject\Rook</Filter>
+      <Filter>02. GameObject\Chess\Pieces\Rook</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Knight.cpp">
-      <Filter>02. GameObject\Knight</Filter>
+      <Filter>02. GameObject\Chess\Pieces\Knight</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\King.cpp">
-      <Filter>02. GameObject\King</Filter>
+      <Filter>02. GameObject\Chess\Pieces\King</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Bishop.cpp">
+      <Filter>02. GameObject\Chess\Pieces\Bishop</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -28,6 +28,9 @@ public:
 private: /* 이 객체에게 필요한 컴포넌트들을 복제하여 추가해주는 기능. */
 	HRESULT Ready_Components();
 
+	void SetUp_RenderState();
+	void Reset_RenderState();
+
 private:
 	CTexture* m_pTextureCom = { nullptr };
 	CVIBuffer_Bishop* m_pVIBufferCom = { nullptr };

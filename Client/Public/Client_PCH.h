@@ -10,7 +10,7 @@
 #include "BackGround.h"
 #include "Bishop.h"
 #include "CBullet.h"
-#include "CQueen.h"
+#include "Queen.h"
 #include "Camera.h"
 #include "ChessBoard.h"
 #include "Level_GamePlay.h"

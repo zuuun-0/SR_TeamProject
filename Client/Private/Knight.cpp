@@ -92,7 +92,11 @@ HRESULT CKnight::Render()
 	/* 그리기위해 이용할 자원과 설정들을 장치에 바인딩한다. */
 	m_pVIBufferCom->Bind_Buffers();
 
+	SetUp_RenderState();
+
 	m_pVIBufferCom->Render();
+
+	Reset_RenderState();
 
 	return S_OK;
 }
@@ -122,11 +126,13 @@ HRESULT CKnight::Ready_Components()
 void CKnight::SetUp_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
-	// m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
+	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
 void CKnight::Reset_RenderState()
 {
+	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
 CKnight* CKnight::Create(LPDIRECT3DDEVICE9 pGraphic_Device)

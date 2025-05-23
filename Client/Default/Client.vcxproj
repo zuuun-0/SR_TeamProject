@@ -74,12 +74,13 @@
     <OutDir>../Bin/</OutDir>
     <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK_DIR)Lib\x64;$(LibraryPath)</LibraryPath>
-    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>../Bin/</OutDir>
     <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK_DIR)Lib\x64;$(LibraryPath)</LibraryPath>
+    <PreBuildEventUseInBuild>false</PreBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -163,7 +164,7 @@
     <ClInclude Include="..\Public\ChessBoard.h" />
     <ClInclude Include="..\Public\Client_Defines.h" />
     <ClInclude Include="..\Public\Client_PCH.h" />
-    <ClInclude Include="..\Public\CQueen.h" />
+    <ClInclude Include="..\Public\Queen.h" />
     <ClInclude Include="..\Public\King.h" />
     <ClInclude Include="..\Public\Knight.h" />
     <ClInclude Include="..\Public\Level_GamePlay.h" />
@@ -191,7 +192,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\Private\CQueen.cpp" />
+    <ClCompile Include="..\Private\Queen.cpp" />
     <ClCompile Include="..\Private\King.cpp" />
     <ClCompile Include="..\Private\Knight.cpp" />
     <ClCompile Include="..\Private\Level_GamePlay.cpp" />

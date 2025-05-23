@@ -44,7 +44,12 @@ HRESULT CBishop::Render()
 
 	m_pVIBufferCom->Bind_Buffers();
 
+	SetUp_RenderState();
+
 	m_pVIBufferCom->Render();
+
+	Reset_RenderState();
+
 	return S_OK;
 }
 
@@ -68,6 +73,18 @@ HRESULT CBishop::Ready_Components()
 		return E_FAIL;
 
 	return S_OK;
+}
+
+void CBishop::SetUp_RenderState()
+{
+	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
+}
+
+void CBishop::Reset_RenderState()
+{
+	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
 CBishop* CBishop::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
