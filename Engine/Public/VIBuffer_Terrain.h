@@ -16,6 +16,9 @@ public:
 	virtual HRESULT Initialize_Prototype(const _tchar* pHeightMapFilePath);
 	virtual HRESULT Initialize(void* pArg) override;
 
+public:
+	_float Compute_Height(const _float3& vLocalPos);
+
 private:
 	_uint m_iNumVerticesX = {};
 	_uint m_iNumVerticesZ = {};

@@ -3,51 +3,29 @@
 IMPLEMENT_SINGLETON(CInput_Manager)
 
 CInput_Manager::CInput_Manager()
+{}
+
+_bool CInput_Manager::Key_Pressing(_uint _iKey) const
 {
+	return m_bKeyState[_iKey];
 }
 
-_bool CInput_Manager::Key_Pressing(_uint _iKey)
+_bool CInput_Manager::Key_Down(_uint _iKey) const
 {
-	if (GetAsyncKeyState(_iKey) & 0x8000)
-		return true;
-
-	return false;
+	return m_bKeyState[_iKey] && !m_bPrevKey[_iKey];
 }
 
-_bool CInput_Manager::Key_Down(_uint _iKey)
+_bool CInput_Manager::Key_Up(_uint _iKey) const
 {
-	// 이전 프레임에 눌린 적이 없고, 현재 프레임에 눌린 상태
-
-	if ((!m_bKeyState[_iKey]) && (GetAsyncKeyState(_iKey) & 0x8000))
-	{
-		m_bKeyState[_iKey] = !m_bKeyState[_iKey];
-		return true;
-	}
-
-	return false;
-}
-
-_bool CInput_Manager::Key_Up(_uint _iKey)
-{
-	// 이전 프레임에 눌렸고, 현재 프레임에 누르지 않은 상태
-	if ((m_bKeyState[_iKey]) && !(GetAsyncKeyState(_iKey) & 0x8000))
-	{
-		m_bKeyState[_iKey] = !m_bKeyState[_iKey];
-		return true;
-	}
-
-	return false;
+	return !m_bKeyState[_iKey] && m_bPrevKey[_iKey];
 }
 
 void CInput_Manager::Input_Update()
 {
-	for (int i = 0; i < VK_MAX; ++i)
+	memcpy(&m_bPrevKey, m_bKeyState, sizeof(m_bPrevKey));
+	for(int i = 0; i < VK_MAX; ++i)
 	{
-		if ((m_bKeyState[i]) && !(GetAsyncKeyState(i) & 0x8000))
-			m_bKeyState[i] = !m_bKeyState[i];
-
-		if ((!m_bKeyState[i]) && (GetAsyncKeyState(i) & 0x8000))
-			m_bKeyState[i] = !m_bKeyState[i];
+		m_bKeyState[i] = (GetAsyncKeyState(i) & 0x8000);
 	}
 }
 

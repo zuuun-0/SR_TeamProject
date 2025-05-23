@@ -23,6 +23,7 @@ private:
 	HRESULT Ready_Layer_Knight(const _wstring& strLayerTag);
 	HRESULT Ready_Layer_King(const _wstring& strLayerTag);
 	HRESULT Ready_Layer_Queen(const _wstring& strLayerTag);
+	HRESULT Ready_Layer_Bishop(const _wstring& strLayerTag);
 	HRESULT Ready_Layer_Camera(const _wstring& strLayerTag);
 	HRESULT Ready_Layer_TargetCamera(const _wstring& strLayerTag, CTransform* TARGET);
 	HRESULT Ready_Layer_Terrain(const _wstring& strLayerTag);
