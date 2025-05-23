@@ -57,17 +57,17 @@ _bool CRayCast::RayIntersectsAABB(D3DXVECTOR3& vRayOrigin, D3DXVECTOR3& vRayDir,
     if (fYmax < fMax)
         fMax = fYmax;
 
-    _float tzmin = (Box.vMin.z - vRayOrigin.z) / vRayDir.z;
-    _float tzmax = (Box.vMax.z - vRayOrigin.z) / vRayDir.z;
-    if (tzmin > tzmax) std::swap(tzmin, tzmax);
+    _float tZmin = (Box.vMin.z - vRayOrigin.z) / vRayDir.z;
+    _float tZmax = (Box.vMax.z - vRayOrigin.z) / vRayDir.z;
+    if (tZmin > tZmax) std::swap(tZmin, tZmax);
 
-    if ((fMin > tzmax) || (tzmin > fMax))
+    if ((fMin > tZmax) || (tZmin > fMax))
         return false;
 
-    if (tzmin > fMin)
-        fMin = tzmin;
-    if (tzmax < fMax)
-        fMax = tzmax;
+    if (tZmin > fMin)
+        fMin = tZmin;
+    if (tZmax < fMax)
+        fMax = tZmax;
 
     if (fMax < 0)
         return false;

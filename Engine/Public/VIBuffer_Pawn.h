@@ -16,7 +16,7 @@ public:
 	HRESULT Initialize(void* pArg) override;
 
 public:
-	BOUNDINGBOX Get_AABB() { return m_tAABB; }
+	const BOUNDINGBOX& Get_AABB() const { return m_tAABB; }
 
 private:
 	BOUNDINGBOX m_tAABB = {};
