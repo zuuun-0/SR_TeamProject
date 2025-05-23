@@ -1,7 +1,13 @@
 /.vs
+/Client/Bin/
 /Client/Default/x64
 /Client/Default/x64/Debug
+/Engine/Bin/
 /Engine/Default/x64
 /Engine/Default/x64/Debug
+/Server/Bin/
 /Server/Default/x64
 /Server/Default/x64/Debug
+/EngineSDK/Include/
+/EngineSDK/Lib/
+/EngineSDK/Server/
