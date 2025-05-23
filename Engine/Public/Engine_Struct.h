@@ -31,13 +31,16 @@ namespace Engine
 
 #pragma region RAY_CASTING
 
-	typedef struct tagBoundingBox
-	{
+	// 예시용 AABB 구조체
+	typedef struct tagBoundingBox {
+		D3DXVECTOR3 vMin;
+		D3DXVECTOR3 vMax;
 
 	}BOUNDINGBOX;
 
-	typedef struct tagTriangle
-	{
+	// 예시용 Triangle 구조체
+	typedef struct tagTriangle {
+		D3DXVECTOR3 vP0, vP1, vP2;
 
 	}TRIANGLE;
 
