@@ -4,13 +4,11 @@
 
 CBD_Knight::CBD_Knight(LPDIRECT3DDEVICE9 pGraphic_Device)
 	: CPieces_Chess{ pGraphic_Device }
-{
-}
+{}
 
 CBD_Knight::CBD_Knight(const CBD_Knight& Prototype)
 	: CPieces_Chess{ Prototype }
-{
-}
+{}
 
 HRESULT CBD_Knight::Initialize_Prototype()
 {
@@ -21,20 +19,19 @@ HRESULT CBD_Knight::Initialize(void* pArg)
 {
 	m_bWire = false;
 
-	if (FAILED(Ready_Components()))
+	if(FAILED(Ready_Components()))
 		return E_FAIL;
 
 	return S_OK;
 }
 
 void CBD_Knight::Priority_Update(_float fTimeDelta)
-{
-}
+{}
 
 void CBD_Knight::Update(_float fTimeDelta)
 {
 	//m_pTransformCom->Go_Straight(fTimeDelta);
-	if (GetKeyState(VK_SPACE) & 0x8000)
+	if(GetKeyState(VK_SPACE) & 0x8000)
 	{
 		_float3 dir;
 		_float3 tfDir = m_pTransformCom->Get_State(STATE::LOOK);
@@ -42,10 +39,10 @@ void CBD_Knight::Update(_float fTimeDelta)
 		CBullet::BULLET_DESC bulletDesc(m_pTransformCom, dir, 10);
 
 		m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Bullet"),
-			ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Bullet"), &bulletDesc);
+												ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Bullet"), &bulletDesc);
 	}
 
-	if (GetKeyState('P') & 0x8000)
+	if(GetKeyState('P') & 0x8000)
 	{
 		m_bWire = !m_bWire;
 	}
@@ -74,7 +71,7 @@ void CBD_Knight::Late_Update(_float fTimeDelta)
 
 HRESULT CBD_Knight::Render()
 {
-	if (m_bWire)
+	if(m_bWire)
 	{
 		m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 
@@ -86,7 +83,7 @@ HRESULT CBD_Knight::Render()
 
 	m_pTransformCom->Bind_Matrix();
 
-	if (FAILED(m_pTextureCom->Bind_Texture()))
+	if(FAILED(m_pTextureCom->Bind_Texture()))
 		return E_FAIL;
 
 	/* 그리기위해 이용할 자원과 설정들을 장치에 바인딩한다. */
@@ -103,12 +100,12 @@ HRESULT CBD_Knight::Render()
 
 HRESULT CBD_Knight::Ready_Components()
 {
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Knight"),
-		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
+	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Knight"),
+									 TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Player"),
-		TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom))))
+	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Player"),
+									 TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom))))
 		return E_FAIL;
 
 	CTransform::TRANSFORM_DESC TransformDesc{};
@@ -116,8 +113,8 @@ HRESULT CBD_Knight::Ready_Components()
 	TransformDesc.fSpeedPerSec = 8.f;
 	TransformDesc.fRotationPerSec = D3DXToRadian(30.f);
 
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_Transform"),
-		TEXT("Com_Transform"), reinterpret_cast<CComponent**>(&m_pTransformCom), &TransformDesc)))
+	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_Transform"),
+									 TEXT("Com_Transform"), reinterpret_cast<CComponent**>(&m_pTransformCom), &TransformDesc)))
 		return E_FAIL;
 
 	return S_OK;
@@ -139,7 +136,7 @@ CBD_Knight* CBD_Knight::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 {
 	CBD_Knight* pInstance = new CBD_Knight(pGraphic_Device);
 
-	if (FAILED(pInstance->Initialize_Prototype()))
+	if(FAILED(pInstance->Initialize_Prototype()))
 	{
 		MSG_BOX(TEXT("Failed to Created : CBD_Knight"));
 		Safe_Release(pInstance);
@@ -152,7 +149,7 @@ CGameObject* CBD_Knight::Clone(void* pArg)
 {
 	CBD_Knight* pInstance = new CBD_Knight(*this);
 
-	if (FAILED(pInstance->Initialize(pArg)))
+	if(FAILED(pInstance->Initialize(pArg)))
 	{
 		MSG_BOX(TEXT("Failed to Cloned : CBD_Knight"));
 		Safe_Release(pInstance);

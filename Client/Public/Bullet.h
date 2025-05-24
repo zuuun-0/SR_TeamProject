@@ -8,14 +8,16 @@ public:
 	struct BULLET_DESC
 	{
 		BULLET_DESC() = default;
-		BULLET_DESC(CTransform* TF, _float3 DIR, float SPEED)
+		BULLET_DESC(CTransform* TF, _float3 DIR, float SPEED, float DAMAGE = 0.f)
 			: tf(TF)
 			, dir(DIR)
 			, speed(SPEED)
+			, damage(DAMAGE)
 		{}
 		CTransform* tf = nullptr;
-		_float3 dir;
+		_float3 dir{};
 		float speed = 0.f;
+		float damage = 0.f;
 	};
 
 private:

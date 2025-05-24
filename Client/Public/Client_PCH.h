@@ -32,6 +32,8 @@
 #include "King.h"
 #include "TargetCamera.h"
 #include "Terrain.h"
+#include "Weapon.h"
+#include "Weapon_DMR.h"
 
 extern HWND g_hWnd;
 

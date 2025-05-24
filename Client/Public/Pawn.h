@@ -2,6 +2,7 @@
 
 #include "Client_Defines.h"
 #include "LandObject.h"
+#include "Weapon.h"
 
 BEGIN(Engine)
 class CTexture;
@@ -31,6 +32,7 @@ private:
 	CTexture* m_pTextureCom = { nullptr };
 	CVIBuffer_Pawn* m_pVIBufferCom = { nullptr };
 	CTransform* m_pTransformCom = { nullptr };
+	CWeapon* m_weapon = nullptr;
 
 private: /* 이 객체에게 필요한 컴포넌트들을 복제하여 추가해주는 기능. */
 	HRESULT Ready_Components();

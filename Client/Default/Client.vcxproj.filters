@@ -40,9 +40,6 @@
     <Filter Include="02. GameObject\Camera\TargetCamera">
       <UniqueIdentifier>{aec133ce-f0ea-423b-b088-4ad95390bc7f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Bullet">
-      <UniqueIdentifier>{29717f38-8f20-47a1-b387-5763a8cc4618}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. GameObject\Chess">
       <UniqueIdentifier>{4737876e-58e3-4e9f-8961-398299889775}</UniqueIdentifier>
     </Filter>
@@ -109,11 +106,32 @@
     <Filter Include="01. Levels\06. Battle">
       <UniqueIdentifier>{9162d208-cfcb-42d4-9e92-93453049173f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Base">
-      <UniqueIdentifier>{cf1e4605-dadd-4b9d-b29c-1ef473121386}</UniqueIdentifier>
+    <Filter Include="02. GameObject\Weapon">
+      <UniqueIdentifier>{c98042fd-1193-457d-8edd-6f462ec5199a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. GameObject\Base\Weapon">
-      <UniqueIdentifier>{323bf590-6e56-44e3-b0fb-2a8a09bf00c2}</UniqueIdentifier>
+    <Filter Include="02. GameObject\Weapon\Bullet">
+      <UniqueIdentifier>{29717f38-8f20-47a1-b387-5763a8cc4618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Weapon\Weapon">
+      <UniqueIdentifier>{d182351f-e6ff-434e-a842-3302d598f4e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Weapon\Weapon\DMR">
+      <UniqueIdentifier>{b5fc0d4a-07d4-435a-9260-45b85844a53c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Weapon\Weapon\SNIPER">
+      <UniqueIdentifier>{e8ba77be-e007-472d-bd21-b1c0b9a58e8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Weapon\Weapon\SHOTGUN">
+      <UniqueIdentifier>{cd811fee-4f5e-4191-8e6c-ef395d445a46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Weapon\Weapon\KNIFE">
+      <UniqueIdentifier>{9f6aa03c-fa32-4523-9818-89b7d80684b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Weapon\Weapon\GATLING">
+      <UniqueIdentifier>{52c92d09-fdea-4bb6-b09b-f90c4b431cc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. GameObject\Weapon\Weapon\BOW">
+      <UniqueIdentifier>{c0a84d9a-d4f5-4832-bfd9-4eb2773f4733}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -172,7 +190,7 @@
       <Filter>02. GameObject\Chess\For_FPS\Queen</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Bullet.h">
-      <Filter>02. GameObject\Bullet</Filter>
+      <Filter>02. GameObject\Weapon\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Pawn.h">
       <Filter>02. GameObject\Chess\For_FPS\Pawn</Filter>
@@ -228,10 +246,12 @@
     <ClInclude Include="..\Public\Level_ChessToBattle.h">
       <Filter>01. Levels\05. ChessToBattle</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\Client_Enum.h">
-      <Filter>99. Defines</Filter>
+    <ClInclude Include="..\Public\Weapon.h">
+      <Filter>02. GameObject\Weapon\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\CWeapon.h" />
+    <ClInclude Include="..\Public\Weapon_DMR.h">
+      <Filter>02. GameObject\Weapon\Weapon\DMR</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Client.ico">
@@ -290,7 +310,7 @@
       <Filter>02. GameObject\Chess\For_FPS\Queen</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Bullet.cpp">
-      <Filter>02. GameObject\Bullet</Filter>
+      <Filter>02. GameObject\Weapon\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Pawn.cpp">
       <Filter>02. GameObject\Chess\For_FPS\Pawn</Filter>
@@ -346,6 +366,11 @@
     <ClCompile Include="..\Private\Level_ChessToBattle.cpp">
       <Filter>01. Levels\05. ChessToBattle</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\CWeapon.cpp" />
+    <ClCompile Include="..\Private\Weapon.cpp">
+      <Filter>02. GameObject\Weapon\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Weapon_DMR.cpp">
+      <Filter>02. GameObject\Weapon\Weapon\DMR</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

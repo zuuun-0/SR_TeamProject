@@ -19,6 +19,7 @@ HRESULT CBullet::Initialize(void* pArg)
 	if(pArg == nullptr) return S_OK;
 	std::memcpy(&m_BulletDesc, pArg, sizeof(m_BulletDesc));
 	m_Transform->Set_State(STATE::POSITION, m_BulletDesc.tf->Get_State(STATE::POSITION));
+	m_Transform->Scaling(0.5f, 0.5f, 0.5f);
 	return S_OK;
 }
 void CBullet::Priority_Update(_float fTimeDelta)
@@ -31,22 +32,20 @@ void CBullet::Update(_float fTimeDelta)
 }
 void CBullet::Late_Update(_float fTimeDelta)
 {
-	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
+	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_NONBLEND, this);
 }
 
 HRESULT CBullet::Render()
 {
-	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
-	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 	m_Transform->Bind_Matrix();
-
 	if(FAILED(m_Texture->Bind_Texture()))
 		return E_FAIL;
-
-	/* 그리기위해 이용할 자원과 설정들을 장치에 바인딩한다. */
 	m_VIBuffer->Bind_Buffers();
 
+	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
+
 	m_VIBuffer->Render();
+
 	return S_OK;
 }
 

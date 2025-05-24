@@ -169,9 +169,8 @@
     <ClInclude Include="..\Public\Bullet.h" />
     <ClInclude Include="..\Public\ChessBoard.h" />
     <ClInclude Include="..\Public\Client_Defines.h" />
-    <ClInclude Include="..\Public\Client_Enum.h" />
     <ClInclude Include="..\Public\Client_PCH.h" />
-    <ClInclude Include="..\Public\CWeapon.h" />
+    <ClInclude Include="..\Public\Weapon.h" />
     <ClInclude Include="..\Public\Level_Battle.h" />
     <ClInclude Include="..\Public\Level_Chess.h" />
     <ClInclude Include="..\Public\Level_ChessToBattle.h" />
@@ -192,6 +191,7 @@
     <ClInclude Include="..\Public\Sky.h" />
     <ClInclude Include="..\Public\TargetCamera.h" />
     <ClInclude Include="..\Public\Terrain.h" />
+    <ClInclude Include="..\Public\Weapon_DMR.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
@@ -213,7 +213,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\Private\CWeapon.cpp" />
+    <ClCompile Include="..\Private\Weapon.cpp" />
     <ClCompile Include="..\Private\Level_Battle.cpp" />
     <ClCompile Include="..\Private\Level_Chess.cpp" />
     <ClCompile Include="..\Private\Level_ChessToBattle.cpp" />
@@ -234,6 +234,7 @@
     <ClCompile Include="..\Private\Sky.cpp" />
     <ClCompile Include="..\Private\TargetCamera.cpp" />
     <ClCompile Include="..\Private\Terrain.cpp" />
+    <ClCompile Include="..\Private\Weapon_DMR.cpp" />
     <ClCompile Include="Client.cpp" />
   </ItemGroup>
   <ItemGroup>
