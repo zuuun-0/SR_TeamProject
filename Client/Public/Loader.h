@@ -44,8 +44,12 @@ private:
 private:
 
 	HRESULT Loading_For_Logo_Level();
+	HRESULT Loading_For_MainMenu_Level();
 	HRESULT Loading_For_GamePlay_Level();
-	HRESULT Loading_For_Chess();
+	HRESULT Loading_For_Chess_Level();
+	HRESULT Loading_For_ChessToBattle_Level();
+	HRESULT Loading_For_Battle_Level();
+
 
 
 public:

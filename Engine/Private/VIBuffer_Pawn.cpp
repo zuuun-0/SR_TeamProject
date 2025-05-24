@@ -6,7 +6,8 @@ CVIBuffer_Pawn::CVIBuffer_Pawn(LPDIRECT3DDEVICE9 pGraphic_Device)
 }
 
 CVIBuffer_Pawn::CVIBuffer_Pawn(const CVIBuffer_Pawn& Prototype)
-	: CVIBuffer{ Prototype }
+	: CVIBuffer { Prototype }
+	, m_tAABB { Prototype.m_tAABB }
 {
 }
 
@@ -67,111 +68,14 @@ HRESULT CVIBuffer_Pawn::Initialize_Prototype()
 
 	for (size_t i = 0; i < m_iRow; i++)
 	{
-		switch (i)
+		if (9 == i)		// 여기부터 헤드 - 비율 수정
 		{
-		case 0:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight = arHeight[i] * fHeightRatio;
-			break; //
-		case 1:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break; //
-		case 2:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break; // 
-		case 3:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break; // 
-		case 4:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break; // 
-		case 5:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break; // 
-		case 6:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break; // 
-		case 7:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break; // 
-		case 8:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break; // 
-		case 9:				// 여기부터 헤드 - 비율 수정
 			fWidthRatio *= 0.8f;
 			fHeightRatio *= 0.8f;
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 10:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 11:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 12:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 13:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 14:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 15:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 16:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 17:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 18:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 19:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 20:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 21:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 22:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 23:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
-		case 24:
-			fDiameter = arWidth[i] * fWidthRatio;
-			fHeight += arHeight[i] * fHeightRatio;
-			break;
 		}
+
+		fDiameter = arWidth[i] * fWidthRatio;
+		fHeight += arHeight[i] * fHeightRatio;
 
 		fLength = fDiameter * sinf(D3DXToRadian(60.f));
 
@@ -186,6 +90,7 @@ HRESULT CVIBuffer_Pawn::Initialize_Prototype()
 #pragma endregion
 
 	m_pVB->Unlock();
+
 #pragma endregion
 
 
@@ -264,9 +169,6 @@ HRESULT CVIBuffer_Pawn::Initialize_Prototype()
 	};
 
 	m_pIB->Unlock();
-#pragma endregion
-
-	ComputeAABB();
 
 	return S_OK;
 }
@@ -274,34 +176,6 @@ HRESULT CVIBuffer_Pawn::Initialize_Prototype()
 HRESULT CVIBuffer_Pawn::Initialize(void* pArg)
 {
 	return S_OK;
-}
-
-void CVIBuffer_Pawn::ComputeAABB()
-{
-	VTXPOSPAWN* pVertices = nullptr;
-
-	if (FAILED(m_pVB->Lock(0, 0, reinterpret_cast<void**>(&pVertices), 0)))
-		return;
-
-	D3DXVECTOR3 vMin = pVertices[0].vPosition;
-	D3DXVECTOR3 vMax = pVertices[0].vPosition;
-
-	for (_uint i = 1; i < m_iNumVertices; ++i)
-	{
-		vMin.x = min(vMin.x, pVertices[i].vPosition.x);
-		vMin.y = min(vMin.y, pVertices[i].vPosition.y);
-		vMin.z = min(vMin.z, pVertices[i].vPosition.z);
-
-		vMax.x = max(vMax.x, pVertices[i].vPosition.x);
-		vMax.y = max(vMax.y, pVertices[i].vPosition.y);
-		vMax.z = max(vMax.z, pVertices[i].vPosition.z);
-	}
-
-	m_pVB->Unlock();
-
-	m_tAABB.vMin = vMin;
- 
-	m_tAABB.vMax = vMax;
 }
 
 CVIBuffer_Pawn* CVIBuffer_Pawn::Create(LPDIRECT3DDEVICE9 pGraphic_Device)

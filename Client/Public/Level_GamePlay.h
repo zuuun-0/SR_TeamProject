@@ -28,6 +28,7 @@ private:
 	HRESULT Ready_Layer_TargetCamera(const _wstring& strLayerTag, CTransform* TARGET);
 	HRESULT Ready_Layer_Terrain(const _wstring& strLayerTag);
 	HRESULT Ready_Layer_ChessBoard(const _wstring& strLayerTag);
+	HRESULT Ready_Layer_Sky(const _wstring& strLayerTag);
 
 public:
 	static CLevel_GamePlay* Create(LPDIRECT3DDEVICE9 pGraphic_Device);

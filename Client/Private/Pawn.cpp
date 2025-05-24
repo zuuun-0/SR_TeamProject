@@ -21,8 +21,6 @@ HRESULT CPawn::Initialize(void* pArg)
 {
 	PIECE_DESC* pDesc = static_cast<PIECE_DESC*>(pArg);
 
-	// m_iData = pDesc->iData;
-
 	if (FAILED(__super::Initialize(pArg)))
 		return E_FAIL;
 
@@ -56,26 +54,11 @@ void CPawn::Update(_float fTimeDelta)
 void CPawn::Late_Update(_float fTimeDelta)
 {
 	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
-	/*
-	POINT ptMouse;
-	GetCursorPos(&ptMouse);
-	ScreenToClient(g_hWnd, &ptMouse); // g_hWnd: 전역 윈도우 핸들
-
-	D3DXVECTOR3 vRayOrigin, vRayDir;
-
-	// 2. Ray 생성 (CRayPicking 사용)
-	m_pCollider->ScreenPosToRay(ptMouse.x, ptMouse.y, vRayOrigin, vRayDir);
-
-	// 3. Pawn의 AABB 가져오기
-	BOUNDINGBOX tAABB = m_pVIBufferCom->Get_AABB();
-
-	// 4. 충돌 검사
-	_float fDist = 0.f;
-	if (m_pCollider->RayIntersectsAABB(vRayOrigin, vRayDir, tAABB, &fDist))
+	
+	if (m_pInput_Manager->Key_Pressing(VK_LBUTTON))
 	{
-		MSG_BOX(TEXT("PICKING!!!"));
+		// m_pCollider->Ray()
 	}
-	*/
 }
 
 HRESULT CPawn::Render()
@@ -102,10 +85,6 @@ HRESULT CPawn::Ready_Components()
 	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Pawn"),
 		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
-
-	//if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Player"),
-	//	TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
-	//	return E_FAIL;
 
 	CTransform::TRANSFORM_DESC TransformDesc{};
 

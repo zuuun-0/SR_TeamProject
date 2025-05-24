@@ -1,14 +1,15 @@
 #pragma once
 
+#include "Client_Defines.h"
 #include "Level.h"
 
 BEGIN(Client)
 
-class CLevel_Chess final : public CLevel
+class CLevel_MainMenu final : public CLevel
 {
 private:
-	CLevel_Chess(LPDIRECT3DDEVICE9 pGraphic_Device);
-	virtual ~CLevel_Chess() = default;
+	CLevel_MainMenu(LPDIRECT3DDEVICE9 pGraphic_Device);
+	virtual ~CLevel_MainMenu() = default;
 
 public:
 	virtual HRESULT Initialize() override;
@@ -19,7 +20,7 @@ private:
 	HRESULT Ready_Layer(const _wstring& strLayerTag);
 
 public:
-	static CLevel_Chess* Create(LPDIRECT3DDEVICE9 pGraphic_Device);
+	static CLevel_MainMenu* Create(LPDIRECT3DDEVICE9 pGraphic_Device);
 	virtual void Free() override;
 };
 

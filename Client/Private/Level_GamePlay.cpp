@@ -18,6 +18,9 @@ HRESULT CLevel_GamePlay::Initialize()
 	
 	if (FAILED(Ready_Layer_Pawn(TEXT("Layer_Pawn"))))
 		return E_FAIL;
+
+	if (FAILED(Ready_Layer_Sky(TEXT("Layer_Sky"))))
+		return E_FAIL;
 	
 	// if (FAILED(Ready_Layer_Rook(TEXT("Layer_Rook"))))
 	//	return E_FAIL;
@@ -52,9 +55,10 @@ HRESULT CLevel_GamePlay::Initialize()
 
 void CLevel_GamePlay::Update(_float fTimeDelta)
 {
-	if (GetKeyState(VK_TAB) & 0x8000)
+	// 게임플레이 -> 체스 레벨
+	if (m_pInput_Manager->Key_Down(VK_RETURN))
 	{
-		if (FAILED(m_pGameInstance->Open_Level(static_cast<_uint>(LEVEL::LEVEL_LOADING), CLevel_Loading::Create(m_pGraphic_Device, LEVEL::LEVEL_CHESS))))
+		if (FAILED(m_pGameInstance->Open_Level(ENUM_CLASS(LEVEL::LEVEL_LOADING), CLevel_Loading::Create(m_pGraphic_Device, LEVEL::LEVEL_CHESS))))
 			return;
 	}
 }
@@ -79,8 +83,6 @@ HRESULT CLevel_GamePlay::Ready_Layer_Player(const _wstring& strLayerTag)
 HRESULT CLevel_GamePlay::Ready_Layer_Pawn(const _wstring& strLayerTag)
 {
 	CPawn::PIECE_DESC Desc{};
-
-	Desc.iTemp = 10;
 
 	Desc.pLandVIBuffer = static_cast<CVIBuffer*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Terrain"), TEXT("Com_VIBuffer")));
 	Desc.pLandTransform = static_cast<CTransform*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Terrain"), TEXT("Com_Transform")));
@@ -188,10 +190,18 @@ HRESULT CLevel_GamePlay::Ready_Layer_ChessBoard(const _wstring& strLayerTag)
 	return S_OK;
 }
 
+HRESULT CLevel_GamePlay::Ready_Layer_Sky(const _wstring& strLayerTag)
+{
+	if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), strLayerTag,
+		ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Sky"))))
+		return E_FAIL;
+
+	return S_OK;
+}
+
 CLevel_GamePlay* CLevel_GamePlay::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 {
 	CLevel_GamePlay* pInstance = new CLevel_GamePlay(pGraphic_Device);
-
 
 	if(FAILED(pInstance->Initialize()))
 	{

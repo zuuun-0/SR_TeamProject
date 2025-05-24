@@ -15,22 +15,12 @@ HRESULT CCollision_Manager::Initialize(LPDIRECT3DDEVICE9 pGraphic_Device)
 	return S_OK;
 }
 
-void CCollision_Manager::ScreenPosToRay(_int iMouseX, _int iMouseY, D3DXVECTOR3& outvRayOrigin, D3DXVECTOR3& outvRayDir)
+HRESULT CCollision_Manager::ScreenPosToRay(POINT ptMouse)
 {
 	if (nullptr == m_pRayCast)
-		return;
+		return E_FAIL;
 
-	m_pRayCast->ScreenPosToRay(iMouseX, iMouseY, outvRayOrigin, outvRayDir);
-}
-
-_bool CCollision_Manager::RayIntersectsAABB(D3DXVECTOR3& rayOrigin, D3DXVECTOR3& rayDir, BOUNDINGBOX& box, float* outDist)
-{
-	return m_pRayCast->RayIntersectsAABB(rayOrigin, rayDir, box, outDist);
-}
-
-_bool CCollision_Manager::RayIntersectsTriangle(D3DXVECTOR3& rayOrigin, D3DXVECTOR3& rayDir, TRIANGLE& tri, float* outDist)
-{
-	return m_pRayCast->RayIntersectsTriangle(rayOrigin, rayDir, tri, outDist);
+	return m_pRayCast->ScreenPosToRay(ptMouse);
 }
 
 void CCollision_Manager::Release_Collision()
