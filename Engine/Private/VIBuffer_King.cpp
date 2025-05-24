@@ -35,7 +35,7 @@ HRESULT CVIBuffer_King::Initialize_Prototype()
     // 박스별 8정점
     m_iNumVertices = king_box_count * 8;
     m_iVertexStride = sizeof(VTXPOSPAWN);
-    m_iFVF = D3DFVF_XYZ;
+    m_iFVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
     m_ePrimitiveType = D3DPT_TRIANGLELIST;
     m_iNumPrimitive = king_box_count * 12; // 큐브 하나당 12개 삼각형
     m_iNumIndices = m_iNumPrimitive * 3;

@@ -10,6 +10,7 @@ CBD_Pawn::CBD_Pawn(LPDIRECT3DDEVICE9 pGraphic_Device)
 CBD_Pawn::CBD_Pawn(const CBD_Pawn& Prototype)
 	: CPieces_Chess{ Prototype }
 {
+	
 }
 
 HRESULT CBD_Pawn::Initialize_Prototype()
@@ -28,7 +29,7 @@ HRESULT CBD_Pawn::Initialize(void* pArg)
 
 	if (FAILED(Ready_Components()))
 		return E_FAIL;
-
+	
 	return S_OK;
 }
 
@@ -38,6 +39,10 @@ void CBD_Pawn::Priority_Update(_float fTimeDelta)
 
 void CBD_Pawn::Update(_float fTimeDelta)
 {
+	m_pTransformCom->Scaling(0.1f, 0.1f, 0.1f);
+
+	if (m_pInput_Manager->Key_Pressing(VK_UP))
+		m_pTransformCom->Go_Straight(fTimeDelta);
 }
 
 void CBD_Pawn::Late_Update(_float fTimeDelta)

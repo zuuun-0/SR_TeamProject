@@ -19,7 +19,7 @@ HRESULT CVIBuffer_Board::Initialize_Prototype(_uint iNumVerticesX, _uint iNumVer
 	m_iVertexStride = sizeof(VTXPOSTEX);
 	m_iFVF = D3DFVF_XYZ | D3DFVF_TEX1;
 	m_ePrimitiveType = D3DPT_TRIANGLELIST;
-	m_iNumPrimitive = ((iNumVerticesX - 1) * (iNumVerticesZ - 1)) * 2;
+	m_iNumPrimitive = ((iNumVerticesX ) * (iNumVerticesZ )) * 2;
 
 	m_iNumIndices = m_iNumPrimitive * 3;
 	m_iIndexStride = 2;
@@ -40,7 +40,7 @@ HRESULT CVIBuffer_Board::Initialize_Prototype(_uint iNumVerticesX, _uint iNumVer
 			_uint iIndex = i * iNumVerticesX + j;
 
 			pVertices[iIndex].vPosition = _float3(_float(j), 0.f, _float(i));
-			pVertices[iIndex].vTexcoord = _float2(static_cast<_float>(j) / iNumVerticesX, static_cast<_float>(i) / iNumVerticesZ);
+			pVertices[iIndex].vTexcoord = _float2(static_cast<_float>(j) / (iNumVerticesX - 1), static_cast<_float>(i) / (iNumVerticesZ-1));
 		}
 	}
 

@@ -103,6 +103,9 @@
     <Filter Include="02. GameObject\Chess\For_Chess\BD_Rook">
       <UniqueIdentifier>{ef2ea600-8ff4-4635-aa23-db4daae70e04}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Levels\03. Chess">
+      <UniqueIdentifier>{a1cfbb93-b5fb-4cf5-9331-39b369c38576}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -200,6 +203,9 @@
     </ClInclude>
     <ClInclude Include="..\Public\BD_Rook.h">
       <Filter>02. GameObject\Chess\For_Chess\BD_Rook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_Chess.h">
+      <Filter>01. Levels\03. Chess</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +305,9 @@
     </ClCompile>
     <ClCompile Include="..\Private\BD_Rook.cpp">
       <Filter>02. GameObject\Chess\For_Chess\BD_Rook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Chess.cpp">
+      <Filter>01. Levels\03. Chess</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

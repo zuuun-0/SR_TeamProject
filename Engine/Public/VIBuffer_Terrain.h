@@ -18,6 +18,7 @@ public:
 
 public:
 	_float Compute_Height(const _float3& vLocalPos);
+	_float Coumpute_Horizon(const _float3& vLocalPos);
 
 private:
 	_uint m_iNumVerticesX = {};

@@ -242,6 +242,22 @@ _float CVIBuffer_Terrain::Compute_Height(const _float3& vLocalPos)
 	return (-Plane.a * vLocalPos.x - Plane.c * vLocalPos.z - Plane.d) / Plane.b;
 }
 
+_float CVIBuffer_Terrain::Coumpute_Horizon(const _float3& vLocalPos)
+{
+	_uint			iIndex = static_cast<_uint>(vLocalPos.z) * m_iNumVerticesX + static_cast<_uint>(vLocalPos.x);
+
+	_uint			iIndices[4] = {
+		iIndex + m_iNumVerticesX,
+		iIndex + m_iNumVerticesX + 1,
+		iIndex + 1,
+		iIndex
+	};
+	_float		fWidth = vLocalPos.x - m_pVertexPositions[iIndices[0]].x;
+	_float		fDepth = m_pVertexPositions[iIndices[0]].z - vLocalPos.z;
+
+	return _float();
+}
+
 CVIBuffer_Terrain* CVIBuffer_Terrain::Create(LPDIRECT3DDEVICE9 pGraphic_Device, _uint iNumVerticesX, _uint iNumVerticesZ)
 {
 	CVIBuffer_Terrain* pInstance = new CVIBuffer_Terrain(pGraphic_Device);

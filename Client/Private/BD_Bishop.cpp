@@ -1,13 +1,15 @@
 #include "BD_Bishop.h"
 
 
-CBD_Bishop::CBD_Bishop(LPDIRECT3DDEVICE9 DEVICE)
-	: CPieces_Chess(DEVICE)
-{}
+CBD_Bishop::CBD_Bishop(LPDIRECT3DDEVICE9 pGraphic_Device)
+	: CPieces_Chess(pGraphic_Device)
+{
+}
 
-CBD_Bishop::CBD_Bishop(const CBD_Bishop& OTHDER)
-	: CPieces_Chess(OTHDER)
-{}
+CBD_Bishop::CBD_Bishop(const CBD_Bishop& Prototype)
+	: CPieces_Chess(Prototype)
+{
+}
 
 HRESULT CBD_Bishop::Initialize_Prototype()
 {
@@ -16,12 +18,17 @@ HRESULT CBD_Bishop::Initialize_Prototype()
 
 HRESULT CBD_Bishop::Initialize(void* pArg)
 {
-	if(FAILED(Ready_Components()))
+	PIECE_DESC* pDesc = static_cast<PIECE_DESC*>(pArg);
+
+	// m_iData = pDesc->iData;
+
+	if (FAILED(__super::Initialize(pArg)))
 		return E_FAIL;
 
-	auto* tf = static_cast<CTransform*>(Get_Component(TEXT("Com_Transform")));
-	tf->Set_State(STATE::POSITION, _float3(5.f, 0.f, 0.f));
+	if (FAILED(Ready_Components()))
+		return E_FAIL;
 
+	//m_pTransformCom->Scaling(0.5f, 0.5f, 0.5f);
 
 	return S_OK;
 }
@@ -42,6 +49,10 @@ HRESULT CBD_Bishop::Render()
 {
 	m_pTransformCom->Bind_Matrix();
 
+	// if (FAILED(m_pTextureCom->Bind_Texture()))
+	// 	return E_FAIL;
+
+	/* 그리기위해 이용할 자원과 설정들을 장치에 바인딩한다. */
 	m_pVIBufferCom->Bind_Buffers();
 
 	SetUp_RenderState();
@@ -56,7 +67,7 @@ HRESULT CBD_Bishop::Render()
 HRESULT CBD_Bishop::Ready_Components()
 {
 	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Bishop"),
-									 TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
+		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
 	//if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Queen"),
@@ -69,7 +80,7 @@ HRESULT CBD_Bishop::Ready_Components()
 	TransformDesc.fRotationPerSec = D3DXToRadian(30.f);
 
 	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_Transform"),
-									 TEXT("Com_Transform"), reinterpret_cast<CComponent**>(&m_pTransformCom), &TransformDesc)))
+		TEXT("Com_Transform"), reinterpret_cast<CComponent**>(&m_pTransformCom), &TransformDesc)))
 		return E_FAIL;
 
 	return S_OK;
@@ -102,13 +113,15 @@ CBD_Bishop* CBD_Bishop::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 
 CGameObject* CBD_Bishop::Clone(void* pArg)
 {
-	auto* newObj = new CBD_Bishop(*this);
-	if(FAILED(newObj->Initialize(pArg)))
+	CBD_Bishop* pInstance = new CBD_Bishop(*this);
+
+	if (FAILED(pInstance->Initialize(pArg)))
 	{
-		assert(false);
-		Safe_Release(newObj);
+		MSG_BOX(TEXT("Failed to Cloned : CBD_Bishop"));
+		Safe_Release(pInstance);
 	}
-	return newObj;
+
+	return pInstance;
 }
 
 void CBD_Bishop::Free()

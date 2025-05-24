@@ -52,7 +52,11 @@ HRESULT CLevel_GamePlay::Initialize()
 
 void CLevel_GamePlay::Update(_float fTimeDelta)
 {
-
+	if (GetKeyState(VK_TAB) & 0x8000)
+	{
+		if (FAILED(m_pGameInstance->Open_Level(static_cast<_uint>(LEVEL::LEVEL_LOADING), CLevel_Loading::Create(m_pGraphic_Device, LEVEL::LEVEL_CHESS))))
+			return;
+	}
 }
 
 HRESULT CLevel_GamePlay::Render()
@@ -187,6 +191,7 @@ HRESULT CLevel_GamePlay::Ready_Layer_ChessBoard(const _wstring& strLayerTag)
 CLevel_GamePlay* CLevel_GamePlay::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 {
 	CLevel_GamePlay* pInstance = new CLevel_GamePlay(pGraphic_Device);
+
 
 	if(FAILED(pInstance->Initialize()))
 	{

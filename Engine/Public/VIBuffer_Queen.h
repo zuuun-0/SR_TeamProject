@@ -12,13 +12,14 @@ private:
 public:
 	HRESULT Initialize_Prototype() override;
 	HRESULT Initialize(void* pArg) override;
-public:
-	static CVIBuffer_Queen* Create(LPDIRECT3DDEVICE9 pGraphic_Device);
-	virtual CComponent* Clone(void* pArg) override;
-	virtual void Free() override;
 
 private:
 	_uint m_iRow = {};
 	_uint m_iCol = {};
+
+public:
+	static CVIBuffer_Queen* Create(LPDIRECT3DDEVICE9 pGraphic_Device);
+	virtual CComponent* Clone(void* pArg) override;
+	virtual void Free() override;
 };
 END

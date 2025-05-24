@@ -45,7 +45,7 @@ private:
 
 	HRESULT Loading_For_Logo_Level();
 	HRESULT Loading_For_GamePlay_Level();
-
+	HRESULT Loading_For_Chess();
 
 
 public:

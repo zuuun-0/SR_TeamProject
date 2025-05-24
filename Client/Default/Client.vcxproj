@@ -170,6 +170,7 @@
     <ClInclude Include="..\Public\ChessBoard.h" />
     <ClInclude Include="..\Public\Client_Defines.h" />
     <ClInclude Include="..\Public\Client_PCH.h" />
+    <ClInclude Include="..\Public\Level_Chess.h" />
     <ClInclude Include="..\Public\Pieces_Chess.h" />
     <ClInclude Include="..\Public\Pieces_FPS.h" />
     <ClInclude Include="..\Public\Queen.h" />
@@ -206,6 +207,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\Private\Level_Chess.cpp" />
     <ClCompile Include="..\Private\Pieces_Chess.cpp" />
     <ClCompile Include="..\Private\Pieces_FPS.cpp" />
     <ClCompile Include="..\Private\Queen.cpp" />

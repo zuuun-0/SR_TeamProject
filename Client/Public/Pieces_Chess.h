@@ -1,5 +1,5 @@
 #pragma once
-
+#include "LandObject.h"
 BEGIN(Client)
 
 class CPieces_Chess abstract : public CGameObject

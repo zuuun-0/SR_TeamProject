@@ -18,6 +18,7 @@
 #include "Level_GamePlay.h"
 #include "Level_Loading.h"
 #include "Level_Logo.h"
+#include "Level_Chess.h"
 #include "Loader.h"
 #include "MainApp.h"
 #include "Pawn.h"
@@ -27,6 +28,13 @@
 #include "King.h"
 #include "TargetCamera.h"
 #include "Terrain.h"
+#include "BD_Pawn.h"
+#include "BD_Rook.h"
+#include "BD_Bishop.h"
+#include "BD_Knight.h"
+#include "BD_Queen.h"
+#include "BD_King.h"
+
 
 extern HWND g_hWnd;
 

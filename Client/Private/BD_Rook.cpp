@@ -19,6 +19,11 @@ HRESULT CBD_Rook::Initialize_Prototype()
 
 HRESULT CBD_Rook::Initialize(void* pArg)
 {
+	PIECE_DESC* pDesc = static_cast<PIECE_DESC*>(pArg);
+
+	if (FAILED(__super::Initialize(pArg)))
+		return E_FAIL;
+
 	if (FAILED(Ready_Components()))
 		return E_FAIL;
 
@@ -43,8 +48,8 @@ HRESULT CBD_Rook::Render()
 {
 	m_pTransformCom->Bind_Matrix();
 
-	if (FAILED(m_pTextureCom->Bind_Texture()))
-		return E_FAIL;
+	/*if (FAILED(m_pTextureCom->Bind_Texture()))
+		return E_FAIL;*/
 
 	/* 그리기위해 이용할 자원과 설정들을 장치에 바인딩한다. */
 	m_pVIBufferCom->Bind_Buffers();
@@ -64,9 +69,9 @@ HRESULT CBD_Rook::Ready_Components()
 		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Player"),
+	/*if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Player"),
 		TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom))))
-		return E_FAIL;
+		return E_FAIL;*/
 
 	CTransform::TRANSFORM_DESC TransformDesc{};
 
@@ -82,12 +87,15 @@ HRESULT CBD_Rook::Ready_Components()
 
 void CBD_Rook::SetUp_RenderState()
 {
+	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	//m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
+	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 }
 
 void CBD_Rook::Reset_RenderState()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
-	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
+	//m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
 CBD_Rook* CBD_Rook::Create(LPDIRECT3DDEVICE9 pGraphic_Device)

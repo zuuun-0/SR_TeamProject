@@ -32,8 +32,13 @@ void CLevel_Loading::Update(_float fTimeDelta)
 			case LEVEL::LEVEL_LOGO:
 			pNewLevel = CLevel_Logo::Create(m_pGraphic_Device);
 			break;
+
 			case LEVEL::LEVEL_GAMEPLAY:
 			pNewLevel = CLevel_GamePlay::Create(m_pGraphic_Device);
+			break;
+
+			case LEVEL::LEVEL_CHESS:
+			pNewLevel = CLevel_Chess::Create(m_pGraphic_Device);
 			break;
 		}
 
@@ -70,7 +75,7 @@ CLevel_Loading* CLevel_Loading::Create(LPDIRECT3DDEVICE9 pGraphic_Device, LEVEL 
 
 	if(FAILED(pInstance->Initialize(eNextLevelID)))
 	{
-		MSG_BOX(TEXT("Failed to Created : CLevel_Loading"));
+		MSG_BOX(TEXT("Failed to Created : CLevel_Chess"));
 		Safe_Release(pInstance);
 	}
 

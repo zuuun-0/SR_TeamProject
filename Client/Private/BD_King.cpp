@@ -19,8 +19,17 @@ HRESULT CBD_King::Initialize_Prototype()
 
 HRESULT CBD_King::Initialize(void* pArg)
 {
+	PIECE_DESC* pDesc = static_cast<PIECE_DESC*>(pArg);
+
+	// m_iData = pDesc->iData;
+
+	if (FAILED(__super::Initialize(pArg)))
+		return E_FAIL;
+
 	if (FAILED(Ready_Components()))
 		return E_FAIL;
+
+	//m_pTransformCom->Scaling(0.5f, 0.5f, 0.5f);
 
 	return S_OK;
 }
@@ -36,15 +45,15 @@ void CBD_King::Update(_float fTimeDelta)
 
 void CBD_King::Late_Update(_float fTimeDelta)
 {
-	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
+	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_NONBLEND, this);
 }
 
 HRESULT CBD_King::Render()
 {
 	m_pTransformCom->Bind_Matrix();
 
-	if (FAILED(m_pTextureCom->Bind_Texture()))
-		return E_FAIL;
+	/*if (FAILED(m_pTextureCom->Bind_Texture()))
+		return E_FAIL;*/
 
 	/* 그리기위해 이용할 자원과 설정들을 장치에 바인딩한다. */
 	m_pVIBufferCom->Bind_Buffers();
@@ -64,9 +73,9 @@ HRESULT CBD_King::Ready_Components()
 		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Player"),
+	/*if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Player"),
 		TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom))))
-		return E_FAIL;
+		return E_FAIL;*/
 
 	CTransform::TRANSFORM_DESC TransformDesc{};
 

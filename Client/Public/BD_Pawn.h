@@ -13,6 +13,7 @@ BEGIN(Client)
 
 class CBD_Pawn final : public CPieces_Chess
 {
+
 private:
 	CBD_Pawn(LPDIRECT3DDEVICE9 pGraphic_Device);
 	CBD_Pawn(const CBD_Pawn& Prototype);
