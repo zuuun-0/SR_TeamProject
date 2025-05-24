@@ -4,18 +4,24 @@
 namespace Server
 {
 #pragma pack(push, 1)
-typedef struct tagTransformPacket
+typedef struct tagPositionPacket
 {
-	PacketHeader header;
+	PACKET_HEADER header;
 	D3DXVECTOR3 vPosition;
+
+}POSITION_PACKET;
+
+typedef	struct tagRotationPacket
+{
+	PACKET_HEADER header;
 	D3DXVECTOR3 vRight;
 	D3DXVECTOR3 vUp;
 	D3DXVECTOR3 vLook;
-}TRANSFORMPACKET;
+}ROTATION_PACKET;
 
-struct FIREPACKET
+struct FIRE_PACKET
 {
-	PacketHeader header;
+	PACKET_HEADER header;
 	D3DVECTOR Pos;
 };
 

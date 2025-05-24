@@ -244,29 +244,29 @@ void RecvLoop()
 
 		int len = recvfrom(g_Socket, szBuf, sizeof(szBuf), 0, (sockaddr*)&From, &FromLength);
 		if(len <= 0 || !g_pServerPlayer) continue;
-		if(len <= sizeof(PacketHeader)) continue;
+		if(len <= sizeof(PACKET_HEADER)) continue;
 
-		PacketHeader* Pkt = reinterpret_cast<PacketHeader*>(szBuf);
+		PACKET_HEADER* Pkt = reinterpret_cast<PACKET_HEADER*>(szBuf);
 
-		if(Pkt->ePacketType == PACKETTYPE::TRANFORM)
-		{
-			TRANSFORMPACKET* PlayerPkt = reinterpret_cast<TRANSFORMPACKET*>(szBuf);
-			CTransform* pThrowTransform = static_cast<CTransform*>(g_pServerPlayer->Get_Component(TEXT("Com_Transform")));
-			pThrowTransform->Set_State(STATE::POSITION, PlayerPkt->vPosition);
-			pThrowTransform->Set_State(STATE::RIGHT, PlayerPkt->vRight);
-			pThrowTransform->Set_State(STATE::UP, PlayerPkt->vUp);
-			pThrowTransform->Set_State(STATE::LOOK, PlayerPkt->vLook);
-		}
-		if(Pkt->ePacketType == PACKETTYPE::FIRE)
-		{
-			FIREPACKET* pirePkt = reinterpret_cast<FIREPACKET*>(szBuf);
-			CTransform* pThrowTransform = static_cast<CTransform*>(g_pServerPlayer->Get_Component(TEXT("Com_Transform")));
-			_float3 dir;
-			_float3 tfDir =  pThrowTransform->Get_State(STATE::LOOK);
-			D3DXVec3Normalize(&dir, &tfDir);
-			CBullet::BULLET_DESC bulletDesc(pThrowTransform, dir, 10);
-			CGameInstance::GetInstance()->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Bullet"),
-																 ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Bullet"), &bulletDesc);
-		}
+		//if(Pkt->ePacketType == PACKET_TYPE::TRANFORM)
+		//{
+		//	TRANSFORMPACKET* PlayerPkt = reinterpret_cast<TRANSFORMPACKET*>(szBuf);
+		//	CTransform* pThrowTransform = static_cast<CTransform*>(g_pServerPlayer->Get_Component(TEXT("Com_Transform")));
+		//	pThrowTransform->Set_State(STATE::POSITION, PlayerPkt->vPosition);
+		//	pThrowTransform->Set_State(STATE::RIGHT, PlayerPkt->vRight);
+		//	pThrowTransform->Set_State(STATE::UP, PlayerPkt->vUp);
+		//	pThrowTransform->Set_State(STATE::LOOK, PlayerPkt->vLook);
+		//}
+		//if(Pkt->ePacketType == PACKET_TYPE::FIRE)
+		//{
+		//	FIRE_PACKET* pirePkt = reinterpret_cast<FIRE_PACKET*>(szBuf);
+		//	CTransform* pThrowTransform = static_cast<CTransform*>(g_pServerPlayer->Get_Component(TEXT("Com_Transform")));
+		//	_float3 dir;
+		//	_float3 tfDir =  pThrowTransform->Get_State(STATE::LOOK);
+		//	D3DXVec3Normalize(&dir, &tfDir);
+		//	CBullet::BULLET_DESC bulletDesc(pThrowTransform, dir, 10);
+		//	CGameInstance::GetInstance()->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Bullet"),
+		//														 ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Bullet"), &bulletDesc);
+		//}
 	}
 }

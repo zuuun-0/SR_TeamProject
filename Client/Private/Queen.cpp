@@ -41,8 +41,8 @@ void CQueen::Update(_float fTimeDelta)
 		m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Bullet"),
 												ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Bullet"), &bulletDesc);
 
-		Server::FIREPACKET bulletPkt{};
-		bulletPkt.header.ePacketType = Server::PACKETTYPE::FIRE;
+		Server::FIRE_PACKET bulletPkt{};
+		bulletPkt.header.ePacketType = Server::PACKET_TYPE::FIRE;
 
 		bulletPkt.Pos = static_cast<CTransform*>(m_pGameInstance->Get_Object(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Bullet"))->Get_Component(TEXT("Com_Transform")))->Get_State(STATE::POSITION);
 
@@ -64,24 +64,24 @@ void CQueen::Update(_float fTimeDelta)
 		m_pTransformCom->Turn(_float3(0.f, 1.f, 0.f), fTimeDelta * 5.f);
 	}
 
-	m_AccDt += fTimeDelta;
-	if(m_AccDt >= 0.033f)
-	{
-		Server::TRANSFORMPACKET tfPke;
-		tfPke.header.ePacketType = Server::PACKETTYPE::TRANFORM;
-
-		tfPke.vPosition = m_pTransformCom->Get_State(STATE::POSITION);
-		tfPke.vRight = m_pTransformCom->Get_State(STATE::RIGHT);
-		tfPke.vUp = m_pTransformCom->Get_State(STATE::UP);
-		tfPke.vLook = m_pTransformCom->Get_State(STATE::LOOK);
-		sendto(g_Socket,
-			   reinterpret_cast<const char*>(&tfPke),
-			   sizeof(tfPke),
-			   0,
-			   reinterpret_cast<const sockaddr*>(&g_ServerAddr),
-			   sizeof(g_ServerAddr));
-		m_AccDt = 0.f;
-	}
+	//m_AccDt += fTimeDelta;
+	//if(m_AccDt >= 0.033f)
+	//{
+	//	Server::TRANSFORMPACKET tfPke;
+	//	tfPke.header.ePacketType = Server::PACKET_TYPE::TRANFORM;
+	//
+	//	tfPke.vPosition = m_pTransformCom->Get_State(STATE::POSITION);
+	//	tfPke.vRight = m_pTransformCom->Get_State(STATE::RIGHT);
+	//	tfPke.vUp = m_pTransformCom->Get_State(STATE::UP);
+	//	tfPke.vLook = m_pTransformCom->Get_State(STATE::LOOK);
+	//	sendto(g_Socket,
+	//		   reinterpret_cast<const char*>(&tfPke),
+	//		   sizeof(tfPke),
+	//		   0,
+	//		   reinterpret_cast<const sockaddr*>(&g_ServerAddr),
+	//		   sizeof(g_ServerAddr));
+	//	m_AccDt = 0.f;
+	//}
 }
 
 
