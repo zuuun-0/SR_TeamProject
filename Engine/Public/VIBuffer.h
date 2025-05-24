@@ -22,8 +22,9 @@ public:
 	virtual HRESULT Render();
 
 public:
+	_float Compute_Height(const _float3& vLocalPos) { return 0.f; }
+	_float3 Compute_XYZ(const _float3& vLocalPos) { return _float3(0.f, 0.f, 0.f); }
 	
-
 protected:
 	LPDIRECT3DVERTEXBUFFER9				m_pVB = { nullptr };
 	LPDIRECT3DINDEXBUFFER9				m_pIB = { nullptr };

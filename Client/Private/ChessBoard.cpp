@@ -40,9 +40,6 @@ void CChessBoard::Late_Update(_float fTimeDelta)
 
 HRESULT CChessBoard::Render()
 {
-	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
-	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
-	// m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
 	m_pTransformCom->Bind_Matrix();
 
 	if (FAILED(m_pTextureCom->Bind_Texture()))
@@ -50,7 +47,11 @@ HRESULT CChessBoard::Render()
 
 	m_pVIBufferCom->Bind_Buffers();
 
+	SetUp_RenderState();
+
 	m_pVIBufferCom->Render();
+
+	Reset_RenderState();
 
 	return S_OK;
 }
@@ -59,8 +60,8 @@ HRESULT CChessBoard::Ready_Components()
 {
 	CTransform::TRANSFORM_DESC TransformDesc = {};
 
-	TransformDesc.fSpeedPerSec = 5.f;
-	TransformDesc.fRotationPerSec = D3DXToRadian(15.f);
+	TransformDesc.fSpeedPerSec = 0.f;
+	TransformDesc.fRotationPerSec = D3DXToRadian(0.f);
 
 	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_Transform"),
 		TEXT("Com_Transform"), reinterpret_cast<CComponent**>(&m_pTransformCom), &TransformDesc)))
@@ -70,11 +71,23 @@ HRESULT CChessBoard::Ready_Components()
 		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Board"),
+	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_Component_Texture_Board"),
 		TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom))))
 		return E_FAIL;
 
 	return S_OK;
+}
+
+void CChessBoard::SetUp_RenderState()
+{
+	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
+	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
+}
+
+void CChessBoard::Reset_RenderState()
+{
+	m_pGraphic_Device->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 }
 
 CChessBoard* CChessBoard::Create(LPDIRECT3DDEVICE9 pGraphic_Device)

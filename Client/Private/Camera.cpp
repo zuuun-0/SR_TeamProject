@@ -62,20 +62,22 @@ void CCamera::Priority_Update(_float fTimeDelta)
 
 		if(iMouseMove = ptMouse.y - m_OldPoint.y)
 			m_pTransformCom->Turn(m_pTransformCom->Get_State(STATE::RIGHT), iMouseMove * fTimeDelta * m_fMouseSensor);
-	}
-	if (GetKeyState(VK_SPACE) & 0x8000)
-		m_pTransformCom->Go_Up(fSonic);
-	if (GetKeyState(VK_CONTROL) & 0x8000)
-		m_pTransformCom->Go_Down(fSonic);
+		
+		if (GetKeyState(VK_SPACE) & 0x8000)
+			m_pTransformCom->Go_Up(fSonic);
+		if (GetKeyState(VK_CONTROL) & 0x8000)
+			m_pTransformCom->Go_Down(fSonic);
 
-	if(GetKeyState('W') & 0x8000)
-		m_pTransformCom->Go_Straight(fSonic);
-	if(GetKeyState('A') & 0x8000)
-		m_pTransformCom->Go_Left(fSonic);
-	if(GetKeyState('S') & 0x8000)
-		m_pTransformCom->Go_Backward(fSonic);
-	if(GetKeyState('D') & 0x8000)
-		m_pTransformCom->Go_Right(fSonic);
+		if (GetKeyState('W') & 0x8000)
+			m_pTransformCom->Go_Straight(fSonic);
+		if (GetKeyState('A') & 0x8000)
+			m_pTransformCom->Go_Left(fSonic);
+		if (GetKeyState('S') & 0x8000)
+			m_pTransformCom->Go_Backward(fSonic);
+		if (GetKeyState('D') & 0x8000)
+			m_pTransformCom->Go_Right(fSonic);
+	}
+	
 
 	m_pGraphic_Device->SetTransform(D3DTS_VIEW, m_pTransformCom->Get_WorldMatrix_Inverse());
 

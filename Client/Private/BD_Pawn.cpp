@@ -19,9 +19,7 @@ HRESULT CBD_Pawn::Initialize_Prototype()
 
 HRESULT CBD_Pawn::Initialize(void* pArg)
 {
-	PIECE_DESC* pDesc = static_cast<PIECE_DESC*>(pArg);
-
-	// m_iData = pDesc->iData;
+	PIECE_DESC* PawnDesc = static_cast<PIECE_DESC*>(pArg);
 
 	if (FAILED(__super::Initialize(pArg)))
 		return E_FAIL;
@@ -29,24 +27,46 @@ HRESULT CBD_Pawn::Initialize(void* pArg)
 	if (FAILED(Ready_Components()))
 		return E_FAIL;
 
+	m_pTransformCom->Set_State(STATE::POSITION, PawnDesc->vPosition);
+
 	return S_OK;
 }
 
 void CBD_Pawn::Priority_Update(_float fTimeDelta)
 {
+	_float3 vWorldPos = m_pTransformCom->Get_State(STATE::POSITION);
+
+	_float fPosX = m_pTransformCom->Get_State(STATE::POSITION).x;
+	_float fPosY = m_pTransformCom->Get_State(STATE::POSITION).y;
+	_float fPosZ = m_pTransformCom->Get_State(STATE::POSITION).z;
+
+	if (m_pInput_Manager->Key_Down('W') && fPosZ < 7)
+		m_pTransformCom->Chess_Up();
+
+	if (m_pInput_Manager->Key_Down('A') && fPosX > 1)
+		m_pTransformCom->Chess_Left();
+
+	if (m_pInput_Manager->Key_Down('S') && fPosZ > 1)
+		m_pTransformCom->Chess_Down();
+
+	if (m_pInput_Manager->Key_Down('D') && fPosX < 7)
+		m_pTransformCom->Chess_Right();
 }
 
 void CBD_Pawn::Update(_float fTimeDelta)
 {
+	SetUp_OnChessBoard(m_pTransformCom);
 }
 
 void CBD_Pawn::Late_Update(_float fTimeDelta)
 {
-	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
+	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_NONBLEND, this);
 }
 
 HRESULT CBD_Pawn::Render()
 {
+	m_pTransformCom->Scaling(0.15f, 0.15f, 0.15f);
+
 	m_pTransformCom->Bind_Matrix();
 
 	// if (FAILED(m_pTextureCom->Bind_Texture()))
@@ -66,14 +86,6 @@ HRESULT CBD_Pawn::Render()
 
 HRESULT CBD_Pawn::Ready_Components()
 {
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Pawn"),
-		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
-		return E_FAIL;
-
-	//if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Player"),
-	//	TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
-	//	return E_FAIL;
-
 	CTransform::TRANSFORM_DESC TransformDesc{};
 
 	TransformDesc.fSpeedPerSec = 8.f;
@@ -81,6 +93,10 @@ HRESULT CBD_Pawn::Ready_Components()
 
 	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_Transform"),
 		TEXT("Com_Transform"), reinterpret_cast<CComponent**>(&m_pTransformCom), &TransformDesc)))
+		return E_FAIL;
+
+	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Pawn"),
+		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
 	return S_OK;
