@@ -35,6 +35,8 @@ HRESULT CLevel_Chess::Render()
 HRESULT CLevel_Chess::Ready_Layer(const _wstring& strLayerTag)
 {
 
+	//
+
 
 	return S_OK;
 }
