@@ -60,6 +60,11 @@ public:
 	void Go_Up(_float fTimeDelta);
 	void Go_Down(_float fTimeDelta);
 
+	void Chess_Up();
+	void Chess_Left();
+	void Chess_Down();
+	void Chess_Right();
+
 	void Look_At(const _float3& vTarget);
 	void Move_To(const _float3& vTarget, _float fTimeDelta, _float fLimitRange = 0.f);
 

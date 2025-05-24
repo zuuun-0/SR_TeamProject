@@ -92,6 +92,46 @@ void CTransform::Go_Down(_float fTimeDelta)
 	Set_State(STATE::POSITION, vPosition);
 }
 
+void CTransform::Chess_Up()
+{
+	_float3			vPosition = Get_State(STATE::POSITION);
+	_float3			vLook = Get_State(STATE::LOOK);
+
+	vPosition += *D3DXVec3Normalize(&vLook, &vLook) * 1.f;
+
+	Set_State(STATE::POSITION, vPosition);
+}
+
+void CTransform::Chess_Left()
+{
+	_float3			vPosition = Get_State(STATE::POSITION);
+	_float3			vRight = Get_State(STATE::RIGHT);
+
+	vPosition -= *D3DXVec3Normalize(&vRight, &vRight) * 1.f;
+
+	Set_State(STATE::POSITION, vPosition);
+}
+
+void CTransform::Chess_Down()
+{
+	_float3			vPosition = Get_State(STATE::POSITION);
+	_float3			vLook = Get_State(STATE::LOOK);
+
+	vPosition -= *D3DXVec3Normalize(&vLook, &vLook) * 1.f;
+
+	Set_State(STATE::POSITION, vPosition);
+}
+
+void CTransform::Chess_Right()
+{
+	_float3			vPosition = Get_State(STATE::POSITION);
+	_float3			vRight = Get_State(STATE::RIGHT);
+
+	vPosition += *D3DXVec3Normalize(&vRight, &vRight) * 1.f;
+
+	Set_State(STATE::POSITION, vPosition);
+}
+
 void CTransform::Look_At(const _float3& vTarget)
 {
 	_float3			vScaled = Get_Scaled();

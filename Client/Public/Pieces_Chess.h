@@ -2,12 +2,12 @@
 
 BEGIN(Client)
 
-class CPieces_Chess abstract : public CGameObject
+class CPieces_Chess abstract : public CLandObject
 {
 public:
 	typedef struct tagPieceDesc : public CLandObject::LANDOBJ_DESC
 	{
-		_int iTemp = {};		// 예시
+		_float3 vPosition{};
 
 	}PIECE_DESC;
 
@@ -24,8 +24,8 @@ public:
 	virtual void Late_Update(_float fTimeDelta) override;
 	virtual HRESULT Render() override;
 
-protected:
-	_int m_iTemp = {};			// 예시
+public:
+	void SetUp_OnChessBoard(class CTransform* pTransformCom);
 
 public:
 	virtual CGameObject* Clone(void* pArg) = 0;

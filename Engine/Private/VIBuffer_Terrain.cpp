@@ -21,7 +21,7 @@ HRESULT CVIBuffer_Terrain::Initialize_Prototype(_uint iNumVerticesX, _uint iNumV
 	m_iVertexStride = sizeof(VTXPOSTEX);
 	m_iFVF = D3DFVF_XYZ | D3DFVF_TEX1;
 	m_ePrimitiveType = D3DPT_TRIANGLELIST;
-	m_iNumPrimitive = ((m_iNumVerticesX - 1) * (m_iNumVerticesZ - 1)) * 2;
+	m_iNumPrimitive = (m_iNumVerticesX * m_iNumVerticesZ) * 2;
 
 	m_iNumIndices = m_iNumPrimitive * 3;
 	m_iIndexStride = 4;
