@@ -22,7 +22,7 @@ void CLevel_ChessToBattle::Update(_float fTimeDelta)
 
 	else if (m_pInput_Manager->Key_Down('P'))		// 임시 -- Battle 레벨로
 	{
-		if (FAILED(m_pGameInstance->Open_Level(ENUM_CLASS(LEVEL::LEVEL_LOADING), CLevel_Loading::Create(m_pGraphic_Device, LEVEL::LEVEL_BATTLE))))
+		if (FAILED(m_pGameInstance->Open_Level(ENUM_CLASS(LEVEL::LEVEL_LOADING), CLevel_Loading::Create(m_pGraphic_Device, LEVEL::LEVEL_MAINMENU))))
 			return;
 	}
 }

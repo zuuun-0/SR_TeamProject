@@ -5,17 +5,17 @@ IMPLEMENT_SINGLETON(CInput_Manager)
 CInput_Manager::CInput_Manager()
 {}
 
-_bool CInput_Manager::Key_Pressing(_uint _iKey)
+_bool CInput_Manager::Key_Pressing(_uint _iKey) const
 {
 	return m_bKeyState[_iKey];
 }
 
-_bool CInput_Manager::Key_Down(_uint _iKey)
+_bool CInput_Manager::Key_Down(_uint _iKey) const
 {
 	return m_bKeyState[_iKey] && !m_bPrevKey[_iKey];
 }
 
-_bool CInput_Manager::Key_Up(_uint _iKey)
+_bool CInput_Manager::Key_Up(_uint _iKey) const
 {
 	return !m_bKeyState[_iKey] && m_bPrevKey[_iKey];
 }
