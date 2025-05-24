@@ -21,12 +21,34 @@ namespace Engine
 
 	}VTXPOSTEX;
 
+	typedef struct tagVertexCubeTex
+	{
+		D3DXVECTOR3		vPosition;
+		D3DXVECTOR3		vTexcoord;
+
+	}VTXCUBETEX;
+
 	typedef struct tagVertexPosPawn
 	{
 		D3DXVECTOR3		vPosition;
 		_ulong			dwColor;
 
 	}VTXPOSPAWN;
+
+#pragma region STATUS
+
+	// 
+	typedef struct tagPieceStatus
+	{
+		_wstring strPieceName;
+
+		_float fHP;
+		_float fAtk;
+
+	}STATUS;
+
+#pragma endregion
+
 
 
 #pragma region RAY_CASTING

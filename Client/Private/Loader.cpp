@@ -55,8 +55,20 @@ HRESULT CLoader::Loading()
 	case LEVEL::LEVEL_LOGO:
 		hr = Loading_For_Logo_Level();
 		break;
+	case LEVEL::LEVEL_MAINMENU:
+		hr = Loading_For_MainMenu_Level();
+		break;
 	case LEVEL::LEVEL_GAMEPLAY:
 		hr = Loading_For_GamePlay_Level();
+		break;
+	case LEVEL::LEVEL_CHESS:
+		hr = Loading_For_Chess_Level();
+		break;
+	case LEVEL::LEVEL_CHESSTOBATTLE:
+		hr = Loading_For_ChessToBattle_Level();
+		break;
+	case LEVEL::LEVEL_BATTLE:
+		hr = Loading_For_Chess_Level();
 		break;
 	}
 
@@ -128,6 +140,11 @@ HRESULT CLoader::Loading_For_GamePlay_Level()
 		CTexture::Create(m_pGraphic_Device, TEXTURE::RECT, TEXT("../Bin/Resources/Textures/Terrain/ChessBoard.jpg"), 1))))
 		return E_FAIL;
 
+	/* Prototype_Component_Texture_Sky */
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Sky"),
+		CTexture::Create(m_pGraphic_Device, TEXTURE::CUBE, TEXT("../Bin/Resources/Textures/SkyBox/Sky_%d.dds"), 4))))
+		return E_FAIL;
+
 	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중입니다."));
 
 	/* Prototype_Component_VIBuffer_Terrain */
@@ -169,7 +186,9 @@ HRESULT CLoader::Loading_For_GamePlay_Level()
 
 #pragma endregion
 
-
+	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Sky"),
+		CSky::Create(m_pGraphic_Device))))
+		return E_FAIL;
 
 	if (FAILED(m_pGameInstance->Add_Prototype(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Bullet"),
 		CBullet::Create(m_pGraphic_Device))))
@@ -197,6 +216,75 @@ HRESULT CLoader::Loading_For_GamePlay_Level()
 
 	return S_OK;
 }
+
+HRESULT CLoader::Loading_For_MainMenu_Level()
+{
+	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("쉐이더를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("게임오브젝트원형를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("로딩이 완료되었습니다."));
+
+	m_isFinished = true;
+
+	return S_OK;
+}
+
+HRESULT CLoader::Loading_For_Chess_Level()
+{
+	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("쉐이더를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("게임오브젝트원형를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("로딩이 완료되었습니다."));
+
+	m_isFinished = true;
+
+	return S_OK;
+}
+
+HRESULT CLoader::Loading_For_ChessToBattle_Level()
+{
+	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("쉐이더를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("게임오브젝트원형를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("로딩이 완료되었습니다."));
+
+	m_isFinished = true;
+
+	return S_OK;
+}
+
+HRESULT CLoader::Loading_For_Battle_Level()
+{
+	lstrcpy(m_szLoadingText, TEXT("텍스쳐를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("모델을 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("쉐이더를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("게임오브젝트원형를 로딩중입니다."));
+
+	lstrcpy(m_szLoadingText, TEXT("로딩이 완료되었습니다."));
+
+	m_isFinished = true;
+
+	return S_OK;
+}
+
 CLoader* CLoader::Create(LPDIRECT3DDEVICE9 pGraphic_Device, LEVEL eNextLevelID)
 {
 	CLoader* pInstance = new CLoader(pGraphic_Device);
