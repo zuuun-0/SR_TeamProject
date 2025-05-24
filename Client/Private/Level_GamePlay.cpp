@@ -55,7 +55,12 @@ HRESULT CLevel_GamePlay::Initialize()
 
 void CLevel_GamePlay::Update(_float fTimeDelta)
 {
-
+	// 게임플레이 -> 체스 레벨
+	if (m_pInput_Manager->Key_Down(VK_RETURN))
+	{
+		if (FAILED(m_pGameInstance->Open_Level(ENUM_CLASS(LEVEL::LEVEL_LOADING), CLevel_Loading::Create(m_pGraphic_Device, LEVEL::LEVEL_CHESS))))
+			return;
+	}
 }
 
 HRESULT CLevel_GamePlay::Render()

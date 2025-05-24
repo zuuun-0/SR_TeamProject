@@ -35,6 +35,21 @@ namespace Engine
 
 	}VTXPOSPAWN;
 
+#pragma region STATUS
+
+	// 
+	typedef struct tagPieceStatus
+	{
+		_wstring strPieceName;
+
+		_float fHP;
+		_float fAtk;
+
+	}STATUS;
+
+#pragma endregion
+
+
 
 #pragma region RAY_CASTING
 

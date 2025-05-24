@@ -25,9 +25,6 @@
     <Filter Include="01. Levels\01. Logo">
       <UniqueIdentifier>{4daa5347-2175-4204-a723-8a12d6a2155d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01. Levels\02. GamePlay">
-      <UniqueIdentifier>{19bdaed7-1d8c-4e81-9a68-52c2881f242d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Levels\00. Loading\Loader">
       <UniqueIdentifier>{50a64a49-dec4-4186-a110-f05841dacdd2}</UniqueIdentifier>
     </Filter>
@@ -39,15 +36,6 @@
     </Filter>
     <Filter Include="02. GameObject\Terrain">
       <UniqueIdentifier>{1392a4ca-b6b0-4989-ad65-23f546191b44}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Levels\02. GamePlay\00. Match">
-      <UniqueIdentifier>{976c7cd2-e05b-41f5-b4e6-fb1c4f054ecd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Levels\02. GamePlay\01. PlayChess">
-      <UniqueIdentifier>{f00e6d5f-9d53-49d2-8cb7-41c7ccc9c715}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="01. Levels\02. GamePlay\02. PlayFPS">
-      <UniqueIdentifier>{abcf2042-9562-4e55-bb7e-aba2d105bd26}</UniqueIdentifier>
     </Filter>
     <Filter Include="02. GameObject\Camera\TargetCamera">
       <UniqueIdentifier>{aec133ce-f0ea-423b-b088-4ad95390bc7f}</UniqueIdentifier>
@@ -106,6 +94,21 @@
     <Filter Include="02. GameObject\Sky">
       <UniqueIdentifier>{77370b62-3836-47e4-b133-4caa730ad5c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Levels\04. Chess">
+      <UniqueIdentifier>{31ff1203-1db8-420d-bb71-d057132dcd91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\03. GamePlay">
+      <UniqueIdentifier>{19bdaed7-1d8c-4e81-9a68-52c2881f242d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\02. MainMenu">
+      <UniqueIdentifier>{d1f72f50-4fe5-44ac-9b29-dcf23a5775aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\05. ChessToBattle">
+      <UniqueIdentifier>{1a20b81c-a9cc-44e2-910c-89cddd7e0afa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Levels\06. Battle">
+      <UniqueIdentifier>{9162d208-cfcb-42d4-9e92-93453049173f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -130,7 +133,7 @@
       <Filter>01. Levels\00. Loading\Loader</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Level_GamePlay.h">
-      <Filter>01. Levels\02. GamePlay</Filter>
+      <Filter>01. Levels\03. GamePlay</Filter>
     </ClInclude>
     <ClInclude Include="..\Public\Level_Loading.h">
       <Filter>01. Levels\00. Loading</Filter>
@@ -207,6 +210,18 @@
     <ClInclude Include="..\Public\Sky.h">
       <Filter>02. GameObject\Sky</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Level_Battle.h">
+      <Filter>01. Levels\06. Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_Chess.h">
+      <Filter>01. Levels\04. Chess</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_MainMenu.h">
+      <Filter>01. Levels\02. MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_ChessToBattle.h">
+      <Filter>01. Levels\05. ChessToBattle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Client.ico">
@@ -232,7 +247,7 @@
       <Filter>01. Levels\00. Loading\Loader</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Level_GamePlay.cpp">
-      <Filter>01. Levels\02. GamePlay</Filter>
+      <Filter>01. Levels\03. GamePlay</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\Level_Loading.cpp">
       <Filter>01. Levels\00. Loading</Filter>
@@ -308,6 +323,18 @@
     </ClCompile>
     <ClCompile Include="..\Private\Sky.cpp">
       <Filter>02. GameObject\Sky</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Battle.cpp">
+      <Filter>01. Levels\06. Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_MainMenu.cpp">
+      <Filter>01. Levels\02. MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Chess.cpp">
+      <Filter>01. Levels\04. Chess</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_ChessToBattle.cpp">
+      <Filter>01. Levels\05. ChessToBattle</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
