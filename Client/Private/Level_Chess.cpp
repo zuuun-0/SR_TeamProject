@@ -73,6 +73,8 @@ HRESULT CLevel_Chess::Ready_Layer_Player(const _wstring& strLayerTag)
 		ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_GameObject_Player"))))
 		return E_FAIL;
 
+	//
+
 
 	return S_OK;
 }
