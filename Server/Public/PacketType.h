@@ -2,17 +2,18 @@
 
 namespace Server
 {
-#pragma pack(push, 1)
-enum class PACKETTYPE : unsigned char
+enum class PACKET_TYPE : unsigned char
 {
-	TRANFORM,
+	POSITION,
+	ROTATION,
 	FIRE,
 };
 
-struct PacketHeader
+#pragma pack(push, 1)
+struct PACKET_HEADER
 {
-	PACKETTYPE ePacketType;
-	unsigned short sSize;
+	PACKET_TYPE ePacketType{};
+	unsigned short sSize = 0;
 };
 #pragma pack(pop)
 }
