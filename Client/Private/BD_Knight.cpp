@@ -66,7 +66,7 @@ void CBD_Knight::Update(_float fTimeDelta)
 
 void CBD_Knight::Late_Update(_float fTimeDelta)
 {
-	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
+	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_NONBLEND, this);
 }
 
 HRESULT CBD_Knight::Render()

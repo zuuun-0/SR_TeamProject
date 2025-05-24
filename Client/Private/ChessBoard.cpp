@@ -35,7 +35,7 @@ void CChessBoard::Update(_float fTimeDelta)
 
 void CChessBoard::Late_Update(_float fTimeDelta)
 {
-	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
+	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_NONBLEND, this);
 }
 
 HRESULT CChessBoard::Render()

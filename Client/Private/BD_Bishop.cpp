@@ -35,7 +35,7 @@ void CBD_Bishop::Update(_float fTimeDelta)
 
 void CBD_Bishop::Late_Update(_float fTimeDelta)
 {
-	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
+	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_NONBLEND, this);
 }
 
 HRESULT CBD_Bishop::Render()

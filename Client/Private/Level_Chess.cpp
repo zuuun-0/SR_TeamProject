@@ -61,14 +61,17 @@ HRESULT CLevel_Chess::Ready_Layer_Pawn(const _wstring& strLayerTag)
 {
 	CBD_Pawn::PIECE_DESC PawnDesc = {};
 
-	PawnDesc.vPosition = _float3(0.5, 0.f, 0.5f);
+	for (_uint i = 0; i < 8; ++i)
+	{
+		PawnDesc.vPosition = _float3(0.5 + i, 0.f, 1.5f);
 
-	PawnDesc.pLandVIBuffer = static_cast<CVIBuffer*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_VIBuffer")));
-	PawnDesc.pLandTransform = static_cast<CTransform*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_Transform")));
+		PawnDesc.pLandVIBuffer = static_cast<CVIBuffer*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_VIBuffer")));
+		PawnDesc.pLandTransform = static_cast<CTransform*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_Transform")));
 
-	if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_CHESS), strLayerTag,
-		ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_GameObject_Pawn"), &PawnDesc)))
-		return E_FAIL;
+		if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_CHESS), strLayerTag,
+			ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_GameObject_Pawn"), &PawnDesc)))
+			return E_FAIL;
+	}
 
 	return S_OK;
 }

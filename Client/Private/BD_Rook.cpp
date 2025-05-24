@@ -36,7 +36,7 @@ void CBD_Rook::Update(_float fTimeDelta)
 
 void CBD_Rook::Late_Update(_float fTimeDelta)
 {
-	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_PRIORITY, this);
+	m_pGameInstance->Add_RenderGroup(RENDERGROUP::RG_NONBLEND, this);
 }
 
 HRESULT CBD_Rook::Render()
