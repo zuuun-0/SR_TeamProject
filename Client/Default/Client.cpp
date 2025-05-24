@@ -16,8 +16,9 @@ HWND g_hWnd;
 USING(Server);
 SOCKET g_Socket;
 sockaddr_in g_ServerAddr;
-CQueen* g_pClientPlayer;
-CQueen* g_pServerPlayer;
+CPieces_FPS* g_ClientPlayer;
+CPieces_FPS* g_ServerPlayer;
+
 
 #pragma endregion
 
@@ -236,37 +237,47 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 void RecvLoop()
 {
+	char buffer[512];
+
 	while(true)
 	{
-		char szBuf[1024];
-		sockaddr_in From{};
-		int FromLength = sizeof(From);
+		int recvLen = recv(g_Socket, buffer, sizeof(buffer), 0);
+		if(recvLen <= 0)
+		{
+			std::cout << "서버와 연결 끊김" << std::endl;
+			break;
+		}
 
-		int len = recvfrom(g_Socket, szBuf, sizeof(szBuf), 0, (sockaddr*)&From, &FromLength);
-		if(len <= 0 || !g_pServerPlayer) continue;
-		if(len <= sizeof(PACKET_HEADER)) continue;
+		if(recvLen < sizeof(PACKET_HEADER))
+			continue;
 
-		PACKET_HEADER* Pkt = reinterpret_cast<PACKET_HEADER*>(szBuf);
+		PACKET_HEADER* header = reinterpret_cast<PACKET_HEADER*>(buffer);
 
-		//if(Pkt->ePacketType == PACKET_TYPE::TRANFORM)
-		//{
-		//	TRANSFORMPACKET* PlayerPkt = reinterpret_cast<TRANSFORMPACKET*>(szBuf);
-		//	CTransform* pThrowTransform = static_cast<CTransform*>(g_pServerPlayer->Get_Component(TEXT("Com_Transform")));
-		//	pThrowTransform->Set_State(STATE::POSITION, PlayerPkt->vPosition);
-		//	pThrowTransform->Set_State(STATE::RIGHT, PlayerPkt->vRight);
-		//	pThrowTransform->Set_State(STATE::UP, PlayerPkt->vUp);
-		//	pThrowTransform->Set_State(STATE::LOOK, PlayerPkt->vLook);
-		//}
-		//if(Pkt->ePacketType == PACKET_TYPE::FIRE)
-		//{
-		//	FIRE_PACKET* pirePkt = reinterpret_cast<FIRE_PACKET*>(szBuf);
-		//	CTransform* pThrowTransform = static_cast<CTransform*>(g_pServerPlayer->Get_Component(TEXT("Com_Transform")));
-		//	_float3 dir;
-		//	_float3 tfDir =  pThrowTransform->Get_State(STATE::LOOK);
-		//	D3DXVec3Normalize(&dir, &tfDir);
-		//	CBullet::BULLET_DESC bulletDesc(pThrowTransform, dir, 10);
-		//	CGameInstance::GetInstance()->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Layer_Bullet"),
-		//														 ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_GameObject_Bullet"), &bulletDesc);
-		//}
+		switch(static_cast<PACKET_TYPE>(header->ePacketType))
+		{
+			case PACKET_TYPE::POSITION:
+			{
+				POSITION_PACKET* pkt = reinterpret_cast<POSITION_PACKET*>(buffer);
+				std::cout << "포지션 패킷 " << endl;
+			}
+			break;
+			case PACKET_TYPE::ROTATION:
+			{
+				ROTATION_PACKET* pkt = reinterpret_cast<ROTATION_PACKET*>(buffer);
+				std::cout << "회전 패킷 " << endl;
+
+			}
+			break;
+			case PACKET_TYPE::FIRE:
+			{
+				FIRE_PACKET* pkt = reinterpret_cast<FIRE_PACKET*>(buffer);
+				std::cout << "공격 패킷 " << endl;
+			}
+			break;
+			default:
+			std::cout << "알 수 없는 패킷 수신" << std::endl;
+			break;
+		}
 	}
 }
+

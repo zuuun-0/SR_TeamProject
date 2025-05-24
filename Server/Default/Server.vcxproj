@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Private\PacketHendler.cpp" />
     <ClCompile Include="..\Private\Server.cpp" />
     <ClCompile Include="..\Private\Server_PCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -27,10 +26,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Public\ClientSession.h" />
-    <ClInclude Include="..\Public\PacketHash.h" />
-    <ClInclude Include="..\Public\PacketHendler.h" />
-    <ClInclude Include="..\Public\PacketRegister.h" />
     <ClInclude Include="..\Public\PacketType.h" />
     <ClInclude Include="..\Public\PlayerPacket.h" />
     <ClInclude Include="..\Public\Server_PCH.h" />

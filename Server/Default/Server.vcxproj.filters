@@ -4,9 +4,6 @@
     <Filter Include="Packet">
       <UniqueIdentifier>{7507cf70-fcf4-4db1-bf32-aa36dbeaf3fe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PacketType">
-      <UniqueIdentifier>{eeea23da-065c-4f51-9610-7349e34df3ab}</UniqueIdentifier>
-    </Filter>
     <Filter Include="99. Server_Define">
       <UniqueIdentifier>{9fd3ed9f-cf84-4e65-8fda-b5f23f90bfd0}</UniqueIdentifier>
     </Filter>
@@ -16,17 +13,8 @@
     <Filter Include="00. Server">
       <UniqueIdentifier>{c0ecfd02-013d-4fc9-8776-4256f1205db3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ClientSession">
-      <UniqueIdentifier>{013d1a74-2676-4485-8821-b835b57e59cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PacketHesh">
-      <UniqueIdentifier>{62fbbc87-112f-4d32-80f9-f192feb01e3e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PacketHandler">
-      <UniqueIdentifier>{6db54ee3-2efd-4527-8c6b-371320ad49f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PacketRegister">
-      <UniqueIdentifier>{a9852e56-7ab8-4378-ae3b-384463727eb6}</UniqueIdentifier>
+    <Filter Include="PacketType">
+      <UniqueIdentifier>{96ff9198-d94e-4f0a-96fa-f51e44d7e9d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -35,9 +23,6 @@
     </ClCompile>
     <ClCompile Include="..\Private\Server.cpp">
       <Filter>00. Server</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Private\PacketHendler.cpp">
-      <Filter>PacketHandler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -49,18 +34,6 @@
     </ClInclude>
     <ClInclude Include="..\Public\PacketType.h">
       <Filter>PacketType</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Public\ClientSession.h">
-      <Filter>ClientSession</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Public\PacketHash.h">
-      <Filter>PacketHesh</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Public\PacketHendler.h">
-      <Filter>PacketHandler</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Public\PacketRegister.h">
-      <Filter>PacketRegister</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

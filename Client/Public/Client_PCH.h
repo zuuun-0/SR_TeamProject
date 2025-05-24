@@ -6,7 +6,7 @@
 #include <process.h>
 
 #include "Client_Defines.h"
-
+///////
 #include "Pieces_Chess.h"
 #include "Pieces_FPS.h"
 #include "BackGround.h"
@@ -35,7 +35,7 @@
 
 extern HWND g_hWnd;
 
-extern CQueen* g_pClientPlayer;
-extern CQueen* g_pServerPlayer;
 extern SOCKET g_Socket;
 extern sockaddr_in g_ServerAddr;
+extern CPieces_FPS* g_ClientPlayer;
+extern CPieces_FPS* g_ServerPlayer;
