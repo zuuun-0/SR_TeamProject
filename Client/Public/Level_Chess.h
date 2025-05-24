@@ -16,6 +16,8 @@ public:
 	virtual HRESULT Render() override;
 
 private:
+	HRESULT Ready_GameObjects();
+
 	HRESULT Ready_Layer_Pawn(const _wstring& strLayerTag);
 	HRESULT Ready_Layer_Rook(const _wstring& strLayerTag);
 	HRESULT Ready_Layer_Knight(const _wstring& strLayerTag);

@@ -69,9 +69,6 @@ HRESULT CBD_Pawn::Render()
 
 	m_pTransformCom->Bind_Matrix();
 
-	// if (FAILED(m_pTextureCom->Bind_Texture()))
-	// 	return E_FAIL;
-
 	/* 그리기위해 이용할 자원과 설정들을 장치에 바인딩한다. */
 	m_pVIBufferCom->Bind_Buffers();
 

@@ -68,9 +68,11 @@ HRESULT CSky::Ready_Components(void* pArg)
 		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Sky"),
-		TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom))))
-		return E_FAIL;
+	__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Sky"),
+		TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom));
+
+	__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_Component_Texture_Sky"),
+		TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom));
 
 	CTransform::TRANSFORM_DESC TransformDesc = {};
 

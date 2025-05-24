@@ -30,7 +30,9 @@ void CBD_Bishop::Priority_Update(_float fTimeDelta)
 
 
 void CBD_Bishop::Update(_float fTimeDelta)
-{}
+{
+	SetUp_OnChessBoard(m_pTransformCom);
+}
 
 
 void CBD_Bishop::Late_Update(_float fTimeDelta)
@@ -40,6 +42,8 @@ void CBD_Bishop::Late_Update(_float fTimeDelta)
 
 HRESULT CBD_Bishop::Render()
 {
+	m_pTransformCom->Scaling(0.15f, 0.15f, 0.15f);
+
 	m_pTransformCom->Bind_Matrix();
 
 	m_pVIBufferCom->Bind_Buffers();
@@ -55,21 +59,17 @@ HRESULT CBD_Bishop::Render()
 
 HRESULT CBD_Bishop::Ready_Components()
 {
-	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Bishop"),
-									 TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
-		return E_FAIL;
-
-	//if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Queen"),
-	//								 TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom))))
-	//	return E_FAIL;
-
 	CTransform::TRANSFORM_DESC TransformDesc{};
 
 	TransformDesc.fSpeedPerSec = 8.f;
 	TransformDesc.fRotationPerSec = D3DXToRadian(30.f);
 
-	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_Transform"),
-									 TEXT("Com_Transform"), reinterpret_cast<CComponent**>(&m_pTransformCom), &TransformDesc)))
+	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_Transform"),
+		TEXT("Com_Transform"), reinterpret_cast<CComponent**>(&m_pTransformCom), &TransformDesc)))
+		return E_FAIL;
+
+	if(FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Bishop"),
+									 TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
 	return S_OK;

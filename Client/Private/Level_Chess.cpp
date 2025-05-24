@@ -7,30 +7,8 @@ CLevel_Chess::CLevel_Chess(LPDIRECT3DDEVICE9 pGraphic_Device)
 
 HRESULT CLevel_Chess::Initialize()
 {
-	if (FAILED(Ready_Layer_Camera(TEXT("Layer_Camera"))))
+	if (FAILED(Ready_GameObjects()))
 		return E_FAIL;
-
-	if (FAILED(Ready_Layer_ChessBoard(TEXT("Layer_ChessBoard"))))
-		return E_FAIL;
-
-	// if (FAILED(Ready_Layer_Sky(TEXT("Layer_Sky"))))
-	// 	return E_FAIL;
-
-	if (FAILED(Ready_Layer_Pawn(TEXT("Layer_Pawn"))))
-		return E_FAIL;
-
-	/*
-	if (FAILED(Ready_Layer_Rook(TEXT("Layer_Rook"))))
-		return E_FAIL;
-	if (FAILED(Ready_Layer_Knight(TEXT("Layer_Knight"))))
-		return E_FAIL;
-	if (FAILED(Ready_Layer_Bishop(TEXT("Layer_Bishop"))))
-		return E_FAIL;
-	if (FAILED(Ready_Layer_Queen(TEXT("Layer_Queen"))))
-		return E_FAIL;
-	if (FAILED(Ready_Layer_King(TEXT("Layer_King"))))
-		return E_FAIL;
-	*/
 
 	return S_OK;
 }
@@ -57,13 +35,47 @@ HRESULT CLevel_Chess::Render()
 	return S_OK;
 }
 
+HRESULT CLevel_Chess::Ready_GameObjects()
+{
+	if (FAILED(Ready_Layer_Camera(TEXT("Layer_Camera"))))
+		return E_FAIL;
+
+	if (FAILED(Ready_Layer_ChessBoard(TEXT("Layer_ChessBoard"))))
+		return E_FAIL;
+
+	if (FAILED(Ready_Layer_Sky(TEXT("Layer_Sky"))))
+		return E_FAIL;
+
+	if (FAILED(Ready_Layer_Pawn(TEXT("Layer_Pawn"))))
+		return E_FAIL;
+
+	// if (FAILED(Ready_Layer_Rook(TEXT("Layer_Rook"))))
+	// 	return E_FAIL;
+
+	// if (FAILED(Ready_Layer_Knight(TEXT("Layer_Knight"))))
+	// 	return E_FAIL;
+
+	// if (FAILED(Ready_Layer_Bishop(TEXT("Layer_Bishop"))))
+	// 	return E_FAIL;
+
+	// if (FAILED(Ready_Layer_Queen(TEXT("Layer_Queen"))))
+	// 	return E_FAIL;
+
+	// if (FAILED(Ready_Layer_King(TEXT("Layer_King"))))
+	// 	return E_FAIL;
+
+	return S_OK;
+}
+
+#pragma region READY_LAYERS
+
 HRESULT CLevel_Chess::Ready_Layer_Pawn(const _wstring& strLayerTag)
 {
 	CBD_Pawn::PIECE_DESC PawnDesc = {};
 
 	for (_uint i = 0; i < 8; ++i)
 	{
-		PawnDesc.vPosition = _float3(0.5 + i, 0.f, 1.5f);
+		PawnDesc.vPosition = _float3(0.5f + i, 0.f, 1.5f);
 
 		PawnDesc.pLandVIBuffer = static_cast<CVIBuffer*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_VIBuffer")));
 		PawnDesc.pLandTransform = static_cast<CTransform*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_Transform")));
@@ -78,26 +90,90 @@ HRESULT CLevel_Chess::Ready_Layer_Pawn(const _wstring& strLayerTag)
 
 HRESULT CLevel_Chess::Ready_Layer_Rook(const _wstring& strLayerTag)
 {
+	CBD_Rook::PIECE_DESC RookDesc{};
+
+	for (_uint i = 0; i < 2; ++i)
+	{
+		RookDesc.vPosition = _float3(0.5f + (i * 7.f), 0.f, 0.5f);
+
+		RookDesc.pLandVIBuffer = static_cast<CVIBuffer*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_VIBuffer")));
+		RookDesc.pLandTransform = static_cast<CTransform*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_Transform")));
+
+		if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_CHESS), strLayerTag,
+			ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_GameObject_Rook"), &RookDesc)))
+			return E_FAIL;
+	}
+
 	return S_OK;
 }
 
 HRESULT CLevel_Chess::Ready_Layer_Knight(const _wstring& strLayerTag)
 {
+	CBD_Knight::PIECE_DESC KnightDesc{};
+
+	for (_uint i = 0; i < 2; ++i)
+	{
+		KnightDesc.vPosition = _float3(1.5f + (i * 5.f), 0.f, 0.5f);
+
+		KnightDesc.pLandVIBuffer = static_cast<CVIBuffer*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_VIBuffer")));
+		KnightDesc.pLandTransform = static_cast<CTransform*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_Transform")));
+
+		if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_CHESS), strLayerTag,
+			ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_GameObject_Knight"), &KnightDesc)))
+			return E_FAIL;
+	}
+
 	return S_OK;
 }
 
 HRESULT CLevel_Chess::Ready_Layer_Bishop(const _wstring& strLayerTag)
 {
+	CBD_Bishop::PIECE_DESC BishopDesc{};
+
+	for (_uint i = 0; i < 2; ++i)
+	{
+		BishopDesc.vPosition = _float3(2.5f + (i * 3.f), 0.f, 0.5f);
+
+		BishopDesc.pLandVIBuffer = static_cast<CVIBuffer*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_VIBuffer")));
+		BishopDesc.pLandTransform = static_cast<CTransform*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_Transform")));
+
+		if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_CHESS), strLayerTag,
+			ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_GameObject_Bishop"), &BishopDesc)))
+			return E_FAIL;
+	}
+
 	return S_OK;
 }
 
 HRESULT CLevel_Chess::Ready_Layer_Queen(const _wstring& strLayerTag)
 {
+	CBD_Bishop::PIECE_DESC QueenDesc{};
+
+	QueenDesc.vPosition = _float3(3.5f, 0.f, 0.5f);
+
+	QueenDesc.pLandVIBuffer = static_cast<CVIBuffer*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_VIBuffer")));
+	QueenDesc.pLandTransform = static_cast<CTransform*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_Transform")));
+
+	if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_CHESS), strLayerTag,
+		ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_GameObject_Queen"), &QueenDesc)))
+		return E_FAIL;
+
 	return S_OK;
 }
 
 HRESULT CLevel_Chess::Ready_Layer_King(const _wstring& strLayerTag)
 {
+	CBD_King::PIECE_DESC KingDesc{};
+
+	KingDesc.vPosition = _float3(4.5f, 0.f, 0.5f);
+
+	KingDesc.pLandVIBuffer = static_cast<CVIBuffer*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_VIBuffer")));
+	KingDesc.pLandTransform = static_cast<CTransform*>(m_pGameInstance->Find_Component(ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Layer_ChessBoard"), TEXT("Com_Transform")));
+
+	if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_CHESS), strLayerTag,
+		ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_GameObject_King"), &KingDesc)))
+		return E_FAIL;
+
 	return S_OK;
 }
 
@@ -126,7 +202,7 @@ HRESULT CLevel_Chess::Ready_Layer_Camera(const _wstring& strLayerTag)
 HRESULT CLevel_Chess::Ready_Layer_Sky(const _wstring& strLayerTag)
 {
 	if (FAILED(m_pGameInstance->Add_GameObject_ToLayer(ENUM_CLASS(LEVEL::LEVEL_CHESS), strLayerTag,
-		ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_GameObject_Sky"))))
+		ENUM_CLASS(LEVEL::LEVEL_CHESS), TEXT("Prototype_GameObject_SkyForChess"))))
 		return E_FAIL;
 
 	return S_OK;
@@ -140,6 +216,8 @@ HRESULT CLevel_Chess::Ready_Layer_ChessBoard(const _wstring& strLayerTag)
 
 	return S_OK;
 }
+
+#pragma endregion
 
 CLevel_Chess* CLevel_Chess::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 {

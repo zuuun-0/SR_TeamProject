@@ -31,7 +31,7 @@ void CBD_Rook::Priority_Update(_float fTimeDelta)
 
 void CBD_Rook::Update(_float fTimeDelta)
 {
-	//m_pTransformCom->Go_Straight(fTimeDelta);
+	SetUp_OnChessBoard(m_pTransformCom);
 }
 
 void CBD_Rook::Late_Update(_float fTimeDelta)
@@ -41,13 +41,12 @@ void CBD_Rook::Late_Update(_float fTimeDelta)
 
 HRESULT CBD_Rook::Render()
 {
+	m_pTransformCom->Scaling(0.15f, 0.15f, 0.15f);
+
 	m_pTransformCom->Bind_Matrix();
 
-	if (FAILED(m_pTextureCom->Bind_Texture()))
-		return E_FAIL;
-
 	/* 그리기위해 이용할 자원과 설정들을 장치에 바인딩한다. */
-	m_pVIBufferCom->Bind_Buffers();
+	// m_pVIBufferCom->Bind_Buffers();
 
 	SetUp_RenderState();
 
@@ -60,14 +59,6 @@ HRESULT CBD_Rook::Render()
 
 HRESULT CBD_Rook::Ready_Components()
 {
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Rook"),
-		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
-		return E_FAIL;
-
-	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_GAMEPLAY), TEXT("Prototype_Component_Texture_Player"),
-		TEXT("Com_Texture"), reinterpret_cast<CComponent**>(&m_pTextureCom))))
-		return E_FAIL;
-
 	CTransform::TRANSFORM_DESC TransformDesc{};
 
 	TransformDesc.fSpeedPerSec = 8.f;
@@ -75,6 +66,10 @@ HRESULT CBD_Rook::Ready_Components()
 
 	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_Transform"),
 		TEXT("Com_Transform"), reinterpret_cast<CComponent**>(&m_pTransformCom), &TransformDesc)))
+		return E_FAIL;
+
+	if (FAILED(__super::Add_Component(ENUM_CLASS(LEVEL::LEVEL_STATIC), TEXT("Prototype_Component_VIBuffer_Rook"),
+		TEXT("Com_VIBuffer"), reinterpret_cast<CComponent**>(&m_pVIBufferCom))))
 		return E_FAIL;
 
 	return S_OK;
